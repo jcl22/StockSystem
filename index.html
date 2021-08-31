@@ -1,0 +1,321 @@
+<!-- La etiqueta más importante a nivel de dom, ya que representa el tipo de documento para que el navegador lo interprete. HTML -->
+<!DOCTYPE html>
+<!-- Lang representa lenguaje -->
+<html lang="en">
+
+<head>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Es un aplicativo web para manejo de inventarios
+    seguro y funcional, creado para pequeñas empresas.">
+    <meta name="keywords" content= "inventarios,stock,stocksystem,proyectos,sena">
+    <title>StockSystem - App web</title>
+    <link rel ="shortcurt icon" href="img/LOGO.png" type=image/x-icon>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+<!-- main -->
+    <section id="principal" class = "main">
+        <div class="wrapper">
+             <!-- header -->
+            <header>
+                <div class="logos">
+                    <figure class="logo">
+                        <img src="img/LOGO.png" alt="Logo de StockSystem" width="50">
+                    </figure>
+                    <figure class="StockS"></figure>
+                        <img src="img/STOCKSYSTEM.png" alt="Logo de StockSystem" width="120">
+                    </figure>
+                </div>
+                <div>
+                    <nav class="menu">
+                        <ul>
+                            <li><a class="link" href="#sistema"> <b>Sobre el sistema</b></a></li>
+                            <li><a class="link" href="#modulos"><b>Módulos y procesos</b></a></li>
+                            <li><a class="link" href="#aspectos"><b>¿Por qué adquirirlo?</b></a></li>
+                            <li><a class="link" href="#documentacion"><b>Documentación</b></a></li>
+                            <li><a class="link" href="#programas"><b>Programas</b></a></li>
+                            <li><a class="link" href="#contacto"><b>Contáctanos</b></a></li>
+                            <li><a class= "image-input" href="">
+                                    <img class= ""src="img/BUSCAR.png" alt="Logo de StockSystem" width="17">
+                            </a></li>
+                            <li> <a  href="">
+                                <form action="">
+                                    <input class="link-input" type="text" placeholder="Buscar">
+                                </form>
+                            </a></li>     
+                        </ul>
+                    </nav> 
+            </header>       
+            <h1 class="description-main"> <span style="text-transform: uppercase;"> <br><br><b>¡Bienvenido!</b></span> 
+                <br>Somos StockSystem, un aplicativo web <br> 
+                para el manejo de inventarios en pequeñas empresas. <br>    
+            </h1>
+        </div>
+    </section>
+
+<!-- system -->
+    <section  class="systems">
+        <div class="wrapper">
+            <div class="title-system">
+                <h2 id="sistema">sobre el sistema</h2> 
+            </div>
+                <article class="system">
+                    <p> Este aplicativo es creado por un grupo de aprendices, como proyecto
+                            <span style="text-transform: uppercase;">sena</span>. Nace bajo la necesidad de brindar
+                            un servicio para cualquier empresa naciente, que fusiona los procesos de compra, inventario 
+                            y venta de productos, buscando mejorar la seguridad, funcionalidad y agilidad  
+                            labores administrativas.  
+                    </p>
+                    <p><b>Nuestro equipo de trabajo:</b></p> <br>
+                </article>
+                <article class="projectm">
+                    <div>
+                        <p><span class="projectm-description" style="text-transform: uppercase;"><b>Jhordan Villamil</b></span></p>
+                        <p>Project Manager</p>
+                        <img src="img/JHORDAN_PC.png" alt="" width="180">
+                    </div>
+                </article> <br> <br>
+                <article class="collaborators">
+                    <div>
+                        <img src="img/JHORDAN_PULGAR.png" alt="" width="150">
+                        <p><span class="collaborators-description" style="text-transform: uppercase;"><b>Andrés Velez</b></span></p>
+                        <p>Desarrollador Back-end</p>
+                    </div>
+                    <div>
+                        <img src="img/JHORDAN_MANO.png" alt="" width="150">
+                        <p><span class="collaborators-description" style="text-transform: uppercase;"><b>Juan Durango</b></span></p>
+                        <p>Analista de base de datos</p>
+                    </div>
+                </article> <br> <br>
+                <article class="collaborators-more">
+                    <div>
+                        <img src="img/JHORDAN_MANO.png" alt="" width="150">
+                        <p><span class="collaborators-more-description" style="text-transform: uppercase;"><b>Cristian Londoño</b></span></p>
+                        <p>Desarrollador Front-end</p>
+                    </div>
+                    <div>
+                        <img src="img/JHORDAN_PULGAR.png" alt="" width="150">
+                        <p><span class="collaborators-more-description" style="text-transform: uppercase;"><b>Laura Restrepo</b></span></p>
+                        <p>Desarrollador Front-end</p>
+                    </div>
+                </article>                      
+        </div>
+    </section>
+
+<!-- modules -->
+    <section>
+        <div class="wrapper">
+            <article class="title-modules">
+                <div>
+                    <h2 id="modulos">módulos y procesos</h2> 
+                </div>   
+            </article>
+            <article class="modules">
+                <article class="module-users">
+                    <div class="module-users-left">
+                        <h3 class=module-users-title>Usuarios</h3>
+                        <p class="module-users-description">
+                            Se encarga de registrar a los usuarios y darles perfiles específicos, con el fin permitirles ingresar al aplicativo únicamente con un ID y una contraseña verificada en un base de datos interna, y dar permisos específicos a cada perfil determinando lo que pueden hacer o no dentro del sistema.
+                        </p>
+                    </div>
+                    <figure class=module-users-usuario_image>
+                        <img src="img/USUARIO.png" alt="Imágen de usuarios" width="100"> 
+                    </figure>
+                </article>
+                <article class=module-shoop>
+                    <div class=module-shoop-center>
+                        <h3 class=module-shoop-title>Compras</h3>
+                        <p class=module-shoop-description>
+                            Carga los registros de entrada de productos a la empresa expresada en unidades (unds) y costos en pesos ($). Cuenta además con otros datos más puntuales como entidad o persona natural a quién se le compra, marca, producto, modelo del producto, fecha y hora. 
+                        </p>
+                    </div>
+                    <figure class=module-shoop-compra_image>
+                        <img src="img/COMPRA.png" alt="Imágen de compras" width="100">
+                    </figure>
+                </article>
+                <article class=module-stock>
+                    <div class=module-stock-center>
+                        <h3 class=module-stock-title>Inventarios</h3>
+                        <p> En este módulo se registran movimientos internos como traslados entre bodegas virtuales 
+                        o áreas, y externos como las salidas y entradas por compras y ventas de productos; teniendo en cuenta la 
+                        rotación de los inventarios con el método PEPS.
+                        </p>
+                    </div>
+                    <figure class="module-stock-inventarios2_image">
+                        <img src="img/INVENTARIO.png" alt="Imágen de inventarios" width="100">
+                    </figure>
+                </article>
+                <article class="module-sale">
+                    <div class="module-sale-rigth">
+                        <h3 class="module-sale-title">Ventas</h3>
+                        <p class="module-sale-description">
+                            Carga los registros de entrada de productos a la empresa expresada en unidades (unds) y costos en pesos ($). Cuenta además con otros datos más puntuales como entidad o persona natural a quién se le vende, marca, producto, modelo del producto, fecha y hora. 
+                        </p>
+                    </div>
+                    <figure class="sale-venta_image">
+                        <img src="img/VENTA.png" alt="Imágen de ventas" width="100">
+                    </figure>
+                </article>
+            </article>
+        </div>
+    </section>
+
+<!-- aspects -->  
+    <section class="aspects">
+        <div class="wrapper">
+            <div class="title-aspects">
+                <h2 id="aspectos">¿por qué adquirirlo?</h2>
+            </div>  
+            <p class="aspects-description">El aplicativo cuenta con dos aspectos esenciales para el 
+                    mercado en la actualidad </p> <br>
+            <article class="security">
+                    <div class="security-left">
+                        <h3>Seguridad de la información</h3>
+                        <p class="security-description">
+                            Los datos que se manejan en una empresa deben ser seguros y resguardados cuidadosamente
+                            para evitar posibles malos ratos. Ahora, al manejar la información de manera física los riesgo de 
+                            perderlos y es ahí donde se hace importante el tener un software completo y confiable. 
+                        </p>
+                    </div>
+                    <figure class=aspect-security_image>
+                        <!-- <img class="security_img"src="img/SEGURIDAD.png" alt="Imágen de servicios">  -->
+                    </figure>
+                </article>
+                <br><br>
+                <article class="customer">
+                    <figure class=customer-client_image>
+                        <!-- <img class="customer_img"src="img/CLIENTES.png" alt="Imágen de clientes"> -->
+                    </figure>
+                    <div class="customer-rigth">
+                        <h3>Tacto con clientes y aliados</h3>
+                        <p class="customer-description">
+                            El ser ágil en las tareas desempeñadas generará una experiencia satisfactoria para quién vende 
+                            o compra en la empresa. Y no sólo esto, sino que también reducirá tiempos y métodos de las actividades 
+                            realizadas. Por esto es importante saber distribuir estos procesos y automatizarlos mediante un aplicativo o 
+                            Software.
+                        </p>
+                    </div> 
+                </article>
+        </div>
+    </section>
+
+<!-- documents -->
+    <section >
+        <div class="wrapper">
+            <div class="title-documents">
+                <h2 id="documentacion">documentacion</h2>
+            </div>
+            <article class="documents">
+                <article class="document">
+                    <div class="document-left">
+                        <p class="document-description">Como proyecto, StockSystem cumple con una 
+                            estructura documental y unos requisitos funsamentados, que especifican el proceso y desarrollo 
+                            de lo implementado. Esto es importante conocerlo, para datearse de todo lo relacionado con
+                            el proyecto, y así entender qué es lo que se genera dentro de él.<br><br>
+                            <b> Clickea para conocer un poco más:</b>
+                            <br> <br>
+                        </p>
+                        <figure class="document-link" >
+                            <div class="document-excel">
+                                <figure>
+                                    <a href="https://docs.google.com/spreadsheets/d/1L1Z6RsutlygUvuOmeIspwOGQfgswLxzm/edit#gid=
+                                    236492289" target="_blank"><img clase="requeriment_image" src="img/EXCEL.png" 
+                                    alt="Imágen de presentación" width="150"></a>
+                                    <p>Requisitos del sistema</p>
+                                </figure>
+                            </div>
+                            <div class="document-word">
+                                <a href="https://docs.google.com/document/d/1ScTh46UoOHWoWOsL_i_oXruPJw9a38LH/edit" 
+                                target="_blank"><img clase="document_image" src="img/WORD.png" 
+                                alt="Imágen de presentación" width="150"></a>
+                                <p>Documento estructural del sistema</p>
+                            </div>
+                        </figure>
+                    </div>
+                </article>  
+            </article>
+        </div>
+    </section>
+   
+<!-- programs -->
+    <section  class="program">
+        <div class="wrapper">
+            <div class="title-programs">
+                <h2 id="programas">programas y lenguajes utilizados </h2>
+            </div>
+            <article class="programs-system">
+                <figure class="programs">
+                    <p class="program-description"> <b>html</b></p>
+                    <img src="img/HTML.png" alt="" width="150" height="200">
+                </figure>
+                <figure class="programs">
+                    <p class="program-description"><b>css</b></p>
+                    <img src="img/CSS.png" alt="" width="150" height="200">
+                </figure>            
+                <figure class="programs">
+                    <p class="program-description"><b>javascript</b></p>
+                    <img src="img/JS.png" alt="" width="300" height="200">
+                </figure>            
+                <figure class="programs">
+                    <p class="program-description"><b>sql</b></p>
+                    <img src="img/SQL.png" alt="" width="150" height="200">
+                </figure>            
+                <figure class="programs" width="250px">
+                    <p class="program-description"><b>php</b></p>
+                    <img src="img/PHP.png" alt="" width="300" height="150">
+                </figure>
+            </article> 
+        </div>   
+    </section>
+  
+<!-- contacts -->
+    <section id=contacto class="contact-form">
+        <div class="wrapper">
+            <div class="title-contact">
+                <h2 >contáctanos</h2>
+            </div>
+                <form action="" class="contact-email">
+                    <img class= "correo_image" src="img/CORREO.png" alt="Imp" width="25">
+                    <input class="input"type="text" placeholder="Déjanos tu email">
+                    <button>Enviar</button>
+                </form>
+                <div class="redes">
+                    <a href="#" class="redes-link github" ></a>
+                    <a href="#" class="redes-link facebook" ></a>
+                    <a href="#" class="redes-link instagram" ></a>
+                    <a href="#" class="redes-link twitter" ></a>
+                </div>
+        </div>
+    </section>
+
+<!-- footer -->
+    <footer  class="footer">
+        <p>StockSystem - Aplicativo web. <br>Creado y diseñado por Jhordan Villamil </p>
+        <div class="sist_op">
+            <figure>
+                <img src="/img/iOS.png" alt="" width="100">
+            </figure>
+            <figure>
+                <img src="/img/WINDOWS.png" alt="" width="50">
+            </figure>
+            <figure>
+                <img src="/img/ANDROID.png" alt="" width="50">
+            </figure>
+        </div> 
+
+        <div class="footer-details">
+            <figure class="sena_image">
+                <img src="img/SENA.png" alt="Logo del Sena" width="20" >
+            </figure>    
+        <p class="footer-description"><span style="text-transform: uppercase;">adsi</span> 2021 - Ficha: 2164526</p>
+        </div> 
+    </footer>
+</body>
+</html>
