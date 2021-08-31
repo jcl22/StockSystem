@@ -1,42 +1,39 @@
 # STOCKSYSTEM
 
-Aplicativo web para el manejo de inventarios de pequeñas empresas.
+> Hola! Bienvenido al repositorio
 
-(https://jhordanv10.github.io/StockSystem/img/LOGO.png)
-
-(https://img.shields.io/github/stars/StockSystem/editor.md.svg)
-(https://img.shields.io/github/forks/StockSystem/editor.md.svg)
-(https://img.shields.io/github/tags/StockSystem/editor.md.svg)
-(https://img.shields.io/github/release/StockSystem/editor.md.svg)
-(https://img.shields.io/github/issues/StockSystem/editor.md.svg)
-
+** Este es un aplicativo web para el manejo de inventarios de pequeñas empresas**
 
 Creado y diseñado por un grupo de aprendices SENA, como proyecto formativo.
-Nace bajo la necesidad de brindar un servicio para cualquier empresa naciente, que fusiona los procesos de compra, inventario y venta de productos, buscando mejorar la seguridad, funcionalidad y agilidad labores administrativas. 
+Nace bajo la necesidad de brindar un servicio para cualquier empresa naciente, que fusiona los procesos de compra, inventario y venta de productos, buscando mejorar la seguridad, funcionalidad y agilidad labores administrativas.
 
+![] (https://jhordanv10.github.io/StockSystem/img/STOCKSYSTEM.png)
 
-**Table of Contents**
+Link del sitio web [Aquí](http://(https://jhordanv10.github.io/StockSystem "Aquí")
 
-## Sobre el sistema
- ### Nuestro equipo de trabajo
-## Módulos y procesos
- ### Usuarios
- ### Compras
- ### Inventarios
- ### Ventas
-## Por qué adquirirlo
- ### Seguridad de la información
- ### Tacto con los clientes
-## Documentación
- ### Requisitos
- ### Documento estructural
-## Programas y lenguajes utilizados
+## Desarrollado y diseñado por:
+ Jhordan Villamil - Project Manager
+ Cristian Londoño - Desarrollador Front-end
+ Andrés Velez - Desarrollador Back-end
+ Laura Restrepo - Desarrollador Front-end
+ Juan Camilo Durango - Analista base de datos
 
-Image:
+## Módulos
+- Usuarios
+- Compras
+- Inventarios
+- Ventas
 
-(https://jhordanv10.github.io/StockSystem/img/STOCKSYSTEM.png)
+## Documentación del sistema
+- Documento estructural [Ver](https://docs.google.com/document/d/1ScTh46UoOHWoWOsL_i_oXruPJw9a38LH/edit")
+- Matríz de requisitos [Ver](http://https://docs.google.com/spreadsheets/d/1L1Z6RsutlygUvuOmeIspwOGQfgswLxzm "Ir al enlace")
 
-
+## Lenguajes y programas utilizados
+- HTML
+- CSS
+- JAVASCRIPT
+- SQL
+- PHP 
 
 
 
