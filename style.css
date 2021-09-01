@@ -557,11 +557,12 @@ button {
         cursor:pointer;
 }
 .wrapper {
-        width: 3000px;
+        /* width: 3000px;
         margin: 0px auto;
         display:inherit;
         align-items: inherit;
         justify-content: inherit;
         height: inherit;
-        width: inherit;
-} 
+        width: inherit; */
+        border: 1px solid red;
+}      
