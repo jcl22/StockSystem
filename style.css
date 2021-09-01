@@ -5,39 +5,25 @@ body {
         background-size: 100%;
         background-repeat:repeat;
         color: black;
-        min-width: 100vw;
-        min-height: 100vh;
+        width: 100%;
+        height: 100%;
         margin: 0px auto;
         overflow-x: hidden;
 }
 
-/* <!-- main --> */
-.main {
-        width: 100%;
-        height: 500px;
-        background-image: url(img/MAIN.jpeg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size:100%;
-        color: black;
-        align-items: center;
-        font-size: 32px;
-}
-.description-main {
-        padding-left:20px;
-}
 /* <!-- header --> */
 header{
         background-color:white;
-        width: inherit;
         margin-bottom: 0px;
         margin-left:0px;
         height: 20px;
-        padding: 30px;
+        width: inherit;
+        padding: 30px 5px;
         display: flex;
         align-items: center;
         justify-content:space-between;
         border-bottom: 5px solid black;
+        flex-wrap: wrap;
         /* border-bottom: 3px solid black;
         border-left: 3px solid black;
         border-bottom-left-radius:100px; */
@@ -48,18 +34,24 @@ header{
 }
 .logo {
         margin:0px;
-        margin-left: 20px;
+        margin-left: 10px;
 }
 .StockS {
         margin:0px;
         margin-left: 10px;
 }
-
+.links {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+}
+.link:hover {
+        color:#C9CCD5;
+}
 .menu {
         height: inherit;
-        width: 1300px;
+        width: 100%;
         align-items: center;
-
 }
 ul {
         list-style: none;
@@ -69,6 +61,7 @@ ul {
         height: inherit;
         justify-content: center;
         align-items: center;
+        flex-wrap:wrap;
 }
 li {
         height: inherit;
@@ -79,8 +72,8 @@ li {
         text-decoration: none;
         display: inherit;
         align-items: center;
-        margin:0px 18px;
-        padding:0px 4px;
+        margin:0px 10px;
+        padding:0px;
 }
 .image-input{
         margin: 4px;
@@ -89,6 +82,26 @@ li {
         border-radius: 5px;
         box-shadow: 0px 0px 3px black;
         padding-left: 5px;
+}
+
+/* <!-- main --> */
+.main {
+        width: 100%;
+        height: 430px;
+        background-image: url(img/MAIN.jpeg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size:100%;
+        color: black;
+        align-items: center;
+        font-size: 32px;
+        flex-wrap: wrap;
+}
+.description-main {
+        padding: 50px ; 
+        padding-left:20px; 
+        margin-top: 0px;
+        margin-bottom: 10px;
 }
 
 /* <!-- system --> */
@@ -124,7 +137,9 @@ li {
         text-align: center;
         font-size: 20px;
         padding: 0px 100px;
+        flex-wrap: wrap;
 }
+
 .projectm {
         text-align: center;
 }
@@ -136,6 +151,7 @@ li {
         display: flex;
         justify-content: space-around;
         text-align: center;
+        
 }
 .collaborators-description {
         color: black;
@@ -145,6 +161,7 @@ li {
         display: flex;
         justify-content: space-evenly;
         text-align: center;
+        
 }
 .collaborators-more-description {
         color: black;
@@ -184,6 +201,7 @@ li {
         background-image: url(img/FONDO2.JPG);
         background-size: 100% ;
         background-repeat:no-repeat ;
+        flex-wrap: wrap;
 }
 .module-users {
         width: unset;
@@ -267,7 +285,8 @@ h3 {
         margin:10px 0px;
         background-image: url(img/FONDO3.JPG);
         background-size: 100% ;
-        background-repeat:no-repeat ;
+        background-repeat:no-repeat;
+        
 }        
 .aspects-description {
         text-align: center;
@@ -278,6 +297,7 @@ h3 {
         margin: 0px auto;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
 }
 .security-left {
         padding: 30px 40px;
@@ -305,6 +325,7 @@ h3 {
         margin: 0px auto;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
 }
 .customer-rigth {
         padding: 30px 40px;
@@ -362,12 +383,13 @@ h3 {
         padding: 0px 200px;
         background-image: url(img/FONDO4.JPG);
         background-size: 100% ;
-        background-repeat:no-repeat ;
+        background-repeat:no-repeat;
 }
 
 .documents {
         width: 900;
         height: 500;
+        flex-wrap: wrap;
 }
 .document {
         margin-bottom: 30px;
@@ -387,6 +409,8 @@ h3 {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        flex-wrap: wrap;
+
 }
 
 /* <!-- programs --> */
@@ -429,6 +453,8 @@ h3 {
         display: flex;
         justify-content: space-around;
         padding: 0px 200px;
+        flex-wrap: wrap;
+
 }
 .programs:hover{
         filter:none;
@@ -537,6 +563,8 @@ h3 {
         border-top: 3px solid black;
         border-right: 3px black;
         border-top-right-radius:100px; 
+        flex-wrap: wrap;
+
 }
 .footer-details img {
         width: 40px;
@@ -547,6 +575,7 @@ h3 {
         justify-content: center;
         align-items: center;
         margin: 0px;
+        flex-wrap: wrap;
 }
 button {
         font-size: 15px;
@@ -556,12 +585,53 @@ button {
         box-shadow: 0px 0px 1px black;
         cursor:pointer;
 }
-/* .wrapper {
-        width: 3000px;
+.wrapper {
+        /* min-width: 1000px; */
+        flex:1;
         margin: 0px auto;
         display:inherit;
         align-items: inherit;
         justify-content: inherit;
         height: inherit;
         width: inherit; 
-}       */
+}      
+
+@media screen and (max-width:1024px) {
+
+}
+@media screen and (max-width:767px) {
+        header {
+                height: auto;
+                display: block;
+                padding: 10px 0px;
+        }
+        ul{
+                display: block;
+        }
+        .logos {
+                justify-content: center;
+        }
+        .link {
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                margin:0px;
+                padding:3px 0px;
+        }
+        .link:hover {
+                background-color: #C9CCD5;
+                color:black;
+        }
+        .logo {
+                margin-left: 0px;
+        }
+        .StockS {
+                margin-left: 2px;
+        }
+}
+@media screen and (max-width:480px) {
+        
+}
+@media screen and (max-width:320px) {
+        
+}
