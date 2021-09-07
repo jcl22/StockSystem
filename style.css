@@ -192,7 +192,7 @@ h2 {
     width: 180px;
     border: 2px solid beige;
     border-radius: 40px;
-    padding: 10px;
+    padding: 5px;
     background-color: beige;
 }
 
@@ -217,7 +217,7 @@ h2 {
     width: 150px;
     border: 2px solid #D3F5C3;
     border-radius: 40px;
-    padding: 10px;
+    padding: 5px;
     background-color: #D3F5C3;
 }
 
@@ -242,7 +242,7 @@ h2 {
     width: 150px;
     border: 2px solid #F7C9D4;
     border-radius: 40px;
-    padding: 10px;
+    padding: 5px;
     background-color: #F7C9D4;
 }
 
@@ -798,10 +798,12 @@ button:hover {
     height: inherit;
     width: inherit;
 }
-
 @media screen and (max-width:1024px) {}
 
 @media screen and (max-width:767px) {
+    .h2 {
+        font-size: 40px;
+    }
     header {
         height: auto;
         display: block;
@@ -837,6 +839,74 @@ button:hover {
     }
 }
 
-@media screen and (max-width:480px) {}
+@media screen and (max-width:480px) {
+    .h2 {
+        font-size: 30px;
+    }
+    .projectm-image{
+        width: 140px;
+    }
+    .projectm-description{
+        font-size:13px;
+    }
+    .projectm p {
+        font-size: 11px;
+        margin: 6px;
+    }
 
-@media screen and (max-width:320px) {}
+    .collaborators-image {
+        width: 110px;
+    }
+    .collaborators-description{
+        font-size:13px;
+    }
+    .collaborators p {
+        font-size: 11px;
+        margin: 6px;
+    }
+    .collaborators-more-image {
+        width: 110px;
+    }
+    .collaborators-more-description{
+        font-size:13px;
+    }
+    .collaborators-more p {
+        font-size: 11px;
+        margin: 6px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .h2 {
+        font-size: 20px;
+    }
+    .projectm-image{
+        width: 120px;
+    }
+    .projectm-description{
+        font-size:11px;
+    }
+    .projectm p {
+        font-size: 9px;
+    }
+    .collaborators-image {
+        width: 90px;
+    }
+    .collaborators-description{
+        font-size:11px;
+    }
+    .collaborators p {
+        font-size: 9px;
+    }
+    
+    .collaborators-more-image {
+        width: 90px;
+    }
+    .collaborators-more-description{
+        font-size:11px;
+    }
+    .collaborators-more p {
+        font-size: 9px;
+    }
+
+}
