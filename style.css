@@ -1045,6 +1045,27 @@ button:hover {
     .programs {
         margin:10px 10px;
     }
+    .ios {
+        width: 40px;
+        margin-right: 20px;
+    }
+    
+    .windows {
+        width: 40px;
+        margin-right: 20px;
+    }
+    
+    .android {
+        width: 40px;
+        margin-right: 20px;
+    }
+    .footer-details img {
+        height: 25px;
+    }
+    
+    .footer-details p {
+        font-size: 11px;
+    }
     
 }   
 
@@ -1125,7 +1146,7 @@ button:hover {
     }
     button {
         margin: 0px;
-        width: 50px;
+        width: 60px;
         height: 25px;
         font-size: 13px;
     }    
@@ -1135,6 +1156,9 @@ button:hover {
         margin: 0px;
         margin-right: 5px;
     }
+    footer {
+        padding:10px 5px;
+    }
     
     .input {
         width: 200px;
@@ -1142,6 +1166,51 @@ button:hover {
         font-size: 13px;
         margin-right: 5px;
     }
+    .ios {
+        width: 35px;
+        margin-right: 10px;
+    }
+    
+    .windows {
+        width: 35px;
+        margin-right: 10px;
+    }
+    
+    .android {
+        width: 35px;
+        margin-right: 10px;
+    }
+    .footer-details img {
+        height: 20px;
+    }
+    
+    .footer-details p {
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width:370px) {
+.ios {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.windows {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.android {
+    width: 30px;
+    margin-right: 5px;
+}
+.footer-details img {
+    height: 20px;
+}
+
+.footer-details p {
+    font-size: 8px;
+}
 }
 
 @media screen and (max-width:320px) {
@@ -1268,7 +1337,6 @@ button:hover {
     }
     .button {
         margin: 0px;
-        width: 40px;
         height: 20px;
         font-size: 11px;
     }    
