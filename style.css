@@ -26,7 +26,7 @@ header {
     border-bottom: 5px solid black;
     color: white;
     height: 60px;
-    width: 100%;
+    width: 100vw;
     left: 0;
     top: 0;
     position: fixed;
@@ -259,10 +259,26 @@ h2 {
     background-color: #EEEEEE;
     margin-bottom: 15px;
     padding: 10px;
+    align-items: center;
 }
 
 .modul h2 {
     color: black;
+}
+
+h3 {
+    font-size: 30px;
+    margin:0px;
+}
+
+.modules-description {
+    font-size: 18px;
+    margin: 15px 0px;
+}
+
+.modules-images {
+    width: 120px;
+    margin:0px;
 }
 
 #modulos {
@@ -271,34 +287,30 @@ h2 {
 
 .modules {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     margin: 10px 0px;
-    padding: 0px 40px;
+    padding: 0px 100px;
 }
 
 .modules-left {
-    justify-content: space-around;
     text-align: center;
     align-items: center;
     margin: 10px 0px;
     padding: 0px 40px;
-    margin: 10px;
     padding: 15px;
-    width: 400px;
-    height: 900px;
+    width: auto;
+    height: auto;
 }
 
 .modules-rigth {
-    justify-content: space-around;
     text-align: center;
     align-items: center;
     margin: 10px 0px;
     padding: 0px 40px;
-    margin: 10px;
     padding: 15px;
-    width: 400px;
-    height: 900px;
+    width: auto;
+    height: auto;
 }
 
 .module-users {
@@ -310,7 +322,7 @@ h2 {
     border: 5px solid #BDD9F2;
     border-radius: 30px;
     background-color: #BDD9F2;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .module-users:hover {
@@ -350,7 +362,7 @@ h2 {
     border: 5px solid #224459;
     border-radius: 30px;
     background-color: #224459;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .module-stock:hover {
@@ -798,16 +810,57 @@ button:hover {
     height: inherit;
     width: inherit;
 }
-@media screen and (max-width:1024px) {}
+@media screen and (max-width:1024px) {
+    h2 {
+        font-size: 45px;
+    }
+    h3 {
+        font-size: 25px;
+    }
+    .modules-description {
+        font-size: 16px;
+        margin: 10px 0px;
+    }
+    .modules {
+        padding: 0px 30px;
+    }
+    .modules-images {
+        width: 80px;
+        margin:0px;
+    }  
+    .module-users {
+        width: 80%;
+        height: 300px;
+        margin-right: 5%;
+    }
+    .module-users figure {
+        margin: 0px;
+    }
+    .module-shoop {
+        width: 80%;
+        height: 300px;
+    }
+    .module-stock {
+        width: 80%;
+        height: 300px;
+        margin-right: 1%;
+    }
+    .module-sale {
+        width: 80%;
+        height: 300px;
+    }
+
+}
 
 @media screen and (max-width:767px) {
-    .h2 {
+    h2 {
         font-size: 40px;
     }
     header {
         height: auto;
         display: block;
         padding: 10px 0px;
+        justify-content: space-around;
     }
     ul {
         display: block;
@@ -837,10 +890,95 @@ button:hover {
         margin: 0px;
         padding-bottom: 5px;
     }
+    h3 {
+        font-size: 20px;
+    }
+    .modules {
+        padding: 0px 20px;
+        margin: 5px 0px;
+    }
+    .modules-description {
+        font-size: 13px;
+        margin: 8px 0px;
+    }
+    .modules-images {
+        width: 80px;
+        margin:0px;
+    }    
+    .module-users {
+        width: 80%;
+        height: 230px;
+    }
+    .module-shoop {
+        width: 80%;
+        height: 230px;
+    }
+    .module-stock {
+        width: 80%;
+        height: 230px;
+    }
+    .module-sale {
+        width: 80%;
+        height: 230px;
+    }
 }
+@media screen and (max-width:700px) {
+    .modules {
+        display: block;
+    }
+    .modul h2 {
+        padding-bottom: 0px;
+    }
+    .modules-description {
+        font-size: 13px;
+        margin: 6px 0px;
+    }
+ 
+    .module-users {
+        padding: 20px;
+        width: 250px;
+        height: 220px;
+        margin: 10px auto;
+    }
+    .module-shoop {
+        padding: 20px;
+        width: 250px;
+        height: 220px;
+        margin: 10px auto;
+    }
+    .module-stock {
+        padding: 20px;
+        width: 250px;
+        height: 220px;
+        margin: 10px auto;
+        
+    }
+    .module-sale {
+        padding: 20px;
+        width: 250px;
+        height: 220px;
+        margin: 10px auto;
+    }
+    .modules-images {
+        width: 60px;
+    }
+    .modules figure {
+        margin: 0px;
+    }
+    .modules-left {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    .modules-rigth {
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+    
+}   
+
 
 @media screen and (max-width:480px) {
-    .h2 {
+    h2 {
         font-size: 30px;
     }
     .projectm-image{
@@ -874,11 +1012,13 @@ button:hover {
         font-size: 11px;
         margin: 6px;
     }
+   
+
 }
 
 @media screen and (max-width:320px) {
-    .h2 {
-        font-size: 20px;
+    h2 {
+        font-size: 25px;
     }
     .projectm-image{
         width: 120px;
@@ -908,5 +1048,55 @@ button:hover {
     .collaborators-more p {
         font-size: 9px;
     }
-
-}
+    .modules {
+        display: block;
+        margin: 0px auto;
+        padding: 0px 2px;
+    }
+    .modul h2 {
+        padding-bottom: 0px;
+    }
+    .modules-description {
+        font-size: 13px;
+        margin: 0px;
+    }
+    .module-users {
+        padding: 20px;
+        width: 220px;
+        height: 230px;
+        margin: 10px auto;
+    }
+    .module-shoop {
+        padding: 20px;
+        width: 220px;
+        height: 230px;
+        margin: 10px auto;
+    }
+    .module-stock {
+        padding: 20px;
+        width: 220px;
+        height: 230px;
+        margin: 10px auto;
+        
+    }
+    .module-sale {
+        padding: 20px;
+        width: 220px;
+        height: 230px;
+        margin: 10px auto;
+    }
+    .modules-images {
+        width: 60px;
+    }
+    .modules figure {
+        margin: 0px;
+    }
+    .modules-left {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    .modules-rigth {
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+}    
