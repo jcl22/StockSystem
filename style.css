@@ -145,6 +145,29 @@ h1 {
     border-radius: 10px;
     box-shadow: 0px 0px 0px 1px grey;
 }
+.link-app {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px;
+}
+
+.app {
+    color: black;
+    text-transform: uppercase;
+    text-decoration-line: none;
+    font-size: 18px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 3px black;
+    background-color: #EEEEEE;
+    padding: 10px 15px;
+}
+
+.app:hover {
+    background-color: beige;
+    transition: 0.5s;
+    cursor: pointer;
+}
 
 
 /* .description-main:hover {
@@ -628,7 +651,6 @@ h3 {
 
 .contact-form {
     margin: 0px;
-    margin-left: 200px;
 }
 
 .contact-form h2 {
@@ -726,29 +748,6 @@ button:hover {
     background-image: url(img/WHATSAPP.png);
     background-size: 50px 50px;
     margin: 10px;
-}
-
-.link-app {
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-}
-
-.app {
-    color: black;
-    text-transform: uppercase;
-    text-decoration-line: none;
-    font-size: 18px;
-    border-radius: 100px;
-    box-shadow: 0px 0px 3px black;
-    background-color: beige;
-    padding: 5px 10px;
-}
-
-.app:hover {
-    background-color: #333;
-    transition: 0.5s;
-    cursor: pointer;
 }
 
 
@@ -937,6 +936,53 @@ button:hover {
     .program-description {
         font-size: 15px;
     }
+    .redes-link {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .redes-link.github {
+        background-size: 40px 40px;
+        margin: 10px;
+    } 
+    
+    .redes-link.facebook {
+        background-size: 40px 40px;
+        margin: 10px;
+    }
+    
+    .redes-link.instagram {
+        background-size: 40px 40px;
+        margin: 10px;
+    }
+    
+    .redes-link.twitter {
+        background-size: 40px 40px;
+        margin: 10px;
+    }
+    
+    .redes-link.whatsapp {
+        background-size: 40px 40px;
+        margin: 10px;
+    }
+    button {
+        margin: 0px;
+        width: 50px;
+        height: 25px;
+        font-size: 13px;
+    }    
+    .phone_image {
+        width: 20px;
+        height: 20px;
+        margin: 0px;
+        margin-right: 10px;
+    }
+    
+    .input {
+        width: 230px;
+        height: 23px;
+        font-size: 15px;
+    }
 }
 @media screen and (max-width:700px) {
     .modules {
@@ -1048,6 +1094,54 @@ button:hover {
     .program-description {
         font-size: 12px;
     }
+    .redes-link {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .redes-link.github {
+        background-size: 30px 30px;
+        margin: 5px;
+    } 
+    
+    .redes-link.facebook {
+        background-size: 30px 30px;
+        margin: 5px;
+    }
+    
+    .redes-link.instagram {
+        background-size: 30px 30px;
+        margin: 5px;
+    }
+    
+    .redes-link.twitter {
+        background-size: 30px 30px;
+        margin: 5px;
+    }
+    
+    .redes-link.whatsapp {
+        background-size: 30px 30px;
+        margin: 5px;
+    }
+    button {
+        margin: 0px;
+        width: 50px;
+        height: 25px;
+        font-size: 13px;
+    }    
+    .phone_image {
+        width: 18px;
+        height: 18px;
+        margin: 0px;
+        margin-right: 5px;
+    }
+    
+    .input {
+        width: 200px;
+        height: 20px;
+        font-size: 13px;
+        margin-right: 5px;
+    }
 }
 
 @media screen and (max-width:320px) {
@@ -1142,5 +1236,50 @@ button:hover {
     }
     .program-description {
         font-size: 10px;
+    }
+    .redes-link {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .redes-link.github {
+        background-size: 25px 25px;
+        margin: 3px;
+    } 
+    
+    .redes-link.facebook {
+        background-size: 25px 25px;
+        margin: 3px;
+    }
+    
+    .redes-link.instagram {
+        background-size: 25px 25px;
+        margin: 3px;
+    }
+    
+    .redes-link.twitter {
+        background-size: 25px 25px;
+        margin: 3px;
+    }
+    
+    .redes-link.whatsapp {
+        background-size: 25px 25px;
+        margin: 3px;
+    }
+    .button {
+        margin: 0px;
+        width: 40px;
+        height: 20px;
+        font-size: 11px;
+    }    
+    .phone_image {
+        width: 15px;
+        height: 15px;
+        margin: 5px;
+    }
+    .input {
+        width: 180px;
+        height: 20px;
+        font-size: 11px;
     }
 }    
