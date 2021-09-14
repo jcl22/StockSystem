@@ -849,7 +849,16 @@ button:hover {
         width: 80%;
         height: 300px;
     }
-
+    .programs-system {
+        padding: 0px 10px;
+    }
+    .programs img {
+        width: 120px;
+        height: 140px;
+    }
+    .programs {
+        margin:10px 0px;
+    }
 }
 
 @media screen and (max-width:767px) {
@@ -921,6 +930,13 @@ button:hover {
         width: 80%;
         height: 230px;
     }
+    .programs img {
+        width: 120px;
+        height: 140px;
+    }
+    .program-description {
+        font-size: 15px;
+    }
 }
 @media screen and (max-width:700px) {
     .modules {
@@ -933,7 +949,6 @@ button:hover {
         font-size: 13px;
         margin: 6px 0px;
     }
- 
     .module-users {
         padding: 20px;
         width: 250px;
@@ -972,6 +987,17 @@ button:hover {
     .modules-rigth {
         padding-top: 0px;
         margin-top: 0px;
+    }
+    .programs-system {
+        padding: 0px 10px;
+        flex-wrap: wrap;
+    }
+    .programs img {
+        width: 100px;
+        height: 120px;
+    }
+    .programs {
+        margin:10px 10px;
     }
     
 }   
@@ -1012,8 +1038,16 @@ button:hover {
         font-size: 11px;
         margin: 6px;
     }
-   
-
+    .programs img {
+        width: 80px;
+        height: 100px;
+    }
+    .programs {
+        margin:10px 10px;
+    }
+    .program-description {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width:320px) {
@@ -1098,5 +1132,15 @@ button:hover {
     .modules-rigth {
         padding-top: 0px;
         margin-top: 0px;
+    }
+    .programs img {
+        width: 60px;
+        height: 80px;
+    }
+    .programs {
+        margin:10px 0px;
+    }
+    .program-description {
+        font-size: 10px;
     }
 }    
