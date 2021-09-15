@@ -37,7 +37,7 @@ header {
 
 .StockS {
     margin: 0px;
-    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .StockS img {
@@ -64,7 +64,7 @@ ul {
 .links {
     display: flex;
     align-items: center;
-    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .link {
@@ -117,11 +117,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 380px;
-}
-
-.master figure {
-    margin: 0px;
+    height: auto;
 }
 
 h1 {
@@ -132,7 +128,7 @@ h1 {
 .main-img {
     width: 450px;
     margin: 0px;
-    margin-right: 30px;
+    margin-right: 50px;
 }
 
 .description-main {
@@ -678,6 +674,7 @@ button {
     border-radius: 100px;
     box-shadow: 0px 0px 3px black;
     background-color: beige;
+    text-align: center;
 }
 
 button:hover {
@@ -858,6 +855,23 @@ button:hover {
     .programs {
         margin:10px 0px;
     }
+    h1 {
+        font-size: 40px;
+        padding-left: 20px;
+    }
+    .main-img {
+        width: 30%;
+        margin-right: 20px;
+    }
+    .description-main {
+        margin: 0px 100px;
+    }
+    .link-app {
+        padding: 20px;
+    }
+    .app {
+        padding: 8px 12px;
+    }
 }
 
 @media screen and (max-width:767px) {
@@ -866,15 +880,27 @@ button:hover {
     }
     header {
         height: auto;
-        display: block;
         padding: 10px 0px;
-        justify-content: space-around;
+        justify-content: space-between;
     }
-    ul {
+    .menu {
         display: block;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        cursor: pointer;
     }
-    .logos {
-        justify-content: center;
+    .menu:hover {
+        background-color: red;
+    }
+    .menu ul li {
+        display: none;
+        position: relative;
+        min-width: 100px;
+    }
+    .menu ul li:hover {
+        display: block;
+        color: white;
     }
     .link {
         justify-content: center;
@@ -884,18 +910,18 @@ button:hover {
         padding: 3px 0px;
     }
     .links {
-        margin-right: 0px;
+        margin-left: 50px;
+
     }
     .link:hover {
         background-color: #C9CCD5;
         color: black;
     }
     .StockS {
-        margin-left: 2px;
+        margin-right: 50px;
         align-items: center;
         display: flex;
         justify-content: center;
-        margin: 0px;
         padding-bottom: 5px;
     }
     h3 {
@@ -981,9 +1007,29 @@ button:hover {
     .input {
         width: 230px;
         height: 23px;
-        font-size: 15px;
+        font-size: 14px;
+    }
+    .main {
+        padding-top:160px;
+    }
+    h1 {
+        font-size: 170%;
+        padding-left: 20px;
+    }
+    .main-img {
+        width: 35%;
+        margin-right: 20px;
+    }
+    .description-main {
+        margin: 0px 50px;
+        font-size: 14px;
+    }
+    .link-app {
+        padding: 15px;
     }
 }
+
+
 @media screen and (max-width:700px) {
     .modules {
         display: block;
@@ -1187,6 +1233,30 @@ button:hover {
     .footer-details p {
         font-size: 9px;
     }
+    .main {
+        padding-top:200px;
+    }
+    .master {
+        justify-content: space-between;
+    }
+    h1 {
+        font-size: 130%;
+        padding-left: 20px;
+    }
+    .main-img {
+        width: 30%;
+        margin-right: 10px;
+    }
+    .description-main {
+        margin: 0px 50px;
+        font-size: 13px;
+    }
+    .link-app {
+        padding: 15px;
+    }
+    .app {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width:370px) {
@@ -1348,6 +1418,30 @@ button:hover {
     .input {
         width: 180px;
         height: 20px;
+        font-size: 11px;
+    }
+    .main {
+        padding-top:200px;
+    }
+    .master {
+        justify-content: space-between;
+    }
+    h1 {
+        font-size: 120%;
+        padding-left: 20px;
+    }
+    .main-img {
+        width: 35%;
+        margin-right: 10px;
+    }
+    .description-main {
+        margin: 0px 20px;
+        font-size: 10px;
+    }
+    .link-app {
+        padding: 13px;
+    }
+    .app {
         font-size: 11px;
     }
 }    
