@@ -36,18 +36,19 @@ header {
 }
 
 .StockS {
-    margin: 0px;
     margin-right: 40px;
 }
 
 .StockS img {
     width: 100px;
+    margin-left:30px;
 }
 
 .menu {
     height: inherit;
     width: 100%;
     align-items: center;
+    margin-right: 30px;
 }
 
 ul {
@@ -209,10 +210,10 @@ h2 {
 
 .projectm-image {
     width: 180px;
-    border: 2px solid beige;
+    border: 2px solid white;
     border-radius: 40px;
     padding: 5px;
-    background-color: beige;
+    background-color: white;
 }
 
 .projectm-image:hover {
@@ -234,10 +235,10 @@ h2 {
 
 .collaborators-image {
     width: 150px;
-    border: 2px solid #D3F5C3;
+    border: 2px solid #93B5C6;
     border-radius: 40px;
     padding: 5px;
-    background-color: #D3F5C3;
+    background-color: #93B5C6;
 }
 
 .collaborators-image:hover {
@@ -259,10 +260,10 @@ h2 {
 
 .collaborators-more-image {
     width: 150px;
-    border: 2px solid #F7C9D4;
+    border: 2px solid #5089C6;
     border-radius: 40px;
     padding: 5px;
-    background-color: #F7C9D4;
+    background-color: #5089C6;
 }
 
 .collaborators-more-image:hover {
@@ -338,18 +339,19 @@ h3 {
     margin: 0px;
     text-align: center;
     padding: 40px 35px;
-    border: 5px solid #BDD9F2;
+    border: 3px solid grey;
     border-radius: 30px;
-    background-color: #BDD9F2;
+    background-color: #EEEEEE;
     margin-bottom: 20px;
 }
 
 .module-users:hover {
+    border: 3px solid #8FC1D4;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px #8FC1D4;
     transition: 0.5s;
     cursor: pointer;
-    background-color: white;
+    background-color: #8FC1D4;
 }
 
 .module-shoop {
@@ -358,18 +360,19 @@ h3 {
     margin: 0px;
     text-align: center;
     padding: 40px 35px;
-    border: 5px solid #224459;
+    border: 3px solid grey;
     border-radius: 30px;
-    background-color: #224459;
-    margin-bottom: 10px;
+    background-color: #EEEEEE;
+    margin-bottom: 20px;
 }
 
 .module-shoop:hover {
+    border: 3px solid #8FC1D4;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px #8FC1D4;
     transition: 0.5s;
     cursor: pointer;
-    background-color: white;
+    background-color: #8FC1D4;
 }
 
 .module-stock {
@@ -378,18 +381,20 @@ h3 {
     margin: 0px;
     text-align: center;
     padding: 40px 35px;
-    border: 5px solid #224459;
+    border: 3px solid grey;
     border-radius: 30px;
-    background-color: #224459;
+    background-color: #EEEEEE;
     margin-bottom: 20px;
 }
 
+
 .module-stock:hover {
+    border: 3px solid #8FC1D4;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px #8FC1D4;
     transition: 0.5s;
     cursor: pointer;
-    background-color: white;
+    background-color: #8FC1D4;
 }
 
 .module-sale {
@@ -398,18 +403,19 @@ h3 {
     margin: 0px;
     text-align: center;
     padding: 40px 35px;
-    border: 5px solid #BDD9F2;
+    border: 3px solid grey;
     border-radius: 30px;
-    background-color: #BDD9F2;
-    margin-bottom: 10px;
+    background-color: #EEEEEE;
+    margin-bottom: 20px;
 }
 
 .module-sale:hover {
+    border: 3px solid #8FC1D4;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px #8FC1D4;
     transition: 0.5s;
     cursor: pointer;
-    background-color: white;
+    background-color: #8FC1D4;
 }
 
 
@@ -880,49 +886,40 @@ button:hover {
     }
     header {
         height: auto;
-        padding: 10px 0px;
+        display: block;
+        padding: 8px 0px;
         justify-content: space-between;
-    }
-    .menu {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background-color: black;
-        cursor: pointer;
-    }
-    .menu:hover {
-        background-color: red;
-    }
-    .menu ul li {
-        display: none;
-        position: relative;
-        min-width: 100px;
-    }
-    .menu ul li:hover {
-        display: block;
-        color: white;
-    }
-    .link {
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        margin: 0px;
-        padding: 3px 0px;
     }
     .links {
         margin-left: 50px;
-
+        margin: 0px;
     }
-    .link:hover {
-        background-color: #C9CCD5;
-        color: black;
+    .menu {
+        margin:0px;
     }
     .StockS {
-        margin-right: 50px;
         align-items: center;
         display: flex;
         justify-content: center;
-        padding-bottom: 5px;
+        padding-bottom: 15px;
+        margin:0px;
+    }
+    .StockS img {
+        margin: 0px;
+    }
+    ul {
+        display: block;
+        align-items: center;
+        text-align: center;
+        margin:0px;
+    }
+    .link {
+        padding: 5px;
+        margin:0px;
+    }
+    .link:hover {
+        background-color: #BBBBBB;        
+        color:black;
     }
     h3 {
         font-size: 20px;
