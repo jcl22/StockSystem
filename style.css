@@ -624,6 +624,8 @@ h3 {
     width: 140px;
     height: 160px;
     filter: grayscale(100%);
+    z-index: -1;
+    position: relative;
 }
 
 .programs img:hover {
