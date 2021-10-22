@@ -770,15 +770,15 @@ button:hover {
     border-top: 5px solid black;
 }
 
-.footer-details img {
+/* .footer-details img {
     height: 30px;
     margin: 0px;
-}
+} */
 
 .footer-details p {
     margin: 0px;
     margin-top: 0px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .sist_op {
@@ -788,19 +788,19 @@ button:hover {
     margin: 0px;
 }
 
-.ios {
-    width: 50px;
-    margin-right: 20px;
+.edge {
+    width: 40px;
+    margin-right: 30px;
 }
 
-.windows {
-    width: 50px;
-    margin-right: 20px;
+.firefox {
+    width: 40px;
+    margin-right: 30px;
 }
 
-.android {
-    width: 50px;
-    margin-right: 20px;
+.chroome {
+    width: 40px;
+    margin-right: 30px;
 }
 
 .wrapper {
