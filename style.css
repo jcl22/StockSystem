@@ -44,8 +44,12 @@ header {
     width: 100px;
     margin-left:30px;
 }
+#toggle {
+    display:none;
+    margin: 0px;
+}
 
-.menu {
+.nav {
     height: inherit;
     width: 100%;
     align-items: center;
@@ -81,6 +85,7 @@ ul {
 
 .link:hover {
     color: #C9CCD5;
+    transition: 0.5s;
 }
 
 li {
@@ -348,12 +353,12 @@ h3 {
 }
 
 .module-users:hover {
-    border: 3px solid #8FC1D4;
+    border: 3px solid #5089C6;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px #8FC1D4;
+    box-shadow: 0px 0px 10px #5089C6;
     transition: 0.5s;
     cursor: pointer;
-    background-color: #8FC1D4;
+    background-color: #5089C6;
 }
 
 .module-shoop {
@@ -369,12 +374,12 @@ h3 {
 }
 
 .module-shoop:hover {
-    border: 3px solid #8FC1D4;
+    border: 3px solid #5089C6;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px #8FC1D4;
+    box-shadow: 0px 0px 10px #5089C6;
     transition: 0.5s;
     cursor: pointer;
-    background-color: #8FC1D4;
+    background-color: #5089C6;
 }
 
 .module-stock {
@@ -391,12 +396,12 @@ h3 {
 
 
 .module-stock:hover {
-    border: 3px solid #8FC1D4;
+    border: 3px solid #5089C6;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px #8FC1D4;
+    box-shadow: 0px 0px 10px #5089C6;
     transition: 0.5s;
     cursor: pointer;
-    background-color: #8FC1D4;
+    background-color: #5089C6;
 }
 
 .module-sale {
@@ -412,12 +417,12 @@ h3 {
 }
 
 .module-sale:hover {
-    border: 3px solid #8FC1D4;
+    border: 3px solid #5089C6;
     border-radius: 30px;
-    box-shadow: 0px 0px 10px #8FC1D4;
+    box-shadow: 0px 0px 10px #5089C6;
     transition: 0.5s;
     cursor: pointer;
-    background-color: #8FC1D4;
+    background-color: #5089C6;
 }
 
 
@@ -900,14 +905,15 @@ button:hover {
         margin-left: 50px;
         margin: 0px;
     }
-    .menu {
+    
+    .nav {
         margin:0px;
     }
     .StockS {
         align-items: center;
         display: flex;
         justify-content: center;
-        padding-bottom: 15px;
+        padding-bottom: 0px;
         margin:0px;
     }
     .StockS img {
@@ -924,7 +930,7 @@ button:hover {
         margin:0px;
     }
     .link:hover {
-        background-color: #BBBBBB;        
+        background-color: #EEEEEE;        
         color:black;
     }
     h3 {
@@ -1237,8 +1243,96 @@ button:hover {
         font-size: 9px;
     }
     .main {
-        padding-top:200px;
+        padding-top:100px;
     }
+    .links, .button, .nav{
+        position: absolute;
+    }
+    
+    .links{
+        margin: 0px auto;
+        top: 170%; 
+        left: 50%;
+        margin-left: -20px;
+    }
+    
+    #toggle{
+        display: none;
+    }
+    
+    .button{
+        z-index: 999;
+        width: 50px;
+        height: 50px;
+        background: #333;
+        border-radius: 100%;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 1px 3px 10px 0 rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+    
+    .button:before{
+        position: absolute;
+        top: 25px;
+        left: 13px;
+        content: '';
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        transform: rotate(90deg);
+    }
+    
+    .button:after{
+        position: absolute;
+        top: 25px;
+        left: 13px;
+        content: '';
+        width: 25px;
+        height: 2px;
+        background: #fff;
+    }
+    
+    .nav{
+        transform: translateY(-10%);
+        opacity: 0;
+        top: 15px;
+        left: -78px;
+        transition: all 0.5s ease-in-out;
+        background: #333;
+        width: 200px;
+        border-radius: 20px;
+        border: 2px solid #EEEEEE  ;
+        transform: translateY(0%);
+        box-shadow: 2px 3px 10px 0 #333(0,0,0,0.1);
+    }
+    
+    .nav a{
+        text-align: center;
+        display: block;
+        margin: 15px 0px;
+        color: #EEEEEE;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 300ms;
+        padding: 5px 20px;
+    }
+    
+    .nav a:hover{
+        background-color: inherit;        
+        color:#BBBBBB;
+    }
+    
+    #toggle:checked ~ .nav{
+        opacity: 1;
+        transform: translateY(10%);
+    }
+    
+    #toggle:checked ~ .button{
+        transform: rotate(135deg);
+        box-shadow: 0 0 0 0 transparent;
+    }
+    
     .master {
         justify-content: space-between;
     }
