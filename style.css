@@ -1251,7 +1251,7 @@ button:hover {
     
     .links{
         margin: 0px auto;
-        top: 1050%; 
+        top: 900%; 
         left: 85%;
         margin-left: -20px;
     }
@@ -1277,7 +1277,7 @@ button:hover {
         left: 13px;
         content: '';
         width: 25px;
-        height: 4px;
+        height: 5px;
         background: #5089C6;
         transform: rotate(90deg);
     }
@@ -1288,21 +1288,21 @@ button:hover {
         left: 13px;
         content: '';
         width: 25px;
-        height: 4px;
+        height: 5px;
         background: #5089C6;
     }
-    
     .nav{
-        transform: translateY(0%);
+        /* transform: translateY(10%); */
         opacity: 0;
-        top: 15px;
-        left: -300px;
+        top: -270px;
+        left: -250px;
         transition: all 0.5s ease-in-out;
-        background: white;
+        background-color: #333;
         width: 350px;
-        border-radius: 20px;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
         /* border: 2px solid #EEEEEE  ; */
-        transform: translateY(0%);
+        transform: translateX(100%);
         box-shadow: 2px 3px 10px 0 #333(0,0,0,0.1);
     }
     
@@ -1310,13 +1310,13 @@ button:hover {
         text-align: center;
         display: block;
         margin: 15px 0px;
-        color: #333;
+        color: #5089C6;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 2px;
         transition: all 300ms;
         padding: 5px 20px;
-        font-size: 45px;
+        font-size: 25px;
     }
     
     .nav a:hover{
@@ -1326,7 +1326,7 @@ button:hover {
 
     #toggle:checked ~ .nav{
         opacity: 1;
-        transform: translateY(-120%);
+        transform: translateY(0%);
     }
     
     #toggle:checked ~ .button{
