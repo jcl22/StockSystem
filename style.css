@@ -846,14 +846,6 @@ button:hover {
         height: 300px;
         margin-right: 5%;
     }
-    .module-users:hover {
-        border: 3px solid #5089C6;
-        border-radius: 30px;
-        box-shadow: 0px 0px 10px #5089C6;
-        transition: 0.5s;
-        cursor: pointer;
-        background-color: #5089C6;
-    }
     .module-users figure {
         margin: 0px;
     }
@@ -861,38 +853,14 @@ button:hover {
         width: 80%;
         height: 300px;
     }
-    .module-shoop:hover {
-        border: 3px solid #5089C6;
-        border-radius: 30px;
-        box-shadow: 0px 0px 10px #5089C6;
-        transition: 0.5s;
-        cursor: pointer;
-        background-color: #5089C6;
-    }
     .module-stock {
         width: 80%;
         height: 300px;
         margin-right: 1%;
     }
-    .module-stock:hover {
-        border: 3px solid #5089C6;
-        border-radius: 30px;
-        box-shadow: 0px 0px 10px #5089C6;
-        transition: 0.5s;
-        cursor: pointer;
-        background-color: #5089C6;
-    }
     .module-sale {
         width: 80%;
         height: 300px;
-    }
-    .module-sale:hover {
-        border: 3px solid #5089C6;
-        border-radius: 30px;
-        box-shadow: 0px 0px 10px #5089C6;
-        transition: 0.5s;
-        cursor: pointer;
-        background-color: #5089C6;
     }
     .programs-system {
         padding: 0px 10px;
