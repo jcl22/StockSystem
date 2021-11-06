@@ -1243,7 +1243,7 @@ button:hover {
         font-size: 9px;
     }
     .main {
-        padding-top:100px;
+        padding-top:70px;
     }
     .links, .button, .nav{
         position: absolute;
@@ -1251,8 +1251,8 @@ button:hover {
     
     .links{
         margin: 0px auto;
-        top: 170%; 
-        left: 50%;
+        top: 1380%; 
+        left: 85%;
         margin-left: -20px;
     }
     
@@ -1264,7 +1264,7 @@ button:hover {
         z-index: 999;
         width: 50px;
         height: 50px;
-        background: #333;
+        background-color: transparent;
         border-radius: 100%;
         transition: all 0.5s ease-in-out;
         box-shadow: 1px 3px 10px 0 rgba(0,0,0,0.3);
@@ -1277,8 +1277,8 @@ button:hover {
         left: 13px;
         content: '';
         width: 25px;
-        height: 2px;
-        background: #fff;
+        height: 4px;
+        background: #5089C6;
         transform: rotate(90deg);
     }
     
@@ -1288,20 +1288,20 @@ button:hover {
         left: 13px;
         content: '';
         width: 25px;
-        height: 2px;
-        background: #fff;
+        height: 4px;
+        background: #5089C6;
     }
     
     .nav{
-        transform: translateY(-10%);
+        transform: translateY(0%);
         opacity: 0;
         top: 15px;
-        left: -78px;
+        left: -320px;
         transition: all 0.5s ease-in-out;
-        background: #333;
-        width: 200px;
+        background: white;
+        width: 350px;
         border-radius: 20px;
-        border: 2px solid #EEEEEE  ;
+        /* border: 2px solid #EEEEEE  ; */
         transform: translateY(0%);
         box-shadow: 2px 3px 10px 0 #333(0,0,0,0.1);
     }
@@ -1310,22 +1310,23 @@ button:hover {
         text-align: center;
         display: block;
         margin: 15px 0px;
-        color: #EEEEEE;
+        color: #333;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 2px;
         transition: all 300ms;
         padding: 5px 20px;
+        font-size: 45px;
     }
     
     .nav a:hover{
         background-color: inherit;        
         color:#BBBBBB;
     }
-    
+
     #toggle:checked ~ .nav{
         opacity: 1;
-        transform: translateY(10%);
+        transform: translateY(-120%);
     }
     
     #toggle:checked ~ .button{
