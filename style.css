@@ -1251,7 +1251,7 @@ button:hover {
     
     .links{
         margin: 0px auto;
-        top: 1000%; 
+        top: 1050%; 
         left: 85%;
         margin-left: -20px;
     }
@@ -1296,7 +1296,7 @@ button:hover {
         transform: translateY(0%);
         opacity: 0;
         top: 15px;
-        left: -320px;
+        left: -300px;
         transition: all 0.5s ease-in-out;
         background: white;
         width: 350px;
