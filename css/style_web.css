@@ -553,7 +553,8 @@ button:hover {
 }
 
 .redes-link.facebook {
-    background-image: url(/img/FACEBOOK.png);
+    /* background-image: url(/img/FACEBOOK.png); */
+    background-image: url(../img/FACEBOOK.png);
     background-size: 50px 50px;
     margin: 10px;
 }
