@@ -745,31 +745,31 @@ button:hover {
 }
 
 .redes-link.github {
-    background-image: url(img/GITHUB.png);
+    background-image: url(/img/GITHUB.png);
     background-size: 50px 50px;
     margin: 10px;
 }
 
 .redes-link.facebook {
-    background-image: url(img/FACEBOOK.png);
+    background-image: url(/img/FACEBOOK.png);
     background-size: 50px 50px;
     margin: 10px;
 }
 
 .redes-link.instagram {
-    background-image: url(img/INSTAGRAM.png);
+    background-image: url(/img/INSTAGRAM.png);
     background-size: 50px 50px;
     margin: 10px;
 }
 
 .redes-link.twitter {
-    background-image: url(img/TWITTER.png);
+    background-image: url(/img/TWITTER.png);
     background-size: 50px 50px;
     margin: 10px;
 }
 
 .redes-link.whatsapp {
-    background-image: url(img/WHATSAPP.png);
+    background-image: url(/img/WHATSAPP.png);
     background-size: 50px 50px;
     margin: 10px;
 }
