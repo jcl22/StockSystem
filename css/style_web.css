@@ -537,6 +537,7 @@ button:hover {
     align-items: center;
     margin-bottom: 20px;
     padding-top: 15px;
+    z-index: 999;
 }
 
 .redes-link {
