@@ -543,6 +543,7 @@ button:hover {
 .redes-link {
     width: 50px;
     height: 50px;
+    z-index: 999;
 }
 
 .redes-link.github {
@@ -906,20 +907,6 @@ button:hover {
     .programs {
         margin:10px 10px;
     }
-    .ios {
-        width: 40px;
-        margin-right: 20px;
-    }
-    
-    .windows {
-        width: 40px;
-        margin-right: 20px;
-    }
-    
-    .android {
-        width: 40px;
-        margin-right: 20px;
-    }
     .footer-details img {
         height: 25px;
     }
@@ -1026,20 +1013,6 @@ button:hover {
         height: 20px;
         font-size: 13px;
         margin-right: 5px;
-    }
-    .ios {
-        width: 35px;
-        margin-right: 10px;
-    }
-    
-    .windows {
-        width: 35px;
-        margin-right: 10px;
-    }
-    
-    .android {
-        width: 35px;
-        margin-right: 10px;
     }
     .footer-details img {
         height: 20px;
