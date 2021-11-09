@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar producto | Compras</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Favicons -->
+    <link href="" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <div class="content">
+                <div class="row-">
+                    <div class="display d-flex">
+                        <div class="logo-empresa wow animated bounceInLeft box1" data-wow-delay="0.2s">
+                            <img src="img/LOGO.png" alt="">
+                        </div>
+                        <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
+                            <h2>¡Hola<br><span class="user-name" id="user-name">#username</span>!</h2>
+                        </div>
+                        <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3" data-wow-delay="0.6s">
+                            <div class="content-user d-flex">
+                                <div class="name">
+                                    <span class="primernombre" id="primernombre">#primernombre</span> <span class="primerapellido" id="primerapellido">#primerapellido</span>
+                                </div>
+                                <div class="user-photo">
+                                    <div class="img-user">
+                                        <img src="img/user.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dropdown-content" class="user-option dropdown-content wow fadeInUp">
+                                <ul>
+                                    <li><a href="#">Perfil</a></li>
+                                    <li><a href="#">Modificar datos</a></li>
+                                    <li><a href="#">Cambiar contraseña</a></li>
+                                    <li><a href="#">Cerrar sección</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="content-section" class="modificar agrgar producto">
+        <div class="container">
+            <div class="content">
+                <div class="row-">
+                    <div class="icono-section header-section wow fadeInUp">
+                        <div class="icono-bg">
+                            <div class="icono">
+                                <i class="far fa-clipboard"></i>
+                            </div>
+                        </div>
+                        <div class="tittle-section">
+                            <h2>Modificar producto</h2>
+                        </div>
+                    </div>
+
+                    <div class="form-content wow fadeInUp">
+                        <div class="form">
+                            <form action="">
+                                <div class="form-comp">
+                                    <div class="form-group">
+                                        <input type="number" name="" id="" placeholder="Codigo del producto">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="" id="" placeholder="Nombre del producto">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="" id="" placeholder="Marca">
+                                    </div>
+                                    <div class="form-group select">
+                                        <div class="flecha">
+                                            <label for="categoria-producto">
+                                                <i class="fas fa-caret-down"></i>
+                                            </label>
+                                        </div>
+                                        <select name="categoria-producto" id="categoria-producto" class="categoria-producto">
+                                            <option value="1">Categoría</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="" id="" placeholder="Costo por unidad">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="" id="" placeholder="Proveedor">
+                                    </div>
+
+                                </div>
+
+                                <div class="botones">
+    
+                                    <div class="boton-elimina-pro">
+                                        <div class="bg-boton">
+                                            <button><i class="far fa-trash-alt"></i>Eliminar producto</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="boton-guarda-pro">
+                                        <div class="bg-boton">
+                                            <button><i class="far fa-save"></i>Guardar cambios</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="botones-footer">
+        <div class="content">
+            <div class="botones-abl-footer">
+                <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
+                    <a href="/modulocompras.html" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
+                </div>
+                <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
+                    <a class="boton btn btn-primary"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="content">
+                <p>Todos los derechos reservados © Stock Sistem 2021</p>
+            </div>
+        </div>
+    </footer>
+    <!-- lib -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css">
+
+    <!-- scrip lib -->
+    <script src="lib/wow/wow.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <!-- scrip main -->
+    <script src="js/main.js"></script>
+    
+</body>
+</html>
