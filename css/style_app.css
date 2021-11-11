@@ -5,7 +5,7 @@ body {
   color: #000;
   font-family: 'Source Sans Pro', sans-serif;
   z-index: -0;
-  overflow-y:hidden; 
+  /* overflow-y:hidden;  */
 }
 a:hover, a:active, a:focus {
   color: #000;
