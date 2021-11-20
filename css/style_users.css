@@ -1,0 +1,243 @@
+/* Generales */
+body {
+    background: #fff;
+    background-size: cover;
+    color: #000;
+    font-family: 'Source Sans Pro', sans-serif;
+    z-index: -0;
+    /* overflow:hidden;  */
+  }
+  a:hover, a:active, a:focus {
+    color: #000;
+    outline: none;
+    text-decoration: none;
+  }
+  
+  h1, h2{
+    text-align: center;
+    font-family: 'titulos';
+    text-transform: uppercase;
+  }
+  
+  h2, h3, h4, h5, h6{
+      font-family: 'Fjalla One', sans-serif;
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+  
+  }
+  #content-section .tittle-section{
+      max-width: 400px;
+      display: block;
+      margin: auto;
+  }
+  
+  /* --------------------------------------------MENU-PRINCIPAL--------------------------------------------------- */
+  /* header general*/
+  #header{
+      padding: 0px;
+      position: relative;
+      margin-top: -30px;
+      margin-bottom: 40pxx;
+  }
+  #header .logo-empresa img{
+      border-radius: 50%;
+      border: 0px #000 solid;
+      max-width: 250px;
+      width: 100%;
+  }
+  .user-name {
+      color: #AAAAAA;
+      font-size: 35px;
+  
+  }
+  #header .display{
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+  }
+  #header .display .saludo{
+      position: absolute;
+      left: calc(50% - 100px);
+  }
+  #header .date-user{
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      position: absolute;
+      right: 0;
+      z-index: 2;
+      width: auto;
+      border:2px solid #333;
+      border-radius: 40px;    
+  }
+  
+  #header .date-user .content-user {
+      align-items: center;
+      font-weight: bold;
+  }
+  #header .date-user .name span{
+      font-size: 12px;
+      color: #333;
+  }
+  #dropbtn {
+      cursor: pointer;
+      padding: 0px;
+  }
+  .user-photo {
+      width: 25px;
+      height: 25px;
+      margin-left: 10px;
+  }
+  .img-user {
+      width: inherit;
+      height: inherit;
+  }
+  .img-user svg {
+      margin: 0px;
+      color: #333;
+  }
+  
+  
+  #dropdown-content {
+      position:absolute;
+  }
+  
+  #header .date-user .user-option{
+      padding: 5px;
+      position: absolute;
+      /* background: #333; */
+      border-radius: 0px 0px 10px 10px;
+      margin-top: -5px;
+      z-index: -1;
+      transition: all 0.4s;
+      cursor: pointer;
+  }
+  #header .date-user .user-option ul{
+      list-style: none;
+      text-align: right;
+      padding-left: 0px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+  }
+  #header .date-user .user-option ul li{
+      padding: 5px 0 5px 0;
+      transition: all 0.4s;
+      font-size: 15px;
+      margin-bottom: 0px;
+  }
+  #header .date-user .user-option ul a{
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+  }
+  #header .date-user .user-option ul a:hover {
+      color: #333;
+  }
+  .dropdown-content{ 
+      transition: all 0.4s;
+      display: none;
+  }
+  .dropbtn:hover .dropdown-content{
+      display: inline;
+      transition: all 0.4s;
+      cursor: pointer;
+  }
+  
+  /* footer */
+  .footer-container {
+      text-align: center;
+      color: #333;
+  
+  }.content p {
+      position: fixed;
+      left: 0px;
+      bottom: 0px;
+      height: 30px;
+      width: 100%;
+      text-align: center;
+  }
+  /* botones-footer */
+#botones-footer{
+    padding: 0px 30px;
+    position: fixed;
+    bottom: 50px;
+    height: 30px;
+    width: 100%;
+}
+#botones-footer .botones-abl-footer .btn-primary{
+    background: none;
+    border-style: none;
+}
+#botones-footer .botones-abl-footer .btn-primary i{
+    font-size: 60px;
+    color: #333;
+}
+#botones-footer .botones-abl-footer .btn-primary i:hover {
+    color: #5089C6;
+}
+
+/* headeer content-section general */
+#content-section{
+    padding: 0px 0;
+    margin-bottom: 0px;
+}
+
+  /* Modulo usuario */
+.modulo-usuarios .options{
+    margin-bottom: 45px;
+}
+.modulo-usuarios .options .btn{
+    margin-right: 5px;
+    background: none;
+    border: 2px transparent solid;
+}
+.modulo-usuarios .options .btn:hover{
+    border: 2px #fff solid;
+}
+.section-container{
+    display: flex;
+    justify-content:space-around;
+}
+.row {
+    width:100%;
+}
+.content-right {
+    width: 100%;
+    display: flex;
+}
+.bg-icono {
+    margin-right: 100px;
+}
+::before {
+    width: 60px;
+}
+
+/* botones accion */
+.botones-accion{
+    padding-top: 38px;
+}
+.botones-accion .boton{
+    padding-bottom: 20px;
+}
+.botones-accion .boton .btn{
+    width: 100%;
+    background: #5089C6;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.5s;
+    border: #5089C6 2px solid;
+}
+.botones-accion .boton .btn:hover{
+    width: 500px;
+    color: #333;
+    background: none;
+    border: 2px #333 solid;
+    transition: all .4s;
+
+}
+
+
+
+
