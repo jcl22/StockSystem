@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!-- Main Stylesheet File -->
-    <link href="/css/style_app.css" rel="stylesheet">
+    <link href="/css/style_users.css" rel="stylesheet">
     <link rel="stylesheet" href="css/input_on.css">
 </head>
 <body>
@@ -30,10 +30,10 @@
                 <div class="row-">
                     <div class="display d-flex">
                         <div class="logo-empresa wow animated bounceInLeft box1" data-wow-delay="0.2s">
-                            <img src="img/logo_empresa.png" alt="">
+                            <img src="../img/LOGO2.png" alt="">
                         </div>
                         <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
-                            <h2>¡Hola<br><span class="user-name" id="user-name">#username</span>!</h2>
+                            <h2>¡Hola!<br><span class="user-name" id="user-name">#username</span></h2>
                         </div>
                         <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3" data-wow-delay="0.6s">
                             <div class="content-user d-flex">
@@ -42,7 +42,10 @@
                                 </div>
                                 <div class="user-photo">
                                     <div class="img-user">
-                                        <img src="img/user.png" alt="">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                      </svg>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +54,7 @@
                                     <li><a href="#">Perfil</a></li>
                                     <li><a href="#">Modificar datos</a></li>
                                     <li><a href="#">Cambiar contraseña</a></li>
-                                    <li><a href="#">Cerrar sección</a></li>
+                                    <li><a href="#">Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -61,12 +64,12 @@
         </div>
     </header>
 
+
     <section id="content-section" class="modificar agrgar producto">
         <div class="container">
             <div class="content">
                 <div class="row-">
-
-                    <div class="icono-section header-section wow fadeInUp">
+                    <!-- <div class="icono-section header-section wow fadeInUp">
                         <div class="icono-bg">
                             <div class="icono">
                                 <i class="fas fa-user-plus"></i>
@@ -75,7 +78,7 @@
                         <div class="tittle-section">
                             <h2>Agregar nuevo usuario</h2>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-content wow fadeInUp agregar-usuario">
                         <div class="form">
@@ -123,7 +126,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 permisos-check">
+                                    <!-- <div class="col-sm-4 permisos-check">
                                         <div class="tittle-check">
                                             <h6>Permisos del usuario</h6>
                                         </div>
@@ -169,7 +172,7 @@
                                             
                                         </div>
                                         <hr>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- <div class="form-comp col-sm-4">
                                     <div class="form-group">
@@ -205,7 +208,6 @@
 
                                 </div> -->
                                 
-
                                 <div class="botones">
     
                                     <div class="boton-elimina-pro">
@@ -237,7 +239,7 @@
                     <a href="/modulo_usuarios.html" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
                 </div>
                 <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                    <a class="boton btn btn-primary"><i class="fas fa-sign-out-alt"></i></a>
+                    <a href="../menu.html" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
