@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +10,11 @@
     <meta name="description" content="">
 
     <!-- Favicons -->
-    <link href="" rel="icon">
+    <link rel="icon" href="../img/LOGO-ICON.ico">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS File -->
@@ -22,6 +24,7 @@
     <link href="/css/style_users.css" rel="stylesheet">
     <link rel="stylesheet" href="css/input_on.css">
 </head>
+
 <body>
 
     <header id="header">
@@ -35,17 +38,21 @@
                         <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
                             <h2>¡Hola!<br><span class="user-name" id="user-name">#username</span></h2>
                         </div>
-                        <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3" data-wow-delay="0.6s">
+                        <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3"
+                            data-wow-delay="0.6s">
                             <div class="content-user d-flex">
                                 <div class="name">
-                                    <span class="primernombre" id="primernombre">#nombre</span> <span class="primerapellido" id="primerapellido">#apellido</span>
+                                    <span class="primernombre" id="primernombre">#nombre</span> <span
+                                        class="primerapellido" id="primerapellido">#apellido</span>
                                 </div>
                                 <div class="user-photo">
                                     <div class="img-user">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                      </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                            fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                            <path fill-rule="evenodd"
+                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -80,53 +87,48 @@
                         </div>
                     </div> -->
 
-                    <div class="form-content wow fadeInUp agregar-usuario">
-                        <div class="form">
-                            <form action="" class="">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Nombre completo">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Nombre de usuario">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Contraseña">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Documento de identidad">
-                                        </div>
+                    <div class="form-content ">
+                        <form action="" >
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="ID usuario">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Usuario">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Nombre">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Correo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Contraseña">
+                                </div>
+                                <div class="form-group select">
+                                    <select class="rol-usuario">
+                                        <option value="">-</option>
+                                        <option value="administrador">Administrador</option>
+                                        <option value="operario">Empleado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                            <div class="botones">
+                                <div class="boton-elimina-pro">
+                                    <div class="bg-boton">
+                                        <button><i class="far fa-trash-alt"></i>Limpiar campos</button>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Correo">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Teléfono">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="" id="" placeholder="Codigo empresarial">
-                                        </div>
-                                
-                                        <div class="form-group select">
-                                            <div class="flecha">
-                                                <label for="categoria-producto">
-                                                    <i class="fas fa-caret-down"></i>
-                                                </label>
-                                            </div>
-                                            <select name="categoria-producto" id="categoria-producto" class="categoria-producto">
-                                                <option value="">Rol de usuario</option>
-                                                <option value="administrador">Administrador</option>
-                                                <option value="operario">Operario</option>
-                                                <option value="supervisor">Supervisor</option>
-                                                <option value="coordinador">Coordinador</option>
-                                                <option value="jefe">Jefe</option>
-                                                <option value="gerete">Gerente</option>
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="boton-guarda-pro">
+                                    <div class="bg-boton">
+                                        <button><i class="far fa-save"></i>Crear usuario</button>
                                     </div>
-                                    <!-- <div class="col-sm-4 permisos-check">
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-4 permisos-check">
                                         <div class="tittle-check">
                                             <h6>Permisos del usuario</h6>
                                         </div>
@@ -173,8 +175,7 @@
                                         </div>
                                         <hr>
                                     </div> -->
-                                </div>
-                                <!-- <div class="form-comp col-sm-4">
+                            <!-- <div class="form-comp col-sm-4">
                                     <div class="form-group">
                                         <input type="number" name="" id="" placeholder="Codigo del producto">
                                     </div>
@@ -207,25 +208,7 @@
                                     </div>
 
                                 </div> -->
-                                
-                                <div class="botones">
-    
-                                    <div class="boton-elimina-pro">
-                                        <div class="bg-boton">
-                                            <button><i class="far fa-trash-alt"></i>Limpiar campos</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="boton-guarda-pro">
-                                        <div class="bg-boton">
-                                            <button><i class="far fa-save"></i>Crear usuario</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -236,7 +219,8 @@
         <div class="content">
             <div class="botones-abl-footer">
                 <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                    <a href="/modulo_usuarios.html" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
+                    <a href="/modulo_usuarios.html" class="boton btn btn-primary"><i
+                            class="fas fa-chevron-circle-left"></i></a>
                 </div>
                 <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
                     <a href="../menu.html" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
@@ -263,6 +247,7 @@
 
     <!-- scrip main -->
     <script src="js/main.js"></script>
-    
+
 </body>
+
 </html>

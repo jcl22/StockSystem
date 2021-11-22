@@ -370,6 +370,150 @@
 }
 
 
+
+
+/* ---------------------------------------- MODIFICAR USUARIO ---------------------------------------- */
+
+/* modificar - agregar usuario */
+/* permisos-check */
+.permisos-check .tittle-check{
+    padding-bottom: 10px;
+}
+.permisos-check{
+    background: #5089C6;
+    padding: 10px 10px;
+    border-radius: 8px;
+    max-height: 170px;
+    overflow: scroll;
+}
+.permisos-check hr{
+    margin: 5px 0;
+    border: .5px #fff solid;
+}
+.permisos-check .form-group-check{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    align-items: center;
+    margin-bottom: -7px;
+}
+.permisos-check .form-group-check p{
+    font-size: 13px;
+}
+.agregar-usuario form{
+    max-width: none !important;
+}
+.agregar-usuario .botones{
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    
+}
+#content-section form{
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+#content-section .form-comp{
+    max-width: 400px;
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+#content-section form .select{
+    position: relative;
+}
+#content-section form .select .flecha{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+#content-section form .select .flecha i{
+    font-size: 40px;
+    color: #fff;
+    margin-top: -7px;
+}
+#content-section form select{
+    background: linear-gradient(to right, #333, #666);
+    border: 1px #fff solid;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    height: 30px;
+    appearance: none;
+    text-indent: 2px;
+}
+#content-section form input{
+    background: linear-gradient(to right, #333, #666);
+    border: 1px #fff solid;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    appearance: none;
+    text-indent:5px;
+    color: #fff;
+}
+#content-section form input[type=checkbox]{
+    appearance: auto;
+    height: 15px;
+    width: auto;
+}
+#content-section form input[type=number]::-webkit-inner-spin-button, 
+#content-section form input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#content-section form input[type=number] { 
+    -moz-appearance:textfield; 
+}
+#content-section form input::placeholder{
+    color: #fff;
+    opacity: 10;
+}
+#content-section form .botones{
+    padding: 10px 0;
+}
+#content-section form .botones .boton-elimina-pro{
+    float: right;
+}
+#content-section form .botones .boton-elimina-pro button:hover{
+    background: red;
+    color: #fff;
+    transition: all 0.4s;
+}
+#content-section form .botones button{
+    background: #fff;
+    border-style: none;
+    padding: 10px; 
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 0 #000;
+    transition: all 0.4s;
+}
+#content-section form .botones button i{
+    margin-right: 5px;
+}
+#content-section form .botones .boton-guarda-pro{
+    float: left;
+}
+#content-section form .botones .boton-guarda-pro button:hover{
+    background: green;
+    color: white;
+    transition: all 0.4s;
+}
+.row {
+    border:3px solid #333;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px #333;
+    padding: 20px 0px;
+    justify-content: center;
+}
+.botones {
+    margin: 0px;
+    padding: 0px;
+}
+
 /* botones-footer */
 #botones-footer{
     padding: 0px 30px;

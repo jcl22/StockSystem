@@ -243,144 +243,83 @@ body {
     transition: all .4s;
 
 }
-
-
-/* ---------------------------------------- MODIFICAR USUARIO ---------------------------------------- */
-
-/* modificar - agregar usuario */
-/* permisos-check */
-.permisos-check .tittle-check{
-    padding-bottom: 10px;
+.form-content {
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #333;
 }
-.permisos-check{
-    background: #5089C6;
-    padding: 10px 10px;
-    border-radius: 8px;
-    max-height: 170px;
-    overflow: scroll;
-}
-.permisos-check hr{
-    margin: 5px 0;
-    border: .5px #fff solid;
-}
-.permisos-check .form-group-check{
+form {
     display: flex;
-    justify-content: space-between;
-    color: #fff;
-    align-items: center;
-    margin-bottom: -7px;
+    justify-content: center;
+    padding-bottom: 15px;
 }
-.permisos-check .form-group-check p{
-    font-size: 13px;
+input {
+    border-radius: 30px;
+    font-size: 15px;
+    padding: 15px;
+    height: 25px;
+    border:  1px solid #333;
+    background-color: #fff;
+    color: #333;
 }
-.agregar-usuario form{
-    max-width: none !important;
+::placeholder {
+    color: #333;
 }
-.agregar-usuario .botones{
-    max-width: 600px;
-    width: 100%;
-    display: block;
-    margin: auto;
+input:focus {
+    outline: none;
 }
-#content-section form{
-    max-width: 600px;
-    width: 100%;
-    display: block;
-    margin: auto;
+input:focus::placeholder {
+    color: transparent;
+    transform: translateY(-100%);
+    transition: 0.44s;
 }
-#content-section .form-comp{
-    max-width: 400px;
-    width: 100%;
-    display: block;
-    margin: auto;
-}
-#content-section form .select{
-    position: relative;
-}
-#content-section form .select .flecha{
-    position: absolute;
-    right: 0;
-    margin-right: 10px;
-}
-#content-section form .select .flecha i{
-    font-size: 40px;
-    color: #fff;
-    margin-top: -7px;
-}
-#content-section form select{
-    background: linear-gradient(to right, #333, #666);
-    border: 1px #fff solid;
-    border-radius: 5px;
-    width: 100%;
-    color: #fff;
+select {
+    border-radius: 30px;
+    border:  1px solid #333;
+    font-size: 15px;
     height: 30px;
-    appearance: none;
-    text-indent: 2px;
+    background-color: #fff;
+    color: #333;
+    padding: 0px 15px;
 }
-#content-section form input{
-    background: linear-gradient(to right, #333, #666);
-    border: 1px #fff solid;
-    border-radius: 5px;
-    width: 100%;
-    height: 30px;
-    appearance: none;
-    text-indent:5px;
-    color: #fff;
+select:focus {
+    outline: none;
 }
-#content-section form input[type=checkbox]{
-    appearance: auto;
-    height: 15px;
-    width: auto;
+.botones {
+    display: flex;
+    justify-content:space-evenly;
+    margin-bottom: 10px;
 }
-#content-section form input[type=number]::-webkit-inner-spin-button, 
-#content-section form input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.boton-elimina-pro {
+    border-radius: 30px;
+    font-size: 15px;
+    height: 25px;
 }
-
-#content-section form input[type=number] { 
-    -moz-appearance:textfield; 
+.boton-guarda-pro {
+    border-radius: 30px;
+    font-size: 15px;
+    height: 25px;
 }
-#content-section form input::placeholder{
-    color: #fff;
-    opacity: 10;
+button {
+    border-radius: 30px;
+    padding: 5px 15px;
 }
-#content-section form .botones{
-    padding: 50px 0;
+button:focus {
+    outline: none;
 }
-#content-section form .botones .boton-elimina-pro{
-    float: right;
-}
-#content-section form .botones .boton-elimina-pro button:hover{
-    background: red;
-    color: #fff;
-    transition: all 0.4s;
-}
-#content-section form .botones button{
-    background: #fff;
-    border-style: none;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 0 0 #000;
-    transition: all 0.4s;
-}
-#content-section form .botones button i{
+button i {
     margin-right: 5px;
 }
-#content-section form .botones .boton-guarda-pro{
-    float: left;
-}
-#content-section form .botones .boton-guarda-pro button:hover{
+ .boton-guarda-pro button:hover{
     background: green;
     color: white;
-    transition: all 0.4s;
-}
-.row {
-    border:3px solid black;
-    padding: 10px 10px 0px 10px;
-    text-align: center;
-}
-
-
-
-
+    transition: all 0.5s;
+} 
+.boton-elimina-pro button:hover{
+    background: red;
+    color: white;
+    transition: all 0.5s;
+} 
