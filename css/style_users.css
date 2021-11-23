@@ -5,7 +5,7 @@ body {
     color: #000;
     font-family: 'Source Sans Pro', sans-serif;
     z-index: -0;
-    overflow:hidden;  
+    /* overflow:hidden;  */
   }
   a:hover, a:active, a:focus {
     color: #000;
@@ -34,6 +34,7 @@ body {
   
   /* --------------------------------------------MENU-PRINCIPAL--------------------------------------------------- */
   /* header general*/
+
   #header{
       padding: 0px;
       position: relative;
@@ -179,8 +180,13 @@ body {
     padding: 0px 0;
     margin-bottom: 0px;
 }
-
-  /* Modulo usuario */
+.titulo-section {
+    display: flex;
+    justify-content: center;
+    margin:-70px 0px 10px 0px;
+    padding: 0px;
+}
+  /* -------------------------------------- USUARIO----------------------------------------------- */
 .modulo-usuarios .options{
     margin-bottom: 45px;
 }
@@ -213,6 +219,9 @@ body {
     transition: all 0.4s;
     margin: 0px;
 }
+.container-modificar {
+    margin: 0px 350px;
+}
 
 .bg-icono i{
     font-size:150px;
@@ -243,13 +252,18 @@ body {
     transition: all .4s;
 
 }
+.container-form {
+    margin: 0px 350px;
+}
 .form-content {
     border: 1px solid #333;
     border-radius: 5px;
-    width: 800px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #5089C6;
     box-shadow: 0px 0px 10px #333;
+}
+.col-sm-4-left{
+    margin-right: 30px;
 }
 form {
     display: flex;
@@ -307,6 +321,9 @@ button {
     border-radius: 30px;
     padding: 5px 15px;
 }
+button svg {
+    margin-right: 5px;
+}
 button:focus {
     outline: none;
 }
@@ -319,7 +336,175 @@ button i {
     transition: all 0.5s;
 } 
 .boton-elimina-pro button:hover{
+    background: orange;
+    color: white;
+    transition: all 0.5s;
+} 
+.boton-elimina-pro .btn  {
+    background-color: #fff;
+    color: orange;
+}
+.boton-guarda-pro .btn {
+    background-color: #fff;
+    color: green;
+}
+
+
+/* configurar modulo usuarios */
+
+.buscar{
+    margin: 0px 280px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.buscar svg {
+    margin-left: 5px;
+    margin-top: 8px; 
+    color: #333;
+    cursor:pointer;
+}
+.form-buscar input {
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+}
+.form-buscar input::placeholder {
+    color: #333;
+}
+input:focus::placeholder {
+    color: transparent;
+    transform: translateY(-100%);
+    transition: 0.44s;
+}
+.boton-restaurar-pro .btn  {
+    background-color: #fff;
+    color: orange;
+}
+.boton-restaurar-pro button:hover{
+    background: orange;
+    color: white;
+    transition: all 0.5s;
+} 
+
+/* eliminar usuario */
+.eliminar {
+    margin-top: 10px;
+}
+.container-eliminar {
+    margin:0px 250px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #333;
+    background-color: #5089C6;
+}
+.eliminar h3 {
+    font-size: 25px;
+    color: #fff;
+}
+.opciones-eliminar-g{
+    justify-content: center;
+    align-items: center;
+}
+.bg-opciones{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}
+.opciones-eliminar .botones button{
+    display: block;
+    margin: auto;
+    background: #333;
+    border-radius: 5px;
+    border-style: none;
+    border: 1px #333 solid;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    transition: all .4s;
+}
+.opciones-eliminar .botones button:hover{
+    background-color: transparent;
+    color: #333;
+    border: 1px #333 solid;
+    transition: all .4s;
+}
+.option-asigdep, .option-block {
+    display: none;
+    text-align: center;
+    padding-top: 40px;
+}
+/* .option-asigdep, form, button {
+    position: absolute;
+} */
+
+.option-asigdep form, .option-block form {
+    margin:0px 10px;
+    padding:0px;
+}
+.option-asigdep button, .option-block button {
+    padding:5px 10px;
+    margin: 0px;
+    margin-right: 10px;
+}
+/* asignar dependencias */
+#asigned-user {
+    background-color: #fff;
+    color: orange;
+}
+#asigned-user:hover{
+    background: orange;
+    color: white;
+    transition: all 0.5s;
+} 
+/* cancelar asignaciòn */
+#cancel-asigned, #cancel-block, #cancel-remove{
+    background-color: #fff;
+    color: red;
+}
+#cancel-asigned:hover, #cancel-block:hover, #cancel-remove:hover{
     background: red;
     color: white;
     transition: all 0.5s;
+} 
+
+/* bloquear usuario */
+#block-user, #remove-user {
+    background-color: #fff;
+    color: #000;
+}
+#block-user:hover, #remove-user:hover{
+    background: #000;
+    color: white;
+    transition: all 0.5s;
+} 
+
+/* desbloquear usuario */
+#desblock-user {
+    background-color: #fff;
+    color: #000;
+}
+#desblock-user:hover{
+    background: #AAAAAA;
+    color: #fff;
+    transition: all 0.5s;
+} 
+
+/* buscar usuario */
+.container-search {
+    margin: 0px 350px;
+    display: none;
+    justify-content: center;
+    margin-top: 10px;
+} 
+.button-buscar {
+    border: 0px;
+    background-color: transparent ;
+    padding: 0px;
+    margin-bottom: 15px;
 } 

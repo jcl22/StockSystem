@@ -499,7 +499,7 @@
 }
 #content-section form .botones .boton-guarda-pro button:hover{
     background: green;
-    color: white;
+    color: #fff;
     transition: all 0.4s;
 }
 .row {
@@ -545,5 +545,10 @@
 .botones-accion .boton .btn:hover{
     background: none;
     border: 2px #fff solid;
-    transition: all .4s;
+    transition: all 0.4s;
+}
+#content-section form .botones .boton-restaurar-pro button:hover{
+    background: orange;
+    color: #fff;
+    transition: all 0.4s;
 }
