@@ -508,3 +508,8 @@ input:focus::placeholder {
     padding: 0px;
     margin-bottom: 15px;
 } 
+
+.perfil {
+    display: flex;
+    justify-content: space-around;
+}
