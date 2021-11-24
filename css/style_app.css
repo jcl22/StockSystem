@@ -271,16 +271,25 @@ form {
     padding-bottom: 15px;
 }
 input {
-    border-radius: 30px;
+    /* border-radius: 30px;
     font-size: 15px;
     padding: 15px;
     height: 25px;
     border:  1px solid #333;
     background-color: #fff;
-    color: #333;
+    color: #333; */
+    width: 100%;
+    border-style: none;
+    background: #5089C6;
+    border-bottom: 2px solid #fff;
+    height: 30px;
+    font-size: 20px;
+    color: #fff;
+    /* text-indent: 40px; */
+    font-size: 15px;
 }
 ::placeholder {
-    color: #333;
+    color:#fff;
 }
 input:focus {
     outline: none;
@@ -291,13 +300,21 @@ input:focus::placeholder {
     transition: 0.44s;
 }
 select {
-    border-radius: 30px;
+    /* border-radius: 30px;
     border:  1px solid #333;
     font-size: 15px;
     height: 30px;
     background-color: #fff;
     color: #333;
-    padding: 0px 15px;
+    padding: 0px 15px; */
+    width: 100%;
+    border-style: none;
+    background: #5089C6;
+    border-bottom: 2px solid #fff;
+    height: 30px;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
 }
 select:focus {
     outline: none;
@@ -357,7 +374,7 @@ button i {
     height: 60px;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 0px;
 }
 .buscar svg {
     margin-left: 5px;
@@ -369,6 +386,7 @@ button i {
     text-align: center;
     color: #333;
     background-color: #fff;
+    border-bottom: 2px solid #333;
 }
 .form-buscar input::placeholder {
     color: #333;
