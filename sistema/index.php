@@ -26,7 +26,7 @@
 </head>
 <body class="menu">
 
-<?php require 'generales/header.php' ?>
+<?php include 'generales/header.php' ?>
 
     <section id="inicio-secciones" class="inicio-secciones">
         <div class="container">
@@ -83,7 +83,7 @@
     </section>
 
 
-    <?php require '/generales/footer.php'?>
+    <?php include '/generales/footer.php'?>
     <!-- lib -->
     <link rel="stylesheet" href="../lib/animate/animate.min.css">
 

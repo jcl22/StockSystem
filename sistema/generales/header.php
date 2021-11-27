@@ -1,3 +1,12 @@
+<?php
+    
+    session_start();
+    if (empty($_SESSION['active']))  
+    {
+        header('location:../login.php');
+    }  
+
+?>
 
 <header id="header">
     <div class="container">

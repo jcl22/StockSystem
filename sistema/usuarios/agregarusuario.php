@@ -90,7 +90,7 @@ if (!empty($_POST)) {
 
 <body>
 
-    <?php require '../generales/header2.php'?>
+    <?php include '../generales/header2.php'?>
 
 
     <section id="content-section" class="modificar agrgar producto">
@@ -184,7 +184,7 @@ if (!empty($_POST)) {
         </div>
     </section>
 
-    <?php require '../generales/footer.php'?>
+    <?php include '../generales/footer.php'?>
     <!-- lib -->
     <link rel="stylesheet" href="../lib/animate/animate.min.css">
     <link rel="stylesheet" href="../lib/animate/animate.css">
