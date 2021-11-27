@@ -19,12 +19,34 @@ body {
     text-transform: uppercase;
   }
   
-  h2, h3, h4, h5, h6{
+  h2, h3{
       font-family: 'Fjalla One', sans-serif;
       text-align: center;
       color: #333;
       font-weight: bold;
-  
+  }
+  h4 {
+    font-family: 'Fjalla One', sans-serif;
+    text-align: center;
+    color: #C85C5C;
+    margin: 0px auto;
+    padding: auto;
+    font-size: 15px;
+  }
+  h5 {
+    font-family: 'Fjalla One', sans-serif;
+    text-align: center;
+    color: #0B4619;
+    margin: 0px auto;
+    font-size: 15px;
+  }
+  h6 {
+    font-family: 'Fjalla One', sans-serif;
+    text-align: center;
+    color: #F3950D;
+    margin: 0px auto;
+    padding: auto;
+    font-size: 15px;
   }
   #content-section .tittle-section{
       max-width: 400px;
@@ -254,22 +276,25 @@ body {
 }
 .container-form {
     margin: 0px 350px;
-}
-.form-content {
     border: 1px solid #333;
     border-radius: 5px;
     padding: 20px;
     background-color: #5089C6;
     box-shadow: 0px 0px 10px #333;
 }
+.form-content {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+form {
+    display: block;
+}
+
 .col-sm-4-left{
     margin-right: 30px;
 }
-form {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 15px;
-}
+
 input {
     /* border-radius: 30px;
     font-size: 15px;
@@ -295,7 +320,8 @@ input:focus {
     outline: none;
 }
 input:focus::placeholder {
-    color: transparent;
+    background-color: #5089C6;
+    color: #5089C6;
     transform: translateY(-100%);
     transition: 0.44s;
 }
@@ -319,25 +345,13 @@ select {
 select:focus {
     outline: none;
 }
+
 .botones {
     display: flex;
-    justify-content:space-evenly;
-    margin-bottom: 10px;
+    justify-content:center;
+    margin: auto;
 }
-.boton-elimina-pro {
-    border-radius: 30px;
-    font-size: 15px;
-    height: 25px;
-}
-.boton-guarda-pro {
-    border-radius: 30px;
-    font-size: 15px;
-    height: 25px;
-}
-button {
-    border-radius: 30px;
-    padding: 5px 15px;
-}
+
 button svg {
     margin-right: 5px;
 }
@@ -347,25 +361,6 @@ button:focus {
 button i {
     margin-right: 5px;
 }
- .boton-guarda-pro button:hover{
-    background: green;
-    color: white;
-    transition: all 0.5s;
-} 
-.boton-elimina-pro button:hover{
-    background: orange;
-    color: white;
-    transition: all 0.5s;
-} 
-.boton-elimina-pro .btn  {
-    background-color: #fff;
-    color: orange;
-}
-.boton-guarda-pro .btn {
-    background-color: #fff;
-    color: green;
-}
-
 
 /* configurar modulo usuarios */
 
@@ -392,7 +387,8 @@ button i {
     color: #333;
 }
 input:focus::placeholder {
-    color: transparent;
+    background-color: #5089C6;
+    color:transparent;
     transform: translateY(-100%);
     transition: 0.44s;
 }
@@ -457,6 +453,21 @@ input:focus::placeholder {
     text-align: center;
     padding-top: 40px;
 }
+.botones {
+    display: flex;
+    justify-content:space-evenly;
+    margin-bottom: 10px;
+}
+.boton-elimina-pro {
+    border-radius: 30px;
+    font-size: 15px;
+    height: 25px;
+}
+.boton-guarda-pro {
+    border-radius: 30px;
+    font-size: 15px;
+    height: 25px;
+}
 /* .option-asigdep, form, button {
     position: absolute;
 } */
@@ -515,10 +526,14 @@ input:focus::placeholder {
 
 /* buscar usuario */
 .container-search {
+    display:none;
+    justify-content:center;
     margin: 0px 350px;
-    display: none;
-    justify-content: center;
-    margin-top: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #5089C6;
+    box-shadow: 0px 0px 10px #333;
 } 
 .button-buscar {
     border: 0px;
@@ -530,4 +545,9 @@ input:focus::placeholder {
 .perfil {
     display: flex;
     justify-content: space-around;
+}
+
+/* mensaje de alert  */
+.alert p {
+    display: flex;
 }

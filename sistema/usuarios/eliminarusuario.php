@@ -10,7 +10,7 @@
     <meta name="description" content="">
 
     <!-- Favicons -->
-    <link rel="icon" href="../img/LOGO-ICON.ico">
+    <link rel="icon" href="../../img/LOGO-ICON.ico">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
@@ -21,55 +21,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!-- Main Stylesheet File -->
-    <link href="../css/style_app.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/input_on.css">
+    <link href="../../css/style_app.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/input_on.css">
     
 </head>
 
 <body>
 
-    <header id="header">
-        <div class="container">
-            <div class="content">
-                <div class="row-">
-                    <div class="display d-flex">
-                        <div class="logo-empresa wow animated bounceInLeft box1" data-wow-delay="0.2s">
-                            <img src="../img/LOGO2.png" alt="">
-                        </div>
-                        <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
-                            <h2>¡Hola!<br><span class="user-name" id="user-name">#username</span></h2>
-                        </div>
-                        <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3"
-                            data-wow-delay="0.6s">
-                            <div class="content-user d-flex">
-                                <div class="name">
-                                    <span class="primernombre" id="primernombre">#nombre</span> <span
-                                        class="primerapellido" id="primerapellido">#apellido</span>
-                                </div>
-                                <div class="user-photo">
-                                    <div class="img-user">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                            fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                            <path fill-rule="evenodd"
-                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="dropdown-content" class="user-option dropdown-content wow fadeInUp">
-                                <ul>
-                                    <li><a href="../perfil.html">Perfil</a></li>
-                                    <li><a href="../cambiar_contrasena.html">Cambiar contraseña</a></li>
-                                    <li><a href="../login.html">Cerrar sesión</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php require '../generales/header2.php'?>
 
     <section id="content-section" class="modificar agrgar producto">
         <div class="titulo-section">
@@ -225,23 +184,19 @@
         <div class="content">
             <div class="botones-abl-footer">
                 <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                    <a href="../modulo_usuarios.html" class="boton btn btn-primary"><i
+                    <a href="modulo_usuarios.php" class="boton btn btn-primary"><i
                             class="fas fa-chevron-circle-left"></i></a>
                 </div>
                 <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                    <a href="../menu.html" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
+                    <a href="../index.php" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="content">
-                <p> <b> StockSystem - Aplicativo web. Todos los derechos reservados a StockSystem © </b> </p>
-            </div>
-        </div>
-    </footer>
+    <?php require '../generales/footer.php'?>
+
+    
     <!-- lib -->
     <link rel="stylesheet" href="../lib/animate/animate.min.css">
     <link rel="stylesheet" href="../lib/animate/animate.css">
@@ -253,8 +208,8 @@
     <script src="../lib/jquery/jquery.min.js"></script>
 
     <!-- scrip main -->
-    <script src="../js/main.js"></script>
-    <script src="../js/funciones.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/funciones.js"></script>
 
 </body>
 
