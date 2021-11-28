@@ -1,7 +1,6 @@
 <?php
 include "../../php/conexion.php";
 
-
 if (!empty($_POST)) {
     $alert = '';
     if (
@@ -111,7 +110,7 @@ if (!empty($_POST)) {
                                     <input type="text" name="usuario" id="" placeholder="Usuario">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nombre_usuario" id="" placeholder="Nombre">
+                                    <input type="text" name="nombre_usuario" id="" placeholder="Nombre y Apellido">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="correo" id="" placeholder="Correo">
@@ -137,7 +136,7 @@ if (!empty($_POST)) {
                                         if ($result_rol > 0) {
                                             while ($rol = mysqli_fetch_array($query_rol)) {
                                         ?>
-                                                <option value="<?php echo $rol["$id_rol"]; ?>">
+                                                <option value="<?php echo $rol["id_rol"]; ?>">
                                                     <?php echo $rol["nombre_rol"] ?></option>
                                         <?php
                                             }

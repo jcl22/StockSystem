@@ -50,6 +50,7 @@ body {
   }
   p {
       margin: 5px;
+      text-align:center;
   }
   #content-section .tittle-section{
       max-width: 400px;
@@ -71,7 +72,8 @@ body {
   } 
   .user-name {
       color: #AAAAAA;
-      font-size: 35px;
+      font-size: 25px;
+      text-transform:none;
   
   }
   #header .display{
@@ -83,6 +85,7 @@ body {
       position: absolute;
       left: calc(50% - 100px);
   }
+
   #header .date-user{
       background: #fff;
       padding: 10px 20px;      
@@ -174,9 +177,7 @@ body {
     width: 100%;
     text-align:center;
 }
-#footer .container .content p .fecha {
-    position: fixed;
-}
+
 
   /* botones-footer */
 #botones-footer{

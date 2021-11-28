@@ -10,7 +10,16 @@
         header('location:../login.php');
     }  
 
-    ?>
+?>
+<!-- if par traer tipo de rol -->
+<?php
+    $tipo_rol='';
+    if ($_SESSION ['id_rol']==1) {
+        $tipo_rol = 'Admin';
+    } else {
+        $tipo_rol = 'Empl';
+    }
+?>
 
 <header id="header">
     <div class="container">
@@ -21,12 +30,13 @@
                         <img src="../img/LOGO2.png" alt="">
                     </div>
                     <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
-                        <h2>¡Hola!<br><span class="user-name" id="user-name"> <?php echo $_SESSION ['usuario']; ?> </span></h2>
+                        <p class="fecha"> <?php echo fechaC(); ?>  </p>     
+                        <h2>¡Hola!<br><span class="user-name" id="user-name"> <?php echo $_SESSION ['nombre_usuario']; ?> </span></h2>
                     </div>
                     <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3" data-wow-delay="0.6s">
                         <div class="content-user d-flex">
                             <div class="name">
-                                <span class="primernombre" id="primernombre"> <?php echo $_SESSION ['nombre_usuario']; ?> </span>
+                                <span class="primernombre" id="primernombre"> <?php echo $_SESSION ['usuario'] . " - "; ?> <?php echo $tipo_rol ?></span>            
                             </div>
                             <div class="user-photo">
                                 <div class="img-user">
