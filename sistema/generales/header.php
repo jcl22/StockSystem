@@ -1,12 +1,16 @@
+
+
 <?php
-    
+    include '../php/conexion.php';
+    include '../php/function.php';
+
     session_start();
     if (empty($_SESSION['active']))  
     {
         header('location:../login.php');
     }  
 
-?>
+    ?>
 
 <header id="header">
     <div class="container">
@@ -17,12 +21,12 @@
                         <img src="../img/LOGO2.png" alt="">
                     </div>
                     <div class="saludo wow animated bounceInLeft box2" data-wow-delay="0.4s">
-                        <h2>¡Hola!<br><span class="user-name" id="user-name">#username</span></h2>
+                        <h2>¡Hola!<br><span class="user-name" id="user-name"> <?php echo $_SESSION ['usuario']; ?> </span></h2>
                     </div>
                     <div id="dropbtn" class="date-user dropbtn wow animated bounceInLeft box3" data-wow-delay="0.6s">
                         <div class="content-user d-flex">
                             <div class="name">
-                                <span class="primernombre" id="primernombre">#Nombre</span> <span class="primerapellido" id="primerapellido">#Apellido</span>
+                                <span class="primernombre" id="primernombre"> <?php echo $_SESSION ['nombre_usuario']; ?> </span>
                             </div>
                             <div class="user-photo">
                                 <div class="img-user">

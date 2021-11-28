@@ -21,8 +21,8 @@
 
             require_once "php/conexion.php";
 
-            $usuario = $_POST['usuario'];
-            $contrasena = ($_POST['contrasena']);
+            $usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
+            $contrasena = md5(mysqli_real_escape_string($conn,$_POST['contrasena']));
 
             $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE usuario ='$usuario'
             AND contrasena = '$contrasena'");
@@ -34,13 +34,13 @@
                 
                 $_SESSION['active'] = true;
 
-                $SESSION ['id_usuario'] = $data ['id_usuario'];
-                $SESSION ['usuario'] = $data ['usuario'];
-                $SESSION ['nombre_usuario'] = $data ['nombre_usuario'];
-                $SESSION ['id_rol'] = $data ['id_rol'];
-                $SESSION ['correo'] = $data ['correo'];
-                $SESSION ['contrasena'] = $data ['contrasena'];
-                $SESSION ['estado'] = $data ['estado'];
+                $_SESSION ['id_usuario'] = $data ['id_usuario'];
+                $_SESSION ['usuario'] = $data ['usuario'];
+                $_SESSION ['nombre_usuario'] = $data ['nombre_usuario'];
+                $_SESSION ['id_rol'] = $data ['id_rol'];
+                $_SESSION ['correo'] = $data ['correo'];
+                $_SESSION ['contrasena'] = $data ['contrasena'];
+                $_SESSION ['estado'] = $data ['estado'];
 
                 header('location:sistema/');
             } else {

@@ -12,7 +12,9 @@ a:hover, a:active, a:focus {
   outline: none;
   text-decoration: none;
 }
-
+p {
+    margin:5px;
+}
 h1, h2{
   text-align: center;
   font-family: 'titulos';
@@ -63,13 +65,12 @@ h2, h3, h4, h5, h6{
 #header .date-user{
     background: #fff;
     padding: 10px 20px;
-    border-radius: 50px;
     position: absolute;
     right: 0;
     z-index: 2;
     width: auto;
     border:2px solid #333;
-    border-radius: 40px;    
+    border-radius: 10px;    
 }
 
 #header .date-user .content-user {
@@ -144,18 +145,16 @@ h2, h3, h4, h5, h6{
 }
 
 /* footer */
-.footer-container {
-    text-align: center;
-    color: #333;
-
-}.content p {
+#footer .container .content {
     position: fixed;
     left: 0px;
     bottom: 0px;
-    height: 30px;
     width: 100%;
-    text-align: center;
-} 
+    text-align:center;
+}
+#footer .container .content p .fecha {
+    position: fixed;
+}
 
 
 /* inicio-módulos */

@@ -14,16 +14,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap CSS File -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-    <!-- Main Stylesheet File -->
-    <link href="../css/style_menu.css" rel="stylesheet">
-    <link href="../css/input_on.css" rel="stylesheet">
     
+    <?php include '../php/scripts.php' ?>
     
 </head>
+
 <body class="menu">
 
 <?php include 'generales/header.php' ?>
@@ -84,17 +79,6 @@
 
 
     <?php include '/generales/footer.php'?>
-    <!-- lib -->
-    <link rel="stylesheet" href="../lib/animate/animate.min.css">
-
-    <!-- scrip lib -->
-    <script src="../lib/wow/wow.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/jquery/jquery-migrate.min.js"></script>
-    <script src="../lib/jquery/jquery.min.js"></script>
-
-    <!-- scrip main -->
-    <script src="../js/main.js"></script>
     
 </body>
 </html>
