@@ -33,10 +33,10 @@
                                 <a href="agregarusuario.php" class="btn btn-primary">Agregar nuevo usuario</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="buscarusuario.php" class="btn btn-primary">Buscar usuarios</a>
+                                <a href="listausuarios.php" class="btn btn-primary">Lista de usuarios</a>
                             </div>
                             <div class="boton modificar-pro">
-                                <a href="configurarusuario.php" class="btn btn-primary">Configurar usuarios</a>
+                                <a href="editarusuario.php" class="btn btn-primary">Editar usuarios</a>
                             </div>
                             <div class="boton info-pro">
                                 <a href="eliminarusuario.php" class="btn btn-primary">Eliminar usuarios</a>

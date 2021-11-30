@@ -21,6 +21,7 @@
     <!-- Main Stylesheet File -->
     <link href="../../css/style_app.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/input_on.css">
+    <?php include '../../php/scripts2.php' ?>
     
 </head>
 <body class="menu">

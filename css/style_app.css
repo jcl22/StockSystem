@@ -12,13 +12,13 @@ body {
     outline: none;
     text-decoration: none;
   }
-  
+
   h1, h2{
     text-align: center;
     font-family: 'titulos';
     text-transform: uppercase;
   }
-  
+
   h2, h3{
       font-family: 'Fjalla One', sans-serif;
       text-align: center;
@@ -57,7 +57,7 @@ body {
       display: block;
       margin: auto;
   }
-  
+
   /* --------------------------------------------MENU-PRINCIPAL--------------------------------------------------- */
   /* header general*/
 
@@ -69,12 +69,12 @@ body {
   #header .logo-empresa img{
       max-width: 250px;
       width: 100%;
-  } 
+  }
   .user-name {
       color: #AAAAAA;
       font-size: 25px;
       text-transform:none;
-  
+
   }
   #header .display{
       align-items: center;
@@ -88,15 +88,15 @@ body {
 
   #header .date-user{
       background: #fff;
-      padding: 10px 20px;      
+      padding: 10px 20px;
       position: absolute;
       right: 0;
       z-index: 2;
       width: auto;
       border:2px solid #333;
-      border-radius: 10px;    
+      border-radius: 10px;
   }
-  
+
   #header .date-user .content-user {
       align-items: center;
       font-weight: bold;
@@ -122,12 +122,12 @@ body {
       margin: 0px;
       color: #333;
   }
-  
-  
+
+
   #dropdown-content {
       position:absolute;
   }
-  
+
   #header .date-user .user-option{
       padding: 5px;
       position: absolute;
@@ -149,7 +149,7 @@ body {
       padding: 5px 0 5px 0;
       transition: all 0.4s;
       font-size: 15px;
-      margin-bottom: 0px;    
+      margin-bottom: 0px;
   }
   #header .date-user .user-option ul a{
       text-decoration: none;
@@ -159,7 +159,7 @@ body {
   #header .date-user .user-option ul a:hover {
       color: #333;
   }
-  .dropdown-content{ 
+  .dropdown-content{
       transition: all 0.4s;
       display: none;
   }
@@ -168,7 +168,7 @@ body {
       transition: all 0.4s;
       cursor: pointer;
   }
-  
+
   /* footer */
   #footer .container .content {
     position: fixed;
@@ -223,9 +223,9 @@ body {
     border: 2px #fff solid;
 }
 .section-container{
-    display: flex; 
-    justify-content: space-between; 
-    margin: 0px 300px 0px 200px; 
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 300px 0px 200px;
 }
 .content-row {
     width:25%;
@@ -364,36 +364,95 @@ button i {
     margin-right: 5px;
 }
 
-/* configurar modulo usuarios */
-
-.buscar{
-    margin: 0px 280px;
-    height: 60px;
+/* buscar modulo usuarios */
+.link-crear {
     display: flex;
     justify-content: center;
-    padding: 10px 0px;
 }
-.buscar svg {
-    margin-left: 5px;
-    margin-top: 8px; 
-    color: #333;
-    cursor:pointer;
-}
-.form-buscar input {
+.crear {
+    margin: auto;
     text-align: center;
+    color: #fff;
+    text-decoration:none;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background-color: #333;
+    padding: 5px;
+}
+.crear:hover {
     color: #333;
+    border: 1px solid #333;
     background-color: #fff;
-    border-bottom: 2px solid #333;
 }
-.form-buscar input::placeholder {
-    color: #333;
+.content-crear {
+    margin: 0px;
+    text-align: center;
+    
 }
-input:focus::placeholder {
+table {
+    /* display: flex;
+    justify-content: center; */
+    margin: 0px auto;
+
+}
+thead, tbody { display: block; }
+tbody {
+    height: 270px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+tbody, thead {
+    padding: 10px;
+}
+table tr th{
+    padding: 8px;
+    background-color: #333;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+table tr td {
+    text-align: left;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+table tr:nth-child(odd) {
+    background-color: #DDDDDD;
+}
+.datos-usuario:hover {
     background-color: #5089C6;
-    color:transparent;
-    transform: translateY(-100%);
-    transition: 0.44s;
 }
+.buttons {
+    display: flex;
+}
+#button-editar {
+    margin-right:10px;
+    background-color: #fff;
+    color: orange;
+    display: flex;
+}
+#button-editar svg, #button-eliminar svg {
+    margin-top: 4px;
+}
+#button-editar:hover {
+    background-color: orange;
+    color: #fff;
+}
+#button-eliminar {
+    margin-right:10px;
+    background-color: #fff;
+    color: red;
+    display: flex;
+}
+#button-eliminar:hover {
+    background-color: red;
+    color: #fff;
+}
+
+/* modificar modulo usuarios */
 .boton-restaurar-pro .btn  {
     background-color: #fff;
     color: orange;
@@ -402,7 +461,7 @@ input:focus::placeholder {
     background: orange;
     color: white;
     transition: all 0.5s;
-} 
+}
 
 /* eliminar usuario */
 .eliminar {
@@ -492,7 +551,7 @@ input:focus::placeholder {
     background: orange;
     color: white;
     transition: all 0.5s;
-} 
+}
 /* cancelar asignaciòn */
 #cancel-asigned, #cancel-block, #cancel-remove{
     background-color: #fff;
@@ -502,7 +561,7 @@ input:focus::placeholder {
     background: red;
     color: white;
     transition: all 0.5s;
-} 
+}
 
 /* bloquear usuario */
 #block-user, #remove-user {
@@ -513,7 +572,7 @@ input:focus::placeholder {
     background: #000;
     color: white;
     transition: all 0.5s;
-} 
+}
 
 /* desbloquear usuario */
 #desblock-user {
@@ -524,9 +583,9 @@ input:focus::placeholder {
     background: #AAAAAA;
     color: #fff;
     transition: all 0.5s;
-} 
+}
 
-/* buscar usuario */
+/* crear usuario */
 .container-search {
     display:none;
     justify-content:center;
@@ -536,13 +595,13 @@ input:focus::placeholder {
     padding: 20px;
     background-color: #5089C6;
     box-shadow: 0px 0px 10px #333;
-} 
-.button-buscar {
+}
+.button-crear {
     border: 0px;
     background-color: transparent ;
     padding: 0px;
     margin-bottom: 15px;
-} 
+}
 
 .perfil {
     display: flex;

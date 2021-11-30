@@ -107,10 +107,10 @@ if (!empty($_POST)) {
                                     <input type="text" name="id_usuario" id="" placeholder="ID usuario">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="usuario" id="" placeholder="Usuario">
+                                    <input type="text" name="nombre_usuario" id="" placeholder="Nombre y Apellido">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nombre_usuario" id="" placeholder="Nombre y Apellido">
+                                    <input type="text" name="usuario" id="" placeholder="Usuario">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="correo" id="" placeholder="Correo">
