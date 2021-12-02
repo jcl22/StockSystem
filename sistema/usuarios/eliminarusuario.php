@@ -25,7 +25,7 @@
 
     <?php include '../generales/header2.php'?>
 
-    <section id="content-section" class="modificar agrgar producto">
+    <section id="content-section" >
         <div class="titulo-section">
             <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-x"
                 viewBox="0 0 16 16">

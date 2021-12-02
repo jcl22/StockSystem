@@ -186,12 +186,9 @@ input:focus {
 .boton-ingresar {
     display:flex;
     justify-content:center;
+    z-index:999;
 }
-button svg{
-    margin-bottom:2px;
-    margin-right:5px;
-    
-}
+
 
 .link-pag {
     display: flex;
@@ -298,20 +295,19 @@ h6 {
     font-size: 15px;
     margin-right:30px;
   }
-  .content-recupera button {
+  #button-ingresar, #button-recuperar {
       display: flex;
       color: green;
       background-color: #fff;
   } 
-  .content-recupera button:hover {
+  #button-ingresar:hover, #button-recuperar:hover {
     color: #fff;
     background-color: green;
   }
-
-  .content-recupera button svg{
-      margin-top: 4px;
-  }
-
+  #button-ingresar svg, #button-recuperar svg {
+    margin-top: 5px;
+    margin-right: 4px;
+}
 ::placeholder{
     color: #fff;
     font-size: 15px;
@@ -327,3 +323,13 @@ input:focus::placeholder {
 input:focus {
     outline: none;
 }
+
+ /* autorellenar input */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: #fff !important;
+}
+

@@ -57,7 +57,6 @@ body {
       display: block;
       margin: auto;
   }
-
   /* --------------------------------------------MENU-PRINCIPAL--------------------------------------------------- */
   /* header general*/
 
@@ -276,6 +275,8 @@ body {
     transition: all .4s;
 
 }
+
+/* agregar usuario - módulo usuarios */
 .container-form {
     margin: 0px 350px;
     border: 1px solid #333;
@@ -316,7 +317,7 @@ input {
     font-size: 15px;
 }
 ::placeholder {
-    color:#fff;
+    color:#333;
 }
 input:focus {
     outline: none;
@@ -327,6 +328,14 @@ input:focus::placeholder {
     transform: translateY(-100%);
     transition: 0.44s;
 }
+ /* autorellenar input */
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ input:-webkit-autofill:active {
+     transition: background-color 5000s;
+     -webkit-text-fill-color: #fff !important;
+ }
 select {
     /* border-radius: 30px;
     border:  1px solid #333;
@@ -347,6 +356,9 @@ select {
 select:focus {
     outline: none;
 }
+.select-rol option:first-child{
+    display: none;
+}
 
 .botones {
     display: flex;
@@ -364,7 +376,21 @@ button i {
     margin-right: 5px;
 }
 
-/* buscar modulo usuarios */
+#button-crear svg {
+    margin-top: 4px;
+}
+#button-crear{
+    margin-right:10px;
+    background-color: #fff;
+    color: green;
+    display: flex;
+}
+#button-crear:hover {
+    background-color: green;
+    color: #fff;
+}
+
+/* lista -  modulo usuarios */
 .link-crear {
     display: flex;
     justify-content: center;
@@ -428,16 +454,16 @@ table tr:nth-child(odd) {
 .buttons {
     display: flex;
 }
-#button-editar {
+#button-editar, #button-modificar{
     margin-right:10px;
     background-color: #fff;
     color: orange;
     display: flex;
 }
-#button-editar svg, #button-eliminar svg {
+#button-editar svg, #button-eliminar svg, #button-modificar svg {
     margin-top: 4px;
 }
-#button-editar:hover {
+#button-editar:hover, #button-modificar:hover {
     background-color: orange;
     color: #fff;
 }
@@ -586,22 +612,8 @@ table tr:nth-child(odd) {
 }
 
 /* crear usuario */
-.container-search {
-    display:none;
-    justify-content:center;
-    margin: 0px 350px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: #5089C6;
-    box-shadow: 0px 0px 10px #333;
-}
-.button-crear {
-    border: 0px;
-    background-color: transparent ;
-    padding: 0px;
-    margin-bottom: 15px;
-}
+
+
 
 .perfil {
     display: flex;

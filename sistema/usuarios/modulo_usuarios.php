@@ -23,7 +23,7 @@
 
 <?php include '../generales/header2.php'?> 
 
-    <section id="content-section" class="modulo-usuarios modulo">
+    <section id="content-section" >
         <!-- <div class="container"> -->
             <div class="section-container">
                 <div class="content-row">
