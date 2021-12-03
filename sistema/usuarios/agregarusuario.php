@@ -6,7 +6,6 @@ if (!empty($_POST)) {
     if (
         empty($_POST['id_usuario']) || empty($_POST['usuario']) || empty($_POST['nombre_usuario'])
         || empty($_POST['correo']) || empty($_POST['contrasena']) || empty($_POST['id_rol'])
-        || empty($_POST['estado'])
     ) {
         $alert = ' <h4> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -23,7 +22,6 @@ if (!empty($_POST)) {
         $correo = $_POST['correo'];
         $contrasena = md5($_POST['contrasena']);
         $id_rol = $_POST['id_rol'];
-        $estado = $_POST['estado'];
 
         $query = mysqli_query($conn, "SELECT * FROM usuarios 
         WHERE id_usuario = '$id_usuario' OR  usuario = '$usuario' OR  correo = '$correo'");
@@ -38,8 +36,8 @@ if (!empty($_POST)) {
                         </h6> ';
         } else {
             $query_insert = mysqli_query($conn, "INSERT INTO usuarios (id_usuario, usuario, 
-            nombre_usuario, correo, contrasena, id_rol, estado) VALUES ('$id_usuario', '$usuario',
-            '$nombre_usuario', '$correo', '$contrasena', '$id_rol', '$estado')");
+            nombre_usuario, correo, contrasena, id_rol) VALUES ('$id_usuario', '$usuario',
+            '$nombre_usuario', '$correo', '$contrasena', '$id_rol')");
 
             if ($query_insert) {
                 $alert = '  <h5> 
@@ -112,18 +110,16 @@ if (!empty($_POST)) {
                                 <div class="form-group">
                                     <input type="text" name="usuario" id="" placeholder="Usuario">
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="correo" id="" placeholder="Correo">
-                                </div>
+
                             </div>
 
                             <div class="col-sm-4-right">
                                 <div class="form-group">
+                                    <input type="text" name="correo" id="" placeholder="Correo">
+                                </div>
+                                <div class="form-group">
                                     <input type="password" name="contrasena" id="" placeholder="Contraseña">
                                 </div>
-                                <!-- <div class="form-group">
-                                    <input type="password" name="confirm_contrasena" id="" placeholder="Confirmar contraseña">
-                                </div> -->
                                 <div class="form-group select">
 
                                     <?php
@@ -144,10 +140,10 @@ if (!empty($_POST)) {
                                         ?>
                                     </select>
                                 </div>
-                                <select class="select-form" name="estado" id="">
+                                <!-- <select class="select-form" name="estado" id="">
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>
-                                </select>
+                                </select> -->
                             </div>
                         </div>
                         <div class="botones">

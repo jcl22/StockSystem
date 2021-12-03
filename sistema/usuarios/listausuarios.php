@@ -49,13 +49,13 @@
                     <th>Usuario</th>
                     <th>Correo</th>
                     <th>Rol</th>
-                    <th>Estado</th>
+                    <!-- <th>Estado</th> -->
                     <th>Acciones</th>
                 </tr>
                 
             <?php
                     $query = mysqli_query ($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, 
-                    u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol=r.id_rol");      
+                    u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol=r.id_rol WHERE estado = 1");      
                     
                     $result = mysqli_num_rows ($query);
 
@@ -68,9 +68,12 @@
                         <td> <?php echo $data["usuario"] ?> </td>                        
                         <td><?php echo $data["correo"] ?> </td>
                         <td> <?php echo $data["nombre_rol"] ?></td>
-                        <td> <?php echo $data["estado"] ?> </td>
+                        <!-- <td> <?php echo $data["estado"] ?> </td> -->
                         
                         <td class="buttons">
+                            <?php
+                            if ($data["nombre_rol"]!='Administrador') {
+                            ?>
                             <a href="editarusuario.php?id=<?php echo $data["id_usuario"] ?>" > 
                                 <button type="button"  id="button-editar" class="btn btn-warning"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -80,7 +83,8 @@
                                     Editar
                                 </button> 
                             </a>
-                            <a href="eliminarusuario.php"  > 
+                            
+                            <a href="eliminarusuario.php?id=<?php echo $data["id_usuario"] ?>"  > 
                                 <button type="button" id="button-eliminar" class="btn btn-danger"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -89,6 +93,15 @@
                                     Eliminar
                                 </button>
                             </a>
+                            <?php } else {  ?>
+                                <button type="button" class="btn btn-success" id="button-admin"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+  <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+  <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+</svg>Admin</button>
+
+                            <?php }   ?>
+
+                                
                         </td> 
                     </tr>                    
             <?php
