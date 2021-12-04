@@ -46,8 +46,15 @@
                         </div>
                         <div id="dropdown-content" class="user-option dropdown-content wow fadeInUp">
                             <ul>
-                                <li><a href="../config/perfil.php">Perfil</a></li>
+                            <li><a href="../config/perfil.php">Perfil</a></li>     
+                                <?php
+                                if ($_SESSION['id_rol'] == 1) {
+                                ?>                   
                                 <li><a href="../config/cambiar_contrasena.php">Cambiar contraseña</a></li>
+                                <?php } else {
+                                }
+                                ?>
+
                                 <li><a href="../config/salir.php">Cerrar sesión</a></li>
                             </ul>
                         </div>

@@ -28,6 +28,9 @@
             <div class="section-container">
                 <div class="content-row">
                     <!-- <div class="icono-section col-3 header-section wow fadeInUp"> -->
+                        <?php
+                            if ($tipo_rol == 'Admin') {
+                        ?>
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
                                 <a href="agregarusuario.php" class="btn btn-primary">Agregar nuevo usuario</a>
@@ -35,13 +38,27 @@
                             <div class="boton agregar-pro">
                                 <a href="listausuarios.php" class="btn btn-primary">Lista de usuarios</a>
                             </div>
-                            <div class="boton modificar-pro">
+                            <div class="boton agregar-pro">
+                                <a href="../config/perfil.php" class="btn btn-primary">Mi perfil</a>
+                            </div>
+                            <!-- <div class="boton modificar-pro">
                                 <a href="editarusuario.php" class="btn btn-primary">Editar usuarios</a>
                             </div>
                             <div class="boton info-pro">
                                 <a href="eliminarusuario.php" class="btn btn-primary">Eliminar usuarios</a>
-                            </div>
+                            </div> -->
                         </div>
+                        <?php } else { ?>
+                        <div class="botones-accion"> 
+                            <div class="boton agregar-pro">
+                                <a href="listausuarios.php" class="btn btn-primary">Lista de usuarios</a>
+                            </div>
+                            <div class="boton agregar-pro">
+                                <a href="../config/perfil.php" class="btn btn-primary">Mi perfil</a>
+                            </div>
+                        </div>  
+                        <?php } ?>     
+
                     <!-- </div> -->
                 </div>
                 <div class="bg-icono">

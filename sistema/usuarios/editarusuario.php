@@ -4,8 +4,7 @@ include "../../php/conexion.php";
 if (!empty($_POST)) {
     $alert = '';
     if (empty($_POST['usuario']) || empty($_POST['nombre_usuario'])
-        || empty($_POST['correo']) || empty($_POST['id_rol'])
-        || empty($_POST['estado'])) 
+        || empty($_POST['correo']) || empty($_POST['id_rol'])) 
         {
         $alert = ' <h4> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -21,7 +20,7 @@ if (!empty($_POST)) {
         $correo = $_POST['correo'];
         $contrasena = md5($_POST['contrasena']);
         $id_rol = $_POST['id_rol'];
-        $estado = $_POST['estado'];
+        $estado = 1;
 
         $query = mysqli_query($conn, "SELECT * FROM usuarios  
          WHERE  (usuario = '$usuario' AND id_usuario != $id_Usuario) 
@@ -92,7 +91,7 @@ if ($result_edit == 0 ) {
         $nombre_usuario = $data ['nombre_usuario'];
         $usuario = $data ['usuario'];
         $correo = $data ['correo'];
-        $estado = $data ['estado'];
+        $estado = 1;
         $id_rol = $data ['id_rol'];
         $nombre_rol = $data ['nombre_rol'];
 
@@ -197,10 +196,6 @@ if ($result_edit == 0 ) {
                                         ?>
                                     </select>
                                 </div>
-                                <select name="estado" id="">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
                             </div>
                         </div>
                         <div class="botones">

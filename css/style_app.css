@@ -136,6 +136,7 @@ body {
       z-index: -1;
       transition: all 0.4s;
       cursor: pointer;
+      text-align: right;
   }
   #header .date-user .user-option ul{
       list-style: none;
@@ -633,38 +634,44 @@ table tr:nth-child(odd) {
     transition: all 0.5s;
 }
 
-/* desbloquear usuario */
-#desblock-user {
-    background-color: #fff;
-    color: #000;
-}
-#desblock-user:hover{
-    background: #AAAAAA;
-    color: #fff;
-    transition: all 0.5s;
-}
+/* botones lista de usuarios  (columna acciones) */
 
-#button-admin svg{
-    margin-top: 4px;
-}
-#button-admin{
-    margin-right:10px;
-    background-color: #fff;
-    color: green;
+
+
+#button-admin, #button-empl{
     display: flex;
 }
-#button-admin:hover {
-    background-color: green;
-    color: #fff;
-}
+
 
 /* crear usuario */
 
-
-
 .perfil {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    padding-right: 30px;
+}
+.container-perfil {
+    margin: 0px 350px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #5089C6;
+    box-shadow: 0px 0px 10px #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.datos-perfil {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-left: 30px;
+}
+.datos-perfil  span {
+    color: #fff;
+    text-transform: uppercase;
+    
 }
 
 /* mensaje de alert  */

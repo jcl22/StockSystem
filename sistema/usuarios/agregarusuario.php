@@ -140,10 +140,6 @@ if (!empty($_POST)) {
                                         ?>
                                     </select>
                                 </div>
-                                <!-- <select class="select-form" name="estado" id="">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select> -->
                             </div>
                         </div>
                         <div class="botones">

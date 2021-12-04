@@ -297,13 +297,7 @@ h6 {
   }
   #button-ingresar, #button-recuperar {
       display: flex;
-      color: green;
-      background-color: #fff;
   } 
-  #button-ingresar:hover, #button-recuperar:hover {
-    color: #fff;
-    background-color: green;
-  }
   #button-ingresar svg, #button-recuperar svg {
     margin-top: 5px;
     margin-right: 4px;
@@ -331,5 +325,5 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s;
     -webkit-text-fill-color: #fff !important;
-}
+} 
 

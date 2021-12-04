@@ -86,14 +86,14 @@ if (empty($_REQUEST['id'])) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg> <br>
-                        Estos es importante. ¿Estás seguro de eliminar el usuario?
+                        Esto es importante. ¿Estás seguro de eliminar el usuario?
                     </h3>
                     <div class="datos-usuarioeliminar">
                         <p> <b> <span>Nombre:</span> <?php echo $nombre_usuario; ?> </b></p>
                         <p> <b> <span>Usuario:</span> <?php echo $usuario; ?> </b></p>
                         <p> <b> <span>Rol:</span> <?php echo $nombre_rol; ?> </b></p>
                     </div> 
-                    <p class="subtitulo"> Ten en cuenta que el usuario se eliminará completamente. </p> <br>
+                    <p class="subtitulo"> *El usuario se eliminará completamente*. </p> <br>
 
                     <form class="buttons-eliminar" method="post" action="">
                         <input type="hidden" name="id_usuario" value= " <?php echo $id_Usuario; ?> ">
