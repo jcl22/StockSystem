@@ -3,6 +3,9 @@ include "../../php/conexion.php";
 
 if (!empty($_POST)) {
 
+
+    
+
     $id_Usuario = $_POST ['id_usuario'];
 
     // $query_delete = mysqli_query($conn, "DELETE FROM usuarios WHERE id_usuario = $id_Usuario" );
