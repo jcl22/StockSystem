@@ -41,7 +41,7 @@ h2, h3, h4, h5, h6{
     padding: 0px;
     position: relative;
     margin-top: -30px;
-    margin-bottom: 40pxx;
+    margin-bottom: 40px;
 }
 #header .logo-empresa img{
     border-radius: 50%;
@@ -114,6 +114,7 @@ h2, h3, h4, h5, h6{
     z-index: -1;
     transition: all 0.4s;
     cursor: pointer;
+    width: 90%;
 }
 #header .date-user .user-option ul{
     list-style: none;
@@ -234,6 +235,7 @@ h2, h3, h4, h5, h6{
 .bg-icono i{
     font-size: 80px;
 }
+
 
 
 

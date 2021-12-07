@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo usuarios</title>
+    <title>Módulo inventarios</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -28,41 +28,26 @@
             <div class="section-container">
                 <div class="content-row">
                     <!-- <div class="icono-section col-3 header-section wow fadeInUp"> -->
-                        <?php
-                            if ($tipo_rol == 'Admin') {
-                        ?>
+
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
-                                <a href="agregarusuario.php" class="btn btn-primary">Crear nuevo usuario</a>
+                                <a href="1productos.php" class="btn btn-primary">Productos</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="listausuarios.php" class="btn btn-primary">Lista de usuarios</a>
+                                <a href="2bodegas.php" class="btn btn-primary">Bodegas</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="../config/perfil.php" class="btn btn-primary">Mi perfil</a>
-                            </div>
-                            <!-- <div class="boton modificar-pro">
-                                <a href="editarusuario.php" class="btn btn-primary">Editar usuarios</a>
-                            </div>
-                            <div class="boton info-pro">
-                                <a href="eliminarusuario.php" class="btn btn-primary">Eliminar usuarios</a>
-                            </div> -->
-                        </div>
-                        <?php } else { ?>
-                        <div class="botones-accion"> 
-                            <div class="boton agregar-pro">
-                                <a href="listausuarios.php" class="btn btn-primary">Lista de usuarios</a>
+                                <a href="3inventarios.php" class="btn btn-primary">Inventarios</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="../config/perfil.php" class="btn btn-primary">Mi perfil</a>
+                                <a href="4traslados.php" class="btn btn-primary">Traslados de productos</a>
                             </div>
-                        </div>  
-                        <?php } ?>     
+                        </div>   
 
                     <!-- </div> -->
                 </div>
                 <div class="bg-icono">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-boxes"></i>
                 </div>
             </div>
         <!-- </div> -->

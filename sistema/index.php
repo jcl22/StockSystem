@@ -51,12 +51,12 @@
 
                   <div class="col-sm-4">
                     <div class="icono icono-inventario">
-                      <a href="inventario/modulo_inventario.php">
+                      <a href="inventarios/modulo_inventarios.php">
                         <div class="bg-icono">
                           <i class="fas fa-boxes"></i>
 
                         </div>
-                        <h4>Inventario</h4>
+                        <h4>Inventarios</h4>
                       </a>
                     </div>
                   </div>

@@ -125,6 +125,7 @@ body {
 
   #dropdown-content {
       position:absolute;
+      width: 90%;
   }
 
   #header .date-user .user-option{
@@ -799,4 +800,32 @@ table tr:nth-child(odd) {
     border: 1px solid #5089C6;
     border-radius: 2px;
 
+}
+
+/* categoria de producto */
+
+.content-lista {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: -50px;
+}
+.content-text {
+    color: #333;
+    margin-bottom: 10px;
+}
+.arrow1 svg  {
+    color: green;
+}
+.arrow2 svg  {
+    color: #6ECB63;
+}
+.arrow3 svg  {
+    color: orange;
+}
+.arrow4 svg  {
+    color: #DD4A48;
+}
+.arrow5 svg  {
+    color: red;
 }
