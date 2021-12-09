@@ -10,7 +10,7 @@ include "../../php/conexion.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventarios - Bodegas </title>
+    <title>Inventarios | Bodegas </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -45,7 +45,7 @@ include "../../php/conexion.php";
                 <tr>
                     <th>ID bodega</th>
                     <th>Nombre</th>
-                    <th>Lugar</th>
+                    <th>Ciudad</th>
                     <th>Descripción</th>
                     <th>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">

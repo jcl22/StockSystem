@@ -33,7 +33,7 @@
                         <div class="bg-icono">
                           <i class="fas fa-users"></i>
                         </div>
-                        <h4>Usuario</h4>
+                        <h4>Usuarios</h4>
                       </a>
                     </div>
                   </div>

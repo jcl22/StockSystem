@@ -31,10 +31,13 @@
 
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
-                                <a href="1.2listaproductos.php" class="btn btn-primary">Inventario por producto</a>
+                                <a href="#" class="btn btn-primary">Inventario por producto</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="1.2listaproductos.php" class="btn btn-primary">Inventario por bodega</a>
+                                <a href="#" class="btn btn-primary">Inventario por bodega</a>
+                            </div>
+                            <div class="boton agregar-pro">
+                                <a href="4traslados.php" class="btn btn-primary">Traslados de productos</a>
                             </div>
                         </div>   
 

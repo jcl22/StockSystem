@@ -31,13 +31,13 @@
 
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
-                                <a href="1.1crearproducto.php" class="btn btn-primary">Crear producto</a>
+                                <a href="1.1agregarproducto.php" class="btn btn-primary">Crear producto</a>
                             </div>
                             <div class="boton agregar-pro">
                                 <a href="1.2listaproductos.php" class="btn btn-primary">Lista de productos</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="1.5categoriasdeproducto.php" class="btn btn-primary">Categorías de productos</a>
+                                <a href="1.5categoriasdeproducto.php" class="btn btn-primary">Categorías</a>
                             </div>
                         </div>   
 
