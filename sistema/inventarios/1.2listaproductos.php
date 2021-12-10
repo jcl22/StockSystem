@@ -86,7 +86,6 @@ include "../../php/conexion.php";
 
                 $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.costo_producto, 
                 p.precio_producto, p.estado, c. nombre_categoria FROM producto p INNER JOIN categoria_productos c ON p.id_categoria = c.id_categoria WHERE estado = 1 ORDER BY p.id_producto ASC LIMIT $desde, $por_pagina");
-
                 $result = mysqli_num_rows($query);
 
                 if ($result > 0) {

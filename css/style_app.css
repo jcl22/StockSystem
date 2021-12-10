@@ -801,6 +801,18 @@ table tr:nth-child(odd) {
     border-radius: 2px;
 
 }
+/* buscador */
+.busqueda_none {
+    margin-top: 30px;
+}
+.busqueda_none p{
+    margin:0px;
+}
+.busqueda_none a{
+    margin:0px;
+    margin-top: 10px;
+}
+
 
 /* categoria de producto */
 

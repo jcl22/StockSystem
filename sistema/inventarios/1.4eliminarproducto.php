@@ -9,7 +9,6 @@ if (!empty($_POST)) {
     // $query_delete = mysqli_query($conn, "DELETE FROM usuarios WHERE id_usuario = $id_Usuario" );
 
     $query_delete = mysqli_query($conn, "UPDATE producto SET estado = 0 WHERE id_producto = $id_Producto");
-
     if ($query_delete) {
         header('location: 1.2listaproductos.php');
     } else {
@@ -27,7 +26,6 @@ if (empty($_REQUEST['id'])) {
     $id_Producto = $_REQUEST['id'];
 
     $query = mysqli_query($conn, "SELECT p.nombre_producto, c.nombre_categoria FROM producto p INNER JOIN categoria_productos c ON p.id_categoria = c.id_categoria WHERE p.id_producto =  $id_Producto");
-
     $result = mysqli_num_rows($query);
 
     if ($result > 0) {

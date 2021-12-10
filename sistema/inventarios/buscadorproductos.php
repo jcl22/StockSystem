@@ -50,7 +50,7 @@ include "../../php/conexion.php";
             
         <!-- busqueda -->
         <form class="input-group rounded" action="buscadorproductos.php" method="get">
-            <input type="text" class="form-control rounded"  aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value =" <?php echo $busqueda; ?> " />
+            <input type="text" class="form-control rounded"  aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value ="<?php echo $busqueda; ?>" />
             <button  class="input-group-text border-0" id="search-addon">
                 <i type="submit" class="fas fa-search"></i>
             </button>
@@ -168,14 +168,17 @@ include "../../php/conexion.php";
 
 
             </table>
+            <?php
+            if($total_registro != 0) {
+            ?>
             <div class="paginador">
                 <ul>
                     <?php
                     if ($pagina != 1) {
                     ?>
-                        <li><a href="?pagina= <?php echo 1; ?> "> |<< </a>
+                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda;?>"> |<< </a>
                         </li>
-                        <li><a href="?pagina= <?php echo $pagina - 1; ?>">
+                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda;?>">
                                 << </a>
                         </li>
                     <?php
@@ -184,20 +187,21 @@ include "../../php/conexion.php";
 
 
                         if ($i == $pagina) {
-                            echo '<li class="pageSelected">' . $i . '</li>';
+                            echo '<li class="pageSelected">'.$i.'</li>';
                         } else {
-                            echo '<li><a href="?pagina=' . $i . '">' . $i . '</a></li>';
+                            echo '<li><a href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
                         }
                     }
                     if ($pagina != $total_paginas) {
                     ?>
 
 
-                        <li><a href="?pagina= <?php echo $pagina + 1; ?>"> >> </a></li>
-                        <li><a href="?pagina= <?php echo $total_paginas; ?> "> >>| </a></li>
+                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda; ?>"> >> </a></li>
+                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda; ?>"> >>| </a></li>
                     <?php } ?>
                 </ul>
             </div>
+            <?php } ?>
         </div>
 
         <section id="botones-footer">

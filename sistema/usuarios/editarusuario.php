@@ -78,7 +78,6 @@ if (empty($_GET['id'])) {
 $id_Usuario =  $_GET['id'];
 
 $sql= mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, (u.id_rol) as id_rol, (r.nombre_rol) as nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE id_usuario=$id_Usuario");
-
 $result_edit = mysqli_num_rows($sql);
 
 if ($result_edit == 0 ) {
@@ -177,6 +176,7 @@ if ($result_edit == 0 ) {
                                 <div class="form-group select">
 
                                     <?php 
+                                    include "../../php/conexion.php";
                                     $query_rol = mysqli_query($conn, "SELECT * FROM rol");
                                     $result_rol = mysqli_num_rows($query_rol);
                                     ?>

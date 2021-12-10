@@ -1,10 +1,7 @@
 <?php
 include "../../php/conexion.php";
 
-if (!empty($_POST)) {
-
-
-    
+if (!empty($_POST)) {    
 
     $id_Usuario = $_POST ['id_usuario'];
 
@@ -20,16 +17,13 @@ if (!empty($_POST)) {
 }
 
 if (empty($_REQUEST['id'])) {
-
     header('location: listausuarios.php');
 } else {
 
     
-
     $id_Usuario = $_REQUEST['id'];
 
     $query = mysqli_query($conn, "SELECT u.nombre_usuario, u.usuario, r.nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE u.id_usuario =  $id_Usuario");
-
     $result = mysqli_num_rows($query);
 
     if ($result > 0) {

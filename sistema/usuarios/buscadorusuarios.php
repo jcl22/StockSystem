@@ -110,7 +110,7 @@ include "../../php/conexion.php";
                 u.correo LIKE '%$busqueda%' OR r.nombre_rol LIKE '%$busqueda%')
                 AND
                 estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
-
+                
                 $result = mysqli_num_rows($query);
 
                 if ($result > 0) {
@@ -178,14 +178,17 @@ include "../../php/conexion.php";
 
 
             </table>
+                        <?php
+            if($total_registro != 0) {
+            ?>
             <div class="paginador">
                 <ul>
                     <?php
                     if ($pagina != 1) {
                     ?>
-                        <li><a href="?pagina= <?php echo 1; ?> "> |<< </a>
+                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda;?>"> |<< </a>
                         </li>
-                        <li><a href="?pagina= <?php echo $pagina - 1; ?>">
+                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda;?>">
                                 << </a>
                         </li>
                     <?php
@@ -194,20 +197,21 @@ include "../../php/conexion.php";
 
 
                         if ($i == $pagina) {
-                            echo '<li class="pageSelected">' . $i . '</li>';
+                            echo '<li class="pageSelected">'.$i.'</li>';
                         } else {
-                            echo '<li><a href="?pagina=' . $i . '">' . $i . '</a></li>';
+                            echo '<li><a href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
                         }
                     }
                     if ($pagina != $total_paginas) {
                     ?>
 
 
-                        <li><a href="?pagina= <?php echo $pagina + 1; ?>"> >> </a></li>
-                        <li><a href="?pagina= <?php echo $total_paginas; ?> "> >>| </a></li>
+                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda;?>"> >> </a></li>
+                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda;?>"> >>| </a></li>
                     <?php } ?>
                 </ul>
             </div>
+            <?php } ?>
         </div>
 
         <section id="botones-footer">

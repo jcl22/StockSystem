@@ -28,11 +28,14 @@
             <div class="section-container">
                 <div class="content-row">
                     <!-- <div class="icono-section col-3 header-section wow fadeInUp"> -->
-
-                        <div class="botones-accion"> 
+                        <div class="botones-accion">
+                            <?php
+                                if ($tipo_rol == 'Admin') {
+                            ?> 
                             <div class="boton agregar-pro">
                                 <a href="1.1agregarproducto.php" class="btn btn-primary">Crear producto</a>
                             </div>
+                            <?php } else {} ?> 
                             <div class="boton agregar-pro">
                                 <a href="1.2listaproductos.php" class="btn btn-primary">Lista de productos</a>
                             </div>
