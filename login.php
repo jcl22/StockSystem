@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class= "triangulo">
-                <img src="img/TRIANGULO2.png" alt="">
+                <img src="Img/TRIANGULO.png" alt="">
             </div>
             <div class="content-2">
                 <div class="form-login">

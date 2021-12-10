@@ -71,7 +71,7 @@ if (empty($_REQUEST['id'])) {
 
     <section id="content-section">
         <div class="titulo-section">
-            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+            <svg class="img-elimproduct" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
                 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
             </svg>
@@ -90,7 +90,7 @@ if (empty($_REQUEST['id'])) {
                         <p> <b> <span>Nombre:</span> <?php echo $nombre_producto; ?> </b></p>
                         <p> <b> <span>Categoria:</span> <?php echo $nombre_categoria; ?> </b></p>
                     </div> 
-                    <p class="subtitulo"> *El producto se eliminará completamente*. </p> <br>
+                    <!-- <p class="subtitulo"> *El producto se eliminará completamente*. </p> <br> -->
 
                     <form class="buttons-eliminar" method="post" action="">
                         <input type="hidden" name="id_producto" value= " <?php echo $id_Producto; ?> ">

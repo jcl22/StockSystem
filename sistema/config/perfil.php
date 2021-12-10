@@ -38,7 +38,7 @@ include '../../php/conexion.php';
 
     <section id="content-section" >
         <div class="container-perfil">
-            <div class="datos-usuario">
+            <div class="datos">
                 <p class="datos-perfil"> <b><span>ID usuario:</span></b> <?php echo $_SESSION['id_usuario']; ?> </p>
                 <p class="datos-perfil"> <b><span>Nombre:</span></b> <?php echo $_SESSION['nombre_usuario']; ?> </p>
                 <p class="datos-perfil"> <b><span>Usuario:</span></b> <?php echo $_SESSION['usuario']; ?> </p>

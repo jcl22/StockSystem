@@ -213,7 +213,7 @@ h2, h3, h4, h5, h6{
     background: transparent;
     color: #333;
     box-shadow: 0 0 0 0 #0000;
-    border: 2px #5089C6 solid;
+    border: 2px #333 solid;
     transition: all 0.5s;
 }
 .iconos-inicio .icono{
@@ -221,14 +221,13 @@ h2, h3, h4, h5, h6{
     justify-content: center;
 }
 .iconos-inicio .bg-icono{
-    background: #5089C6;
+    background: #4592AF;
     width: 150px;
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 40px;
-    border: 5px #5089C6 solid;
     /* box-shadow: 5px 5px 0 0 #000; */
     transition: all 0.4s;
 }

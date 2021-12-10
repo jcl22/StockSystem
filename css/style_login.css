@@ -44,7 +44,7 @@
 }
 
 #login .content-1{
-    background: #333;
+    background: #fff;
     max-width: 500px;
     display: block;
     margin-right: -20px; 
@@ -52,6 +52,7 @@
     padding: 20px;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
+    border: 5px solid #333;
     
 }
 #login .tittle {
@@ -66,18 +67,18 @@
     font-family: 'Fjalla One', sans-serif;
     text-align: center;
     padding:0px;
-    color: white;
+    color: #4592AF;
 }
 
 #login .tittle p {
     font-family: 'Fjalla One', sans-serif;
     text-align: center;
     font-size: 25px;
-    color:#5089C6;;
+    color:#333;
 }
 #login .content-text{
     padding: 0px 40px 0px 40px ;
-    color: #fff;
+    color: #333;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -97,7 +98,7 @@
     color: #fff;
 }
 #login .content-2{
-    background: #5089C6;
+    background: #333;
     width: 500px;
     display: block;
     margin-left: -80px; 
@@ -105,7 +106,6 @@
     padding: 20px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
-    border: 5px solid #333;
 }
 
 .content-2 .tittle {
@@ -127,7 +127,7 @@
 .content-2 input{
     width: 100%;
     border-style: none;
-    background: #5089C6;
+    background: #333;
     border-bottom: 2px solid #fff;
     height: 40px;
     font-size: 20px;
@@ -187,6 +187,17 @@ input:focus {
     display:flex;
     justify-content:center;
     z-index:999;
+}
+#button-ingresar {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+#button-ingresar:hover {
+    background-color: green;
+    color: #fff;
+    border: 1px solid green;
+    transition: 0.3s;
 }
 
 
