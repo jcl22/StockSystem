@@ -66,7 +66,7 @@ if (!empty($_POST)) {
 // mostrar datos
 
 if (empty($_GET['id'])) {
-    header ('location:1.2listauproductos.php');
+    header ('location:1.2listaproductos.php');
 }
 $id_Producto =  $_GET['id'];
 
@@ -76,7 +76,7 @@ $sql= mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.costo_prod
 $result_edit = mysqli_num_rows($sql);
 
 if ($result_edit == 0 ) {
-    header ('location:1.2listauproductos.php');
+    header ('location:1.2listaproductos.php');
 } else {
 
     $option_categoria='';

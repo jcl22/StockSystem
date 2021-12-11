@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo Compras</title>
+    <title>Compras | Compras</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -31,10 +31,10 @@
 
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
-                                <a href="1compras.php" class="btn btn-primary">Compras</a>
+                                <a href="1.1agregarcompra.php" class="btn btn-primary">Crear compra</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="2proveedores.php" class="btn btn-primary">Proveedores</a>
+                                <a href="1.2listacompras.php" class="btn btn-primary">Lista de compras</a>
                             </div>
                         </div>   
 
@@ -45,7 +45,7 @@
                       <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                       <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
                       <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                    </svg>
+                    </svg>                
                 </div>
             </div>
         <!-- </div> -->
@@ -55,6 +55,10 @@
     <section id="botones-footer">
         <div class="content">
             <div class="botones-abl-footer">
+                <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
+                    <a href="modulo_compras.php" class="boton btn btn-primary"><i
+                            class="fas fa-chevron-circle-left"></i></a>
+                </div>
                 <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
                     <a href="../index.php" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
                 </div>

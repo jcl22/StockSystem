@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +80,7 @@
     </section>
 
 
-    <?php include '/generales/footer.php'?>
+    <?php include 'generales/footer.php'?>
     
 </body>
 </html>
