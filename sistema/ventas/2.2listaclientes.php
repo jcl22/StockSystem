@@ -169,7 +169,7 @@ include "../../php/conexion.php";
             <div class="content">
                 <div class="botones-abl-footer">
                     <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                        <a href="2clientes.php" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
+                        <a href="modulo_ventas.php" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
                     </div>
                     <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
                         <a href="../index.php" class="boton btn btn-primary"><i class="fas fa-home"></i></a>

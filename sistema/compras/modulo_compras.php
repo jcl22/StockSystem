@@ -31,10 +31,16 @@
 
                         <div class="botones-accion"> 
                             <div class="boton agregar-pro">
-                                <a href="1compras.php" class="btn btn-primary">Compras</a>
+                                <a href="1.1agregarcompra.php" class="btn btn-primary">Crear compra</a>
                             </div>
                             <div class="boton agregar-pro">
-                                <a href="2proveedores.php" class="btn btn-primary">Proveedores</a>
+                                <a href="1.2listacompras.php" class="btn btn-primary">Lista compras</a>
+                            </div>
+                            <div class="boton agregar-pro">
+                                <a href="2.1agregarproveedor.php" class="btn btn-primary">Crear proveedor</a>
+                            </div>
+                            <div class="boton agregar-pro">
+                                <a href="2.2listaproveedores.php" class="btn btn-primary">Lista proveedores</a>
                             </div>
                         </div>   
 
