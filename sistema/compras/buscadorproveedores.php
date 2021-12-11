@@ -41,6 +41,13 @@ include "../../php/conexion.php";
         
 
         <div class="content-crear">
+            <div class="content-crear">
+            <?php 
+                $busqueda = strtolower ($_REQUEST['busqueda']);
+                if (empty($busqueda)) {
+                header('location:2.2listaproveedores.php');
+                }
+            ?> 
             
         <!-- busqueda -->
         <form class="input-group rounded" action="buscadorproveedores.php" method="get">
@@ -66,7 +73,14 @@ include "../../php/conexion.php";
                 //paginador
 
                 $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
-                FROM proveedor WHERE estado = 1");
+                FROM proveedor WHERE 
+                (id_proveedor LIKE '%$busqueda%' OR
+                nombre_proveedor LIKE '%$busqueda%' OR
+                direccion LIKE '%$busqueda%' OR
+                telefono LIKE '%$busqueda%')
+                AND
+                
+                estado = 1");
 
                 $result_register = mysqli_fetch_array($sql_registe);
                 $total_registro = $result_register['total_registros'];
@@ -81,10 +95,17 @@ include "../../php/conexion.php";
 
                 $desde = ($pagina - 1) * $por_pagina;
                 $total_paginas = ceil($total_registro / $por_pagina);
+               
 
+                $query = mysqli_query($conn, "SELECT * FROM proveedor
+                WHERE
+                (id_proveedor LIKE '%$busqueda%' OR
+                nombre_proveedor LIKE '%$busqueda%' OR
+                direccion LIKE '%$busqueda%' OR
+                telefono LIKE '%$busqueda%' )
+                AND
+                estado = 1 ORDER BY id_proveedor ASC LIMIT $desde, $por_pagina");
 
-                $query = mysqli_query($conn, "SELECT * FROM proveedor WHERE estado=1 ORDER BY id_proveedor 
-                ASC");
 
                 $result = mysqli_num_rows($query);
 
@@ -133,14 +154,17 @@ include "../../php/conexion.php";
 
 
             </table>
+            <?php
+            if($total_registro != 0) {
+            ?>
             <div class="paginador">
                 <ul>
                     <?php
                     if ($pagina != 1) {
                     ?>
-                        <li><a href="?pagina= <?php echo 1; ?> "> |<< </a>
+                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda;?>"> |<< </a>
                         </li>
-                        <li><a href="?pagina= <?php echo $pagina - 1; ?>">
+                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda;?>">
                                 << </a>
                         </li>
                     <?php
@@ -149,20 +173,21 @@ include "../../php/conexion.php";
 
 
                         if ($i == $pagina) {
-                            echo '<li class="pageSelected">' . $i . '</li>';
+                            echo '<li class="pageSelected">'.$i.'</li>';
                         } else {
-                            echo '<li><a href="?pagina=' . $i . '">' . $i . '</a></li>';
+                            echo '<li><a href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
                         }
                     }
                     if ($pagina != $total_paginas) {
                     ?>
 
 
-                        <li><a href="?pagina= <?php echo $pagina + 1; ?>"> >> </a></li>
-                        <li><a href="?pagina= <?php echo $total_paginas; ?> "> >>| </a></li>
+                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda; ?>"> >> </a></li>
+                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda; ?>"> >>| </a></li>
                     <?php } ?>
                 </ul>
             </div>
+            <?php } ?>
         </div>
 
         <section id="botones-footer">
