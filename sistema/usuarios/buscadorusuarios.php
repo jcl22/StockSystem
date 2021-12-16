@@ -21,41 +21,36 @@ include "../../php/conexion.php";
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
 
-    <?php include '../../php/scripts2.php' ?>
-
-
 </head>
 
 <body>
-
-    <?php include '../generales/header2.php' ?>
-
-    <section id="content-section">
-        <div class="titulo-section">
-            <svg class="img-listuser" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
-                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-            </svg>
+    <header>
+        <?php include '../generales/headerapp.php' ?>
+    </header>
+    <section>
+        <div>
+            <h2 class="tittle-list">Lista de usuarios</h2> <br>
+        </div>
+        <?php
+        $busqueda = strtolower($_REQUEST['busqueda']);
+        if (empty($busqueda)) {
+            header('location:listausuarios.php');
+        }
+        ?>
+        <!-- busqueda -->
+        <div class="buscador">
+            <form id="busqueda-users" class="input-group rounded" action="buscadorusuarios.php" method="get">
+                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" />
+                <button class="input-group-text border-0" id="search-addon">
+                    <i type="submit" class="fas fa-search"></i>
+                </button>
+            </form>
         </div>
 
-        
 
-        <div class="content-crear">
-        <?php 
-            $busqueda = strtolower ($_REQUEST['busqueda']);
-            if (empty($busqueda)) {
-                header('location:listausuarios.php');
-            }
-        ?> 
-            
-        <!-- busqueda -->
-        <form class="input-group rounded" action="buscadorusuarios.php" method="get">
-            <input type="text" class="form-control rounded"  aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value =" <?php echo $busqueda; ?> "/>
-            <button  class="input-group-text border-0" id="search-addon">
-                <i type="submit" class="fas fa-search"></i>
-            </button>
-        </form> 
-            <table>
+        <!-- tabla -->
+        <table class="table">
+            <thead>
                 <tr>
                     <th>ID usuario</th>
                     <th>Nombre</th>
@@ -63,78 +58,80 @@ include "../../php/conexion.php";
                     <th>Correo</th>
                     <th>Rol</th>
                     <?php
-                    if ($tipo_rol == 'Admin') {
+                    if ($tipo_rol == 'Administrador') {
                     ?>
                         <th>Acciones</th>
                     <?php } ?>
                 </tr>
+            </thead>
+            <?php
+            //paginador
 
-                <?php
-                //paginador
+            $rol = '';
+            if ($busqueda == 'administrador') {
+                $rol = "OR id_rol LIKE '%1%'";
+            } else if ($busqueda == 'empleado') {
+                $rol = "OR id_rol LIKE '%2%'";
+            }
+            $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros FROM usuarios 
+WHERE 
+(id_usuario LIKE '%$busqueda%' OR
+nombre_usuario LIKE '%$busqueda%' OR
+usuario LIKE '%$busqueda%' OR
+correo LIKE '%$busqueda%' $rol)
+AND
+estado = 1");
 
-                $rol = '';
-                if ($busqueda =='administrador') {
-                    $rol = "OR id_rol LIKE '%1%'";
-                } else if ($busqueda =='empleado'){
-                    $rol = "OR id_rol LIKE '%2%'";
-                }
-                $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros FROM usuarios 
-                WHERE 
-                (id_usuario LIKE '%$busqueda%' OR
-                nombre_usuario LIKE '%$busqueda%' OR
-                usuario LIKE '%$busqueda%' OR
-                correo LIKE '%$busqueda%' $rol)
-                AND
-                estado = 1");
+            $result_register = mysqli_fetch_array($sql_registe);
+            $total_registro = $result_register['total_registros'];
 
-                $result_register = mysqli_fetch_array($sql_registe);
-                $total_registro = $result_register['total_registros'];
+            $por_pagina = 4;
 
-                $por_pagina = 4;
+            if (empty($_GET['pagina'])) {
+                $pagina = 1;
+            } else {
+                $pagina = $_GET['pagina'];
+            }
 
-                if (empty($_GET['pagina'])) {
-                    $pagina = 1;
-                } else {
-                    $pagina = $_GET['pagina'];
-                }
-
-                $desde = ($pagina - 1) * $por_pagina;
-                $total_paginas = ceil($total_registro / $por_pagina);
+            $desde = ($pagina - 1) * $por_pagina;
+            $total_paginas = ceil($total_registro / $por_pagina);
 
 
-                $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol 
-                WHERE 
-                (u.id_usuario LIKE '%$busqueda%' OR
-                u.nombre_usuario LIKE '%$busqueda%' OR
-                u.usuario LIKE '%$busqueda%' OR
-                u.correo LIKE '%$busqueda%' OR r.nombre_rol LIKE '%$busqueda%')
-                AND
-                estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
-                
-                $result = mysqli_num_rows($query);
+            $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol 
+WHERE 
+(u.id_usuario LIKE '%$busqueda%' OR
+u.nombre_usuario LIKE '%$busqueda%' OR
+u.usuario LIKE '%$busqueda%' OR
+u.correo LIKE '%$busqueda%' OR r.nombre_rol LIKE '%$busqueda%')
+AND
+estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
 
-                if ($result > 0) {
-                    while ($data = mysqli_fetch_array($query)) {
+            $result = mysqli_num_rows($query);
 
-                        $estado = '';
-                        if ($data["estado"] == 1) {
-                            $estado = 'Activo';
-                        } else {
-                            $estado = 'Inactvo';
-                        }
+            if ($result > 0) {
+                while ($data = mysqli_fetch_array($query)) {
 
-                ?>
-                        <tr class="datos-usuario">
-                            <td> <?php echo $data["id_usuario"] ?> </td>
+                    $estado = '';
+                    if ($data["estado"] == 1) {
+                        $estado = 'Activo';
+                    } else {
+                        $estado = 'Inactvo';
+                    }
+
+
+            ?>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><?php echo $data["id_usuario"] ?> </th>
                             <td> <?php echo $data["nombre_usuario"] ?> </td>
                             <td> <?php echo $data["usuario"] ?> </td>
                             <td><?php echo $data["correo"] ?> </td>
                             <td> <?php echo $data["nombre_rol"] ?></td>
 
                             <?php
-                            if ($tipo_rol == 'Admin') {
+                            if ($tipo_rol == 'Administrador') {
                             ?>
-                                <td class="buttons">
+                                <td>
                                     <?php
                                     if ($data["nombre_rol"] != 'Administrador') {
                                     ?>
@@ -144,7 +141,6 @@ include "../../php/conexion.php";
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                 </svg>
-                                                Editar
                                             </button>
                                         </a>
 
@@ -154,7 +150,6 @@ include "../../php/conexion.php";
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                                 </svg>
-                                                Eliminar
                                             </button>
                                         </a>
                                     <?php } else {  ?>
@@ -164,31 +159,30 @@ include "../../php/conexion.php";
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                 </svg>
-                                                Editar
+
                                             </button>
                                         </a>
 
-                                    <?php }   ?>
-                                <?php } ?>
+                                <?php }
+                                } ?>
                         </tr>
                 <?php
-                    }
                 }
+            }
                 ?>
-
-
-            </table>
-                        <?php
-            if($total_registro != 0) {
-            ?>
+                    </tbody>
+        </table>
+        <?php
+        if ($total_registro != 0) {
+        ?>
             <div class="paginador">
                 <ul>
                     <?php
                     if ($pagina != 1) {
                     ?>
-                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda;?>"> |<< </a>
+                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda; ?>"> |<< </a>
                         </li>
-                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda;?>">
+                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda; ?>">
                                 << </a>
                         </li>
                     <?php
@@ -197,37 +191,23 @@ include "../../php/conexion.php";
 
 
                         if ($i == $pagina) {
-                            echo '<li class="pageSelected">'.$i.'</li>';
+                            echo '<li class="pageSelected">' . $i . '</li>';
                         } else {
-                            echo '<li><a href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
+                            echo '<li><a href="?pagina=' . $i . '&busqueda=' . $busqueda . '">' . $i . '</a></li>';
                         }
                     }
                     if ($pagina != $total_paginas) {
                     ?>
 
 
-                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda;?>"> >> </a></li>
-                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda;?>"> >>| </a></li>
+                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda; ?>"> >> </a></li>
+                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda; ?>"> >>| </a></li>
                     <?php } ?>
                 </ul>
             </div>
-            <?php } ?>
+        <?php } ?>
         </div>
-
-        <section id="botones-footer">
-            <div class="content">
-                <div class="botones-abl-footer">
-                    <div class="float-left boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                        <a href="modulo_usuarios.php" class="boton btn btn-primary"><i class="fas fa-chevron-circle-left"></i></a>
-                    </div>
-                    <div class="float-right boton wow pulse" data-wow-iteration="infinite" data-wow-duration="500ms">
-                        <a href="../index.php" class="boton btn btn-primary"><i class="fas fa-home"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <?php include '../generales/footer.php' ?>
+    </section>
 
 </body>
 

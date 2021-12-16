@@ -4,7 +4,7 @@ body {
     background: #fff;
     background-size: cover;
     color: #000;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     z-index: -0;
     overflow: hidden;
 }
@@ -948,7 +948,7 @@ table tr:nth-child(odd) {
 .pageSelected {
     color: #333;
     ;
-    border: 1px solid #AAAAAA;
+    border: 1px solid #DCD0C0;
     border-radius: 2px;
     padding: 5px;
     display: inline-block;
@@ -958,14 +958,14 @@ table tr:nth-child(odd) {
 }
 
 .paginador a:hover {
-    background-color: #AAAAAA;
+    background-color: #DCD0C0;
 }
 
 .pageSelected {
     color: #fff;
-    background: #4592AF;
+    background: #B19389;
     ;
-    border: 1px solid #4592AF;
+    border: 1px solid #B19389;
     border-radius: 2px;
 }
 

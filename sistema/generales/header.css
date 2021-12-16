@@ -1,0 +1,123 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.nav {
+    width: 280px;
+    font-family: 'Titillium Web', sans-serif;
+    position: fixed;
+}
+
+.nav__link {
+    color: #303440;
+    display: block;
+    padding: 11.5px 0;
+    text-decoration: none;
+}
+
+.nav__link:hover {
+    text-decoration: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.nav__link--inside {
+    border-radius: 6px;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.nav__link--inside:hover {
+    background: #F6F8FA;
+    text-decoration: none;
+}
+
+.list {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0 16px 16px 0;
+    background: #fff;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-left: 0px;
+    width: 100%;
+}
+
+.list__item {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.list__item--click {
+    cursor: pointer;
+}
+
+.list__item .list__button-rol {
+    text-align: center;
+    margin-top: 20px;
+    color: #b1938b;
+    text-transform: uppercase;
+}
+
+.list__button {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.arrow .list__arrow {
+    transform: rotate(90deg);
+}
+
+.list__arrow {
+    margin-left: auto;
+    transition: transform .3s;
+}
+
+.list__show {
+    width: 80%;
+    margin-left: auto;
+    border-left: 2px solid #303440;
+    list-style: none;
+    transition: height .4s;
+    height: 0;
+    padding: 0px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: -45px;
+    margin-bottom: -20px;
+}
+
+.logo img {
+    width: 160px;
+}
+
+
+/* footer - reloj digital */
+
+.reloj {
+    width: 180px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    font: bold 1.5em dotum, "lucida sans", arial;
+    text-align: center;
+    position: fixed;
+    top: 88%;
+    left: 45%;
+    color: #DA635D;
+    border: 1px solid #DA635D;
+}

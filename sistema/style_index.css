@@ -1,10 +1,8 @@
-/* Generales */
-
-body {
+/* Generales body {
     background: #fff;
     background-size: cover;
     color: #000;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     z-index: -0;
     overflow-y: hidden;
 }
@@ -52,7 +50,8 @@ h6 {
 
 /* header generales*/
 
-#header {
+
+/* #header {
     padding: 0px;
     position: relative;
     margin-top: -30px;
@@ -180,7 +179,8 @@ h6 {
 
 /* footer */
 
-#footer .container .content {
+
+/* #footer .container .content {
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -195,7 +195,8 @@ h6 {
 
 /* inicio-módulos */
 
-.inicio-secciones {
+
+/* .inicio-secciones {
     margin: 0px;
     margin-top: -70px;
     padding: 0px;
@@ -247,10 +248,10 @@ h6 {
     width: 150px;
     height: 160px;
     border-radius: 5px;
-    /* box-shadow: 5px 5px 0 0 #000; */
-    transition: all 0.4s;
-}
 
+transition: all 0.4s;
+
+}
 .icono .bg-icono:hover {
     background: transparent;
     color: #333;
@@ -258,12 +259,10 @@ h6 {
     border: 2px #333 solid;
     transition: all 0.5s;
 }
-
 .iconos-inicio .icono {
     display: flex;
     justify-content: center;
 }
-
 .iconos-inicio .bg-icono {
     background: #4592AF;
     width: 150px;
@@ -272,10 +271,39 @@ h6 {
     justify-content: center;
     align-items: center;
     border-radius: 40px;
-    /* box-shadow: 5px 5px 0 0 #000; */
-    transition: all 0.4s;
-}
 
+transition: all 0.4s;
+
+}
 .bg-icono i {
     font-size: 80px;
+}
+
+/* layout  */
+
+body {
+    overflow-y: hidden;
+    font-family: 'Titillium Web', sans-serif;
+    background: url('../img/FONDO2.png')center center fixed;
+}
+
+.saludo {
+    padding-top: 40px;
+    color: #4e4e56;
+    text-align: center;
+    width: 100%;
+}
+
+.saludo h1 {
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.saludo h1 span {
+    color: #DA635D;
+    text-transform: uppercase;
+}
+
+.saludo .bienvenida {
+    margin-top: 0px;
 }
