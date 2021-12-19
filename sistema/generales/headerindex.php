@@ -28,9 +28,11 @@ if ($_SESSION['id_rol'] == 1) {
             </div>
 
             <ul class="list__show">
+                <?php if ($tipo_rol == 'Administrador') { ?>
                 <li class="list__inside">
                     <a href="usuarios/agregarusuario.php" class="nav__link nav__link--inside">Crear usuario</a>
                 </li>
+                <?php } ?>
                 <li class="list__inside">
                     <a href="usuarios/listausuarios.php" class="nav__link nav__link--inside">Lista de usuarios</a>
                 </li>
@@ -58,9 +60,11 @@ if ($_SESSION['id_rol'] == 1) {
                 <li class="list__inside">
                     <a href="compras/listacompras.php" class="nav__link nav__link--inside">Lista de compras</a>
                 </li>
+                <?php if ($tipo_rol == 'Administrador') { ?>
                 <li class="list__inside">
                     <a href="compras/agregarproveedor.php" class="nav__link nav__link--inside">Crear proveedor</a>
                 </li>
+                <?php } ?>
                 <li class="list__inside">
                     <a href="compras/listaproveedores.php" class="nav__link nav__link--inside">Lista de proveedores</a>
                 </li>
@@ -100,10 +104,11 @@ if ($_SESSION['id_rol'] == 1) {
             </div>
 
             <ul class="list__show">
+                <?php if ($tipo_rol == 'Administrador') { ?>
                 <li class="list__inside">
                     <a href="inventarios/agregarproducto.php" class="nav__link nav__link--inside">Crear productos</a>
                 </li>
-
+                <?php } ?>
                 <li class="list__inside">
                     <a href="inventarios/listaproductos.php" class="nav__link nav__link--inside">Lista productos</a>
                 </li>
@@ -132,9 +137,11 @@ if ($_SESSION['id_rol'] == 1) {
                 <li class="list__inside">
                     <a href="ventas/listaventas.php" class="nav__link nav__link--inside">Lista de ventas</a>
                 </li>
+                <?php if ($tipo_rol == 'Administrador') { ?>
                 <li class="list__inside">
                     <a href="ventas/agregarcliente.php" class="nav__link nav__link--inside">Crear cliente</a>
                 </li>
+                <?php } ?>
                 <li class="list__inside">
                     <a href="ventas/listaclientes.php" class="nav__link nav__link--inside">Lista de clientes</a>
                 </li>

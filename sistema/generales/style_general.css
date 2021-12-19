@@ -59,6 +59,10 @@ input:focus {
     text-align: center;
     justify-content: center;
     margin-left: 400px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 30px 20px;
 }
 
 #alert svg {
@@ -242,7 +246,11 @@ table {
 }
 
 .adv {
-    margin-top: 30px;
+    margin-top: 10px;
+}
+
+.adv h3 {
+    font-size: 24px;
 }
 
 #div-delete {
