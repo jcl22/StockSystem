@@ -79,7 +79,8 @@ include "../../php/conexion.php";
             $total_paginas = ceil($total_registro / $por_pagina);
 
 
-            $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
+            $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, 
+            r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
             $result = mysqli_num_rows($query);
 
             if ($result > 0) {

@@ -64,7 +64,16 @@
     text-align: center;
     margin-top: 20px;
     color: #b1938b;
+}
+
+.list__item .list__button-rol .user {
+    text-transform: none;
+    margin: 0px;
+}
+
+.list__item .list__button-rol .rol {
     text-transform: uppercase;
+    margin: 0px;
 }
 
 .list__button {

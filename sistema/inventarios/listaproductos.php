@@ -10,7 +10,7 @@ include "../../php/conexion.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventarios | Productos/Lista</title>
+    <title>Productos | Lista Productos</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -20,7 +20,6 @@ include "../../php/conexion.php";
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -42,24 +41,25 @@ include "../../php/conexion.php";
             </form>
         </div>
 
+
         <!-- tabla -->
         <table class="table">
             <thead>
                 <tr>
                     <th>ID producto</th>
                     <th>Nombre</th>
-                    <th>Categoria</th>
-                    <th>Costo producto</th>
-                    <th>Precio producto</th>
+                    <th>Costo</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
                     <?php
-                    if ($tipo_rol == 'Admin') {
+                    if ($tipo_rol == 'Administrador') {
                     ?>
                         <th>Acciones</th>
                     <?php } ?>
                 </tr>
             </thead>
             <?php
-            //paginador
+            // paginador
 
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
                 FROM producto WHERE estado = 1");
@@ -67,7 +67,7 @@ include "../../php/conexion.php";
             $result_register = mysqli_fetch_array($sql_registe);
             $total_registro = $result_register['total_registros'];
 
-            $por_pagina = 4;
+            $por_pagina = 5;
 
             if (empty($_GET['pagina'])) {
                 $pagina = 1;
@@ -79,8 +79,8 @@ include "../../php/conexion.php";
             $total_paginas = ceil($total_registro / $por_pagina);
 
 
-            $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.costo_producto, 
-                p.precio_producto, p.estado, c. nombre_categoria FROM producto p INNER JOIN categoria_productos c ON p.id_categoria = c.id_categoria WHERE estado = 1 ORDER BY p.id_producto ASC LIMIT $desde, $por_pagina");
+            $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.costo_producto, p.precio_producto, p.estado, c.nombre_categoria FROM producto p INNER JOIN categoria_productos c ON p.id_categoria = 
+            c.id_categoria WHERE estado = 1 ORDER BY p.id_producto ASC LIMIT $desde, $por_pagina");
             $result = mysqli_num_rows($query);
 
             if ($result > 0) {
@@ -93,41 +93,43 @@ include "../../php/conexion.php";
                         $estado = 'Inactvo';
                     }
 
-
             ?>
                     <tbody>
                         <tr>
-                            <th scope="row"> <?php echo  $data["id_producto"] ?> </th>
+                            <th scope="row"><?php echo $data["id_producto"] ?> </th>
                             <td> <?php echo $data["nombre_producto"] ?> </td>
-                            <td> <?php echo $data["nombre_categoria"] ?> </td>
-                            <td><?php echo $data["costo_producto"] ?> </td>
-                            <td> <?php echo $data["precio_producto"] ?></td>
+                            <td> <?php echo $data["costo_producto"] ?> </td>
+                            <td><?php echo $data["precio_producto"] ?> </td>
+                            <td> <?php echo $data["nombre_categoria"] ?></td>
+
                             <?php
                             if ($tipo_rol == 'Administrador') {
                             ?>
-
                                 <td>
-                                    <a href="editarproducto.php?id=<?php echo $data["id_producto"] ?>">
-                                        <button type="button" id="button-editar" class="btn btn-warning">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                            </svg>
-                                        </button>
-                                    </a>
+                                        <a href="editarproducto.php?id=<?php echo $data["id_producto"] ?>">
+                                            <button type="button" id="button-editar" class="btn btn-warning">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg>
+                                            </button>
+                                        </a>
 
-                                    <a href="eliminarproducto.php?id=<?php echo $data["id_producto"] ?>">
-                                        <button type="button" id="button-eliminar" class="btn btn-danger">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                            </svg>
-                                        </button>
-                                    </a>
-                            <?php }
-                        } ?>
+                                        <a href="eliminarproducto.php?id=<?php echo $data["id_producto"] ?>">
+                                            <button type="button" id="button-eliminar" class="btn btn-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                </svg>
+                                            </button>
+                                        </a>
+
+                                <?php } ?>
                         </tr>
-                    <?php } ?>
+                <?php
+                }
+            }
+                ?>
                     </tbody>
         </table>
         <div class="paginador">
@@ -160,10 +162,7 @@ include "../../php/conexion.php";
                 <?php } ?>
             </ul>
         </div>
-
     </section>
-
-
 </body>
 
 </html>

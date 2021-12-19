@@ -40,7 +40,7 @@ include "../../php/conexion.php";
         <!-- busqueda -->
         <div class="buscador">
             <form id="busqueda-users" class="input-group rounded" action="buscadorusuarios.php" method="get">
-                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" />
+                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>" />
                 <button class="input-group-text border-0" id="search-addon">
                     <i type="submit" class="fas fa-search"></i>
                 </button>
@@ -74,13 +74,13 @@ include "../../php/conexion.php";
                 $rol = "OR id_rol LIKE '%2%'";
             }
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros FROM usuarios 
-WHERE 
-(id_usuario LIKE '%$busqueda%' OR
-nombre_usuario LIKE '%$busqueda%' OR
-usuario LIKE '%$busqueda%' OR
-correo LIKE '%$busqueda%' $rol)
-AND
-estado = 1");
+            WHERE 
+            (id_usuario LIKE '%$busqueda%' OR
+            nombre_usuario LIKE '%$busqueda%' OR
+            usuario LIKE '%$busqueda%' OR
+            correo LIKE '%$busqueda%' $rol)
+            AND
+            estado = 1");
 
             $result_register = mysqli_fetch_array($sql_registe);
             $total_registro = $result_register['total_registros'];
@@ -98,13 +98,13 @@ estado = 1");
 
 
             $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol 
-WHERE 
-(u.id_usuario LIKE '%$busqueda%' OR
-u.nombre_usuario LIKE '%$busqueda%' OR
-u.usuario LIKE '%$busqueda%' OR
-u.correo LIKE '%$busqueda%' OR r.nombre_rol LIKE '%$busqueda%')
-AND
-estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
+            WHERE 
+            (u.id_usuario LIKE '%$busqueda%' OR
+            u.nombre_usuario LIKE '%$busqueda%' OR
+            u.usuario LIKE '%$busqueda%' OR
+            u.correo LIKE '%$busqueda%' OR r.nombre_rol LIKE '%$busqueda%')
+            AND
+            estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
 
             $result = mysqli_num_rows($query);
 
@@ -205,8 +205,17 @@ estado = 1 ORDER BY u.id_usuario ASC LIMIT $desde, $por_pagina");
                     <?php } ?>
                 </ul>
             </div>
+        <?php } else if ($total_registro == 0) { ?>
+            </div>
+            <div id="alert-buscador" class="alert alert-primary d-block align-items-center" role="alert">
+                <div class="div-alertbusc">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </svg><b> No se encontraron registros para esta búsqueda </b> <br>
+                </div>
+                <a class="a-buscador" href="./listausuarios.php">Volver</a>
+            </div>
         <?php } ?>
-        </div>
     </section>
 
 </body>

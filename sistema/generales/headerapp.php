@@ -170,8 +170,8 @@ if ($_SESSION['id_rol'] == 1) {
         </li>
         <li class="list__item">
             <div class="list__button-rol">
-                <p> <b> <?php echo $tipo_rol ?> </b></p>
-
+                <p class="user"> <?php echo $_SESSION['usuario']; ?> </p>
+                <p class="rol"> <b> <?php echo $tipo_rol ?> </b> </p> 
             </div>
         </li>
     </ul>

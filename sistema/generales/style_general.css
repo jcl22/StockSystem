@@ -86,6 +86,33 @@ input:focus {
     margin-left: 3px;
 }
 
+#alert-buscador {
+    width: 40%;
+    max-height: 500px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 500px;
+    display: block;
+}
+
+#alert-buscador svg {
+    margin-right: 8px;
+}
+
+#alert-buscador svg {
+    margin-right: 5px;
+}
+
+#alert-buscador div {
+    margin-bottom: 5px;
+}
+
+.a-buscador {
+    text-decoration: none;
+}
+
 table {
     margin-top: 30px;
     margin-left: 350px;
@@ -268,4 +295,30 @@ table {
 #traslado-bodegas:hover {
     color: black;
     background-color: #BEFFCC;
+}
+
+
+/* perfil de usuario */
+
+.date-perfil {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 350px 0px 350px;
+    background-color: #fff;
+    border-radius: 30px;
+    max-width: 700px;
+}
+
+.tittle-perfil {
+    padding: 50px 50px 0px 350px;
+    color: #DA635D;
+}
+
+.perfil {
+    display: flex;
+    padding: 76px 0px;
+}
+
+.datos {
+    margin: 50px 0px;
 }
