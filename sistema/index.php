@@ -10,7 +10,7 @@
   <meta name="description" content="">
 
   <!-- Favicons -->
-  <link rel="icon" href="../img/LOGO-ICON.ico">
+  <link rel="icon" href="../img/StockS.ico">
 
 </head>
 

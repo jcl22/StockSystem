@@ -81,7 +81,7 @@ if ($result_edit == 0 ) {
     <meta name="description" content="">
 
     <!-- Favicons -->
-    <link rel="icon" href="../../img/LOGO-ICON.ico">
+    <link rel="icon" href="../../img/StockS.ico">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
