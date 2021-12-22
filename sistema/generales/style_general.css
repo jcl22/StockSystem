@@ -65,8 +65,21 @@ input:focus {
     padding: 30px 20px;
 }
 
-#alert svg {
+#alert svg,
+#alert-error svg {
     margin-right: 8px;
+}
+
+#alert-error {
+    width: 47%;
+    position: fixed;
+    top: 50%;
+    max-height: 250px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 400px;
+    border-radius: 10px;
+    padding: 30px 20px;
 }
 
 
@@ -329,4 +342,40 @@ table {
 
 .datos {
     margin: 50px 0px;
+}
+
+
+/* --------------------------compra----------------------------*/
+
+.tittle-compra {
+    padding: 20px 50px 0px 350px;
+}
+
+.content-form1 {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.content-form1 .form-group {
+    max-width: 150px;
+}
+
+.content-form1 .button-compra {
+    margin-top: 32px;
+}
+
+#detalle-compra {
+    display: none;
+}
+
+#cantidad_producto,
+#costo_producto,
+#costo_total {
+    max-width: 100px;
+}
+
+#producto,
+#bodega {
+    max-width: 180px;
 }

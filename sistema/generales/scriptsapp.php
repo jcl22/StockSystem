@@ -13,6 +13,7 @@
 
 <!-- javascript -->
 <script src="../generales/header.js"></script>
+<script src="../../js/funciones.js"></script>
 
 <?php include '../../php/function.php' ?>
 <?php include '../../php/conexion.php' ?>

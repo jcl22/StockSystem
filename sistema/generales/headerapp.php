@@ -2,7 +2,7 @@
 
 session_start();
 if (empty($_SESSION['active'])) {
-    header('location:../login.php');
+    header('location:../../login.php');
 }
 $tipo_rol = '';
 if ($_SESSION['id_rol'] == 1) {
@@ -117,7 +117,7 @@ if ($_SESSION['id_rol'] == 1) {
             <ul class="list__show">
                 <?php if ($tipo_rol == 'Administrador') { ?>
                 <li class="list__inside">
-                    <a href="../inventarios/agregarproducto.php" class="nav__link nav__link--inside">Crear productos</a>
+                    <a href="../inventarios/agregarproducto.php" class="nav__link nav__link--inside">Crear producto</a>
                 </li>
                 <?php } ?>
                 <li class="list__inside">
