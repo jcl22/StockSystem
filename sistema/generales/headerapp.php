@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (empty($_SESSION['active'])) {
     header('location:../../login.php');
@@ -10,7 +9,6 @@ if ($_SESSION['id_rol'] == 1) {
 } else {
     $tipo_rol = 'Empleado';
 }
-
 ?>
 
 <nav class="nav">
@@ -39,11 +37,11 @@ if ($_SESSION['id_rol'] == 1) {
                 <img src="../../img/ARROW.svg" class="list__arrow">
             </div>
             <ul class="list__show">
-            <?php if ($tipo_rol == 'Administrador') { ?>
-                <li class="list__inside">
-                    <a href="../usuarios/agregarusuario.php" class="nav__link nav__link--inside">Crear usuario</a>
-                </li>
-            <?php } ?>   
+                <?php if ($tipo_rol == 'Administrador') { ?>
+                    <li class="list__inside">
+                        <a href="../usuarios/agregarusuario.php" class="nav__link nav__link--inside">Crear usuario</a>
+                    </li>
+                <?php } ?>
                 <li class="list__inside">
                     <a href="../usuarios/listausuarios.php" class="nav__link nav__link--inside">Lista de usuarios</a>
                 </li>
@@ -51,33 +49,35 @@ if ($_SESSION['id_rol'] == 1) {
 
         </li>
 
-        <!-- compras -->
+        <!-- socios -->
         <li class="list__item list__item--click">
             <div class="list__button list__button--click">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                 </svg>
-                <a href="#" class="nav__link">Compras</a>
+
+                <a href="#" class="nav__link">Socios</a>
                 <img src="../../img/ARROW.svg" class="list__arrow">
             </div>
 
             <ul class="list__show">
-                <li class="list__inside">
-                    <a href="../compras/agregarcompra.php" class="nav__link nav__link--inside">Crear compra</a>
-                </li>
-
-                <li class="list__inside">
-                    <a href="../compras/listacompras.php" class="nav__link nav__link--inside">Lista de compras</a>
-                </li>
                 <?php if ($tipo_rol == 'Administrador') { ?>
-                <li class="list__inside">
-                    <a href="../compras/agregarproveedor.php" class="nav__link nav__link--inside">Crear proveedor</a>
-                </li>
+                    <li class="list__inside">
+                        <a href="../socios/agregarproveedor.php" class="nav__link nav__link--inside">Crear proveedor</a>
+                    </li>
                 <?php } ?>
                 <li class="list__inside">
-                    <a href="../compras/listaproveedores.php" class="nav__link nav__link--inside">Lista de proveedores</a>
+                    <a href="../socios/listaproveedores.php" class="nav__link nav__link--inside">Lista de proveedores</a>
+                </li>
+                <?php if ($tipo_rol == 'Administrador') { ?>
+                    <li class="list__inside">
+                        <a href="../socios/agregarcliente.php" class="nav__link nav__link--inside">Crear cliente</a>
+                    </li>
+                <?php } ?>
+                <li class="list__inside">
+                    <a href="../socios/listaclientes.php" class="nav__link nav__link--inside">Lista de clientes</a>
                 </li>
             </ul>
 
@@ -95,9 +95,9 @@ if ($_SESSION['id_rol'] == 1) {
             </div>
 
             <ul class="list__show">
-                <li class="list__inside">
+                <!-- <li class="list__inside">
                     <a href="../inventarios/bodegas.php" class="nav__link nav__link--inside">Bodegas</a>
-                </li>
+                </li> -->
                 <li class="list__inside">
                     <a href="../inventarios/3inventarios.php" class="nav__link nav__link--inside">Inventarios</a>
                 </li>
@@ -116,15 +116,15 @@ if ($_SESSION['id_rol'] == 1) {
 
             <ul class="list__show">
                 <?php if ($tipo_rol == 'Administrador') { ?>
-                <li class="list__inside">
-                    <a href="../inventarios/agregarproducto.php" class="nav__link nav__link--inside">Crear producto</a>
-                </li>
+                    <li class="list__inside">
+                        <a href="../productos/agregarproducto.php" class="nav__link nav__link--inside">Crear producto</a>
+                    </li>
                 <?php } ?>
                 <li class="list__inside">
-                    <a href="../inventarios/listaproductos.php" class="nav__link nav__link--inside">Lista productos</a>
+                    <a href="../productos/listaproductos.php" class="nav__link nav__link--inside">Lista productos</a>
                 </li>
                 <li class="list__inside">
-                    <a href="../inventarios/categoriaproductos.php" class="nav__link nav__link--inside">Categorías</a>
+                    <a href="../productos/categoriaproductos.php" class="nav__link nav__link--inside">Categorías</a>
                 </li>
             </ul>
 
@@ -148,14 +148,7 @@ if ($_SESSION['id_rol'] == 1) {
                 <li class="list__inside">
                     <a href="../ventas/listaventas.php" class="nav__link nav__link--inside">Lista de ventas</a>
                 </li>
-                <?php if ($tipo_rol == 'Administrador') { ?>
-                <li class="list__inside">
-                    <a href="../ventas/agregarcliente.php" class="nav__link nav__link--inside">Crear cliente</a>
-                </li>
-                <?php } ?>
-                <li class="list__inside">
-                    <a href="../ventas/listaclientes.php" class="nav__link nav__link--inside">Lista de clientes</a>
-                </li>
+                
             </ul>
 
         </li>
@@ -178,7 +171,7 @@ if ($_SESSION['id_rol'] == 1) {
         <li class="list__item">
             <div class="list__button-rol">
                 <p class="user"> <?php echo $_SESSION['usuario']; ?> </p>
-                <p class="rol"> <b> <?php echo $tipo_rol ?> </b> </p> 
+                <p class="rol"> <b> <?php echo $tipo_rol ?> </b> </p>
             </div>
         </li>
     </ul>

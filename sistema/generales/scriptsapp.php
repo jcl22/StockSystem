@@ -13,7 +13,9 @@
 
 <!-- javascript -->
 <script src="../generales/header.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../../js/funciones.js"></script>
+
 
 <?php include '../../php/function.php' ?>
 <?php include '../../php/conexion.php' ?>

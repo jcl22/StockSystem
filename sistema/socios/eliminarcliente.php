@@ -2,39 +2,39 @@
 include "../../php/conexion.php";
 
 if (!empty($_POST)) {
-  
 
-    $id_Proveedor = $_POST ['id_proveedor'];
+
+    $id_Cliente = $_POST['id_cliente'];
 
     // $query_delete = mysqli_query($conn, "DELETE FROM usuarios WHERE id_usuario = $id_Usuario" );
 
-    $query_delete = mysqli_query($conn, "UPDATE proveedor SET estado = 0 WHERE id_proveedor = $id_Proveedor");
+    $query_delete = mysqli_query($conn, "UPDATE cliente SET estado = 0 WHERE id_cliente = $id_Cliente");
     if ($query_delete) {
-        header('location: listaproveedores.php');
+        header('location: listaclientes.php');
     } else {
-        echo "Error al eliminar";        
+        echo "Error al eliminar";
     }
 }
 
 if (empty($_REQUEST['id'])) {
 
-    header('location: listaproveedores.php');
+    header('location: listaclientes.php');
 } else {
 
-    
 
-    $id_Proveedor = $_REQUEST['id'];
 
-    $query = mysqli_query($conn, "SELECT nombre_proveedor FROM proveedor  WHERE id_proveedor =  $id_Proveedor");
+    $id_Cliente = $_REQUEST['id'];
+
+    $query = mysqli_query($conn, "SELECT nombre_cliente FROM cliente  WHERE id_cliente =  $id_Cliente");
     $result = mysqli_num_rows($query);
 
     if ($result > 0) {
         while ($data = mysqli_fetch_array($query)) {
 
-            $nombre_proveedor = $data['nombre_proveedor'];
+            $nombre_cliente = $data['nombre_cliente'];
         }
     } else {
-        header('location: listaproveedores.php');
+        header('location: listaclientes.php');
     }
 }
 
@@ -49,7 +49,7 @@ if (empty($_REQUEST['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compras | Eliminar Proveedor</title>
+    <title>Socios | Eliminar Cliente </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -59,7 +59,6 @@ if (empty($_REQUEST['id'])) {
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -82,12 +81,12 @@ if (empty($_REQUEST['id'])) {
 
                 <div class="adv">
                     <h3>
-                        ¿Estás seguro de eliminar el proveedor <b> <?php echo $nombre_proveedor;?></b>?
+                        ¿Estás seguro de eliminar el cliente <b> <?php echo $nombre_cliente; ?></b>?
                     </h3>
                 </div>
             </div>
             <form class="button-delete" method="post" action="">
-                <input type="hidden" name="id_usuario" value=" <?php echo $id_Proveedor; ?> ">
+                <input type="hidden" name="id_cliente" value=" <?php echo $id_Cliente; ?> ">
                 <div id="div-delete" class="form-group">
                     <button id="delete" type="submit" value="Eliminar" class="btn float-right login_btn">
                         Eliminar

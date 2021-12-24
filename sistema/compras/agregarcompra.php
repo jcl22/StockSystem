@@ -91,7 +91,7 @@ if (!empty($_POST)) {
 
         <!-- form  -->
         <form action="" method="post">
-            <div class="formulario">
+            <div class="formulario" id="formulario">
                 <!-- compra -->
                 <div class="content-form1">
                     <!-- fecha -->
@@ -117,34 +117,38 @@ if (!empty($_POST)) {
                             ?>
                         </select>
                     </div>
-                    <a class="button-compra" onclick="detalleCompra()">
-                        <input id="login" type="button" value="Generar" class="btn float-right login_btn">
-                    </a>
                 </div>
             </div>
 
             <!-- detalle compra -->
             <div class="content-form2" id="detalle-compra">
-                <table class="table" id="table">
+                <table class="table" id="table-compra">
                     <thead>
-                        <tr>
-                            <td>Producto</td>
-                            <td>Bodega a ingresar</td>
-                            <td>Cantidad</td>
-                            <td>Costo unitario</td>
-                            <td>Costo total</td>
-                        </tr>
+                        <tr> <b>
+                                <td> <b>Cantidad</b></td>
+                                <td> <b>Producto</b></td>
+                                <td> <b>Bodega a ingresar</b> </td>
+                                <td> <b>Costo unitario</b> </td>
+                                <td> <b>Costo total</b> </td>
+                                <td> <b>Add / Quit</b> </td>
+                        </tr> </b>
                     </thead>
                     <tbody>
                         <tr>
                             <!-- id producto (escondido)-->
                             <input type="hidden" class="form-control" name="cantidad_compra" id="id">
 
+                            <!-- cantidad -->
+                            <td>
+                                <input min="1" type="number" class="form-control" name="cantidad_compra" id="cantidad_producto">
+                            </td>
+
                             <!-- producto -->
                             <td>
                                 <select class="form-control" aria-label="Default select example" name="id_producto" id="producto">
+                                    <option value="0" data-costo_producto="" selected disabled>--Seleccione producto--</option>
                                     <?php
-                                    $query = $conn->query("SELECT * FROM producto WHERE estado=1 ORDER BY nombre_producto ASC");
+                                    $query = $conn->query("SELECT * FROM producto WHERE estado=1");
                                     while ($row = $query->fetch_assoc()) {
                                         $data = "data-costo_producto=\"$row[costo_producto]\""; #Como atributo data sólo irán codigo y dni
                                         $value = "value=\"$row[id_producto]\"";                      #El id_colaborador lo tomaremos del value
@@ -156,7 +160,8 @@ if (!empty($_POST)) {
 
                             <!-- bodega -->
                             <td>
-                                <select class="form-control" aria-label="Default select example" name="id_bodega" id="id_bodega">
+                                <select class="form-control" aria-label="Default select example" name="id_bodega" id="bodega">
+                                    <option value="0" data-costo_producto="" selected disabled>--Seleccione bodega--</option>
                                     <?php
                                     $query = $conn->query("SELECT * FROM bodega ORDER BY id_bodega ASC");
                                     while ($row = $query->fetch_assoc()) {
@@ -166,11 +171,6 @@ if (!empty($_POST)) {
                                     ?>
                                 </select>
                             </td>
-                            <!-- cantidad -->
-
-                            <td>
-                                <input min="1" type="number" class="form-control" name="cantidad_compra" id="cantidad_producto">
-                            </td>
 
                             <!-- costo unitario-->
                             <td>
@@ -178,13 +178,21 @@ if (!empty($_POST)) {
                             </td>
                             <!-- costo total -->
                             <td>
-                                <input value="$" class="form-control" name="costo_total" id="costo_total"
-                                type="text" disabled>
+                                <input value="$" class="form-control" name="costo_total" id="costo_total" type="text" disabled>
+                            </td>
+                            <td>
+                                <div class="add-quit">
+                                    <input id="add" type="button" onclick="agregarFila();" value="+">
+                                    <input id="quit" type="button" value="-">
+                                </div>
                             </td>
                         </tr>
                     </tbody>
 
                 </table>
+                <a class="button-compra">
+                    <input id="login" type="button" value="Procesar" class="btn float-right login_btn">
+                </a>
             </div>
 
 
@@ -197,6 +205,7 @@ if (!empty($_POST)) {
 </html>
 
 <script>
+    
     // traer datos según id de producto
 
     document.getElementById('producto').onchange = function() {
@@ -215,6 +224,9 @@ if (!empty($_POST)) {
         elId.value = this.value;
         elCosto.value = mData.costo_producto;
 
-        elCostototal.value = mData.costo_producto * 2;
+        elCostototal.value = mData.costo_producto * document.getElementById('cantidad_producto').value;
+
     };
+
+    
 </script>

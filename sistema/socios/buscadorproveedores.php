@@ -10,7 +10,7 @@ include "../../php/conexion.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventas | Lista Clientes</title>
+    <title>Socios | Lista Proveedores</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -29,17 +29,19 @@ include "../../php/conexion.php";
     </header>
     <section>
         <div>
-            <h2 class="tittle-list">Lista de clientes</h2> <br>
+            <h2 class="tittle-list">Lista de proveedores</h2> <br>
         </div>
+
         <?php
         $busqueda = strtolower($_REQUEST['busqueda']);
         if (empty($busqueda)) {
             header('location:listausuarios.php');
         }
         ?>
+
         <!-- busqueda -->
         <div class="buscador">
-            <form id="busqueda-users" class="input-group rounded" action="buscadorclientes.php" method="get">
+            <form id="busqueda-users" class="input-group rounded" action="buscadorproveedores.php" method="get">
                 <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>" />
                 <button class="input-group-text border-0" id="search-addon">
                     <i type="submit" class="fas fa-search"></i>
@@ -52,7 +54,7 @@ include "../../php/conexion.php";
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID cliente</th>
+                    <th>ID proveedor</th>
                     <th>Nombre</th>
                     <th>Teléfono</th>
                     <th>Dirección</th>
@@ -67,9 +69,9 @@ include "../../php/conexion.php";
             // paginador
 
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
-                FROM cliente WHERE 
-                (id_cliente LIKE '%$busqueda%' OR
-                nombre_cliente LIKE '%$busqueda%' OR
+                FROM proveedor WHERE 
+                (id_proveedor LIKE '%$busqueda%' OR
+                nombre_proveedor LIKE '%$busqueda%' OR
                 direccion LIKE '%$busqueda%' OR
                 telefono LIKE '%$busqueda%')
                 AND
@@ -90,13 +92,15 @@ include "../../php/conexion.php";
             $total_paginas = ceil($total_registro / $por_pagina);
 
 
-            $query = mysqli_query($conn, "SELECT * FROM cliente WHERE
-                    (id_cliente LIKE '%$busqueda%' OR
-                    nombre_cliente LIKE '%$busqueda%' OR
-                    direccion LIKE '%$busqueda%' OR
-                    telefono LIKE '%$busqueda%' )
-                    AND
-                    estado = 1 ORDER BY id_cliente ASC LIMIT $desde, $por_pagina");
+            $query = mysqli_query($conn, "SELECT * FROM proveedor WHERE 
+                
+            (id_proveedor LIKE '%$busqueda%' OR
+            nombre_proveedor LIKE '%$busqueda%' OR
+            direccion LIKE '%$busqueda%' OR
+            telefono LIKE '%$busqueda%' )
+            AND
+            estado = 1 ORDER BY id_proveedor ASC LIMIT $desde, $por_pagina");
+
             $result = mysqli_num_rows($query);
 
             if ($result > 0) {
@@ -112,8 +116,8 @@ include "../../php/conexion.php";
             ?>
                     <tbody>
                         <tr>
-                            <th scope="row"><?php echo $data["id_cliente"] ?> </th>
-                            <td> <?php echo $data["nombre_cliente"] ?> </td>
+                            <th scope="row"><?php echo $data["id_proveedor"] ?> </th>
+                            <td> <?php echo $data["nombre_proveedor"] ?> </td>
                             <td> <?php echo $data["telefono"] ?> </td>
                             <td><?php echo $data["direccion"] ?> </td>
 
@@ -121,7 +125,7 @@ include "../../php/conexion.php";
                             if ($tipo_rol == 'Administrador') {
                             ?>
                                 <td>
-                                    <a href="editarcliente.php?id=<?php echo $data["id_cliente"] ?>">
+                                    <a href="editarproveedor.php?id=<?php echo $data["id_proveedor"] ?>">
                                         <button type="button" id="button-editar" class="btn btn-warning">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -130,7 +134,7 @@ include "../../php/conexion.php";
                                         </button>
                                     </a>
 
-                                    <a href="eliminarcliente.php?id=<?php echo $data["id_cliente"] ?>">
+                                    <a href="eliminarproveedor.php?id=<?php echo $data["id_proveedor"] ?>">
                                         <button type="button" id="button-eliminar" class="btn btn-danger">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -188,7 +192,7 @@ include "../../php/conexion.php";
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
                     </svg><b> No se encontraron registros para esta búsqueda </b> <br>
                 </div>
-                <a class="a-buscador" href="./listaclientes.php">Volver</a>
+                <a class="a-buscador" href="./listaproveedores.php">Volver</a>
             </div>
         <?php } ?>
     </section>

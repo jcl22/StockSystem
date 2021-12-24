@@ -1,6 +1,7 @@
 section {
     background-color: #f8f4ef;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 a:hover {
@@ -59,10 +60,8 @@ input:focus {
     text-align: center;
     justify-content: center;
     margin-left: 400px;
-    background-color: #fff;
-    border: 1px solid #fff;
     border-radius: 10px;
-    padding: 30px 20px;
+    padding: 15px 20px;
 }
 
 #alert svg,
@@ -138,8 +137,10 @@ table {
 }
 
 #button-editar {
-    background-color: #F5EE4B;
-    border: 1px solid #F5EE4B;
+    background-color: #F4F4F4;
+    border: 1px solid #000;
+    color: #000;
+    margin-right: 5px;
 }
 
 #button-editar:hover {
@@ -148,13 +149,27 @@ table {
 }
 
 #button-eliminar {
-    background-color: #DE0B0B;
-    border: 1px solid #DE0B0B;
+    background-color: #F4F4F4;
+    border: 1px solid #000;
+    color: #000;
 }
 
 #button-eliminar:hover {
     background-color: #F56451;
     border: 1px solid #F56451;
+    color: #fff;
+}
+
+#button-agregar {
+    background-color: #F4F4F4;
+    border: 1px solid #000;
+    color: #000;
+    margin-right: 5px;
+}
+
+#button-agregar:hover {
+    background-color: #7BFF8E;
+    border: 1px solid #7BFF8E;
 }
 
 
@@ -164,7 +179,6 @@ table {
     margin: 0px;
     display: flex;
     justify-content: center;
-    margin-right: 520px;
 }
 
 .paginador ul {
@@ -300,26 +314,26 @@ table {
 
 /* traslados entre bodegas */
 
-.traslados {
-    display: flex;
-    justify-content: center;
-    margin-right: 440px;
-    margin-top: 30px;
-}
 
-#traslado-bodegas {
-    color: black;
-    background-color: #7BFF8E;
-    max-width: 300px;
-}
-
-#traslado-bodegas:hover {
-    color: black;
-    background-color: #BEFFCC;
-}
-
-
-/* perfil de usuario */
+/*     
+    .traslados {
+        display: flex;
+        justify-content: center;
+        margin-right: 440px;
+        margin-top: 30px;
+    }
+    
+    #traslado-bodegas {
+        color: black;
+        background-color: #7BFF8E;
+        max-width: 300px;
+    }
+    
+    #traslado-bodegas:hover {
+        color: black;
+        background-color: #BEFFCC;
+    }
+    /* perfil de usuario */
 
 .date-perfil {
     display: flex;
@@ -345,37 +359,199 @@ table {
 }
 
 
-/* --------------------------compra----------------------------*/
+/* compras */
 
-.tittle-compra {
-    padding: 20px 50px 0px 350px;
+
+/* .tittle-compra {
+        padding: 20px 50px 0px 350px;
+    }
+    
+    .content-form1 {
+        display: flex;
+        justify-content: center;
+        margin-top: -10px;
+    }
+    
+    #formulario {
+        padding-left: 350px;
+        display: flex;
+    }
+    
+    .content-form1 .form-group {
+        max-width: 150px;
+    }
+    
+    .content-form2 {
+        height: 500px;
+        overflow-y: scroll;
+    }
+    
+    #detalle-compra {
+        display: block;
+    }
+    
+    .add-quit {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    #add,
+    #quit {
+        padding: 0px;
+        border: 0px;
+        font-size: 15px;
+        background-color: transparent;
+        color: #333;
+        padding-top: 7px;
+        cursor: pointer;
+    }
+    
+    #quit {
+        display: flex;
+        justify-content: center;
+    }
+    
+    #add:hover {
+        color: #7BFF8E;
+    }
+    
+    #quit:hover {
+        color: #DE0B0B;
+    }
+    
+    #cantidad_producto,
+    #costo_producto,
+    #costo_total {
+        max-width: 100px;
+    }
+    
+    #producto,
+    #bodega {
+        max-width: 180px;
+    }
+    
+    .plus-dash {
+        padding-left: 350px;
+    }
+    
+    .button-compra {
+        display: flex;
+        justify-content: start;
+        margin-left: 350px;
+    } */
+
+
+/* producto */
+
+.tittle-producto {
+    padding: 30px 0px 0px 400px;
 }
 
-.content-form1 {
+.tittle-producto h2 {
+    margin-bottom: 0px;
+}
+
+#formulario-producto {
+    margin-top: -15px;
+}
+
+
+/* foto */
+
+.photo {
+    margin-bottom: 10px;
+}
+
+.photo label {
     display: flex;
     justify-content: center;
-    margin-top: -10px;
+    margin-bottom: 2px;
 }
 
-.content-form1 .form-group {
-    max-width: 150px;
+#form_alert {
+    display: flex;
+    justify-content: center;
 }
 
-.content-form1 .button-compra {
-    margin-top: 32px;
+.prevPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    height: 150px;
+    border: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    /* background: url(../../img/DESARROLLO.png); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: auto;
 }
 
-#detalle-compra {
-    display: none;
+.prevPhoto label {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
-#cantidad_producto,
-#costo_producto,
-#costo_total {
-    max-width: 100px;
+.prevPhoto img {
+    width: 100%;
+    height: 100%;
 }
 
-#producto,
-#bodega {
-    max-width: 180px;
+.upimg,
+.notBlock {
+    display: none !important;
+}
+
+.errorArchivo {
+    font-size: 16px;
+    font-family: arial;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.delPhoto {
+    color: #FFF;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: #721c24;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10;
+}
+
+#tbl_list_productos img {
+    width: 50px;
+}
+
+.imgProductoDelete {
+    width: 175px;
+}
+
+
+/* lista productos */
+
+.actions {
+    display: flex;
+    justify-content: center;
+}
+
+.table-productos {
+    overflow-y: scroll;
 }

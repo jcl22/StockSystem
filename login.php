@@ -60,7 +60,7 @@ if (!empty($_SESSION['active'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockSystem | Loguin</title>
-    <link rel="icon" href="img/LOGO-ICON.ico">
+    <link rel="icon" href="img/StockS.ico">
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS File -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
