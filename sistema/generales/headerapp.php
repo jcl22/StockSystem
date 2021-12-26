@@ -148,7 +148,7 @@ if ($_SESSION['id_rol'] == 1) {
                 <li class="list__inside">
                     <a href="../ventas/listaventas.php" class="nav__link nav__link--inside">Lista de ventas</a>
                 </li>
-                
+
             </ul>
 
         </li>
@@ -175,7 +175,9 @@ if ($_SESSION['id_rol'] == 1) {
             </div>
         </li>
     </ul>
+
 </nav>
+
 
 
 <?php include '../generales/scriptsapp.php' ?>

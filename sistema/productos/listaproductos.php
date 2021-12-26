@@ -1,6 +1,5 @@
 <?php
 include "../../php/conexion.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +23,58 @@ include "../../php/conexion.php";
 </head>
 
 <body>
+
     <header>
         <?php include '../generales/headerapp.php' ?>
     </header>
+
+    <!-- modal -->
+    <div class="modal-product" id="modal">
+        <div id="modalProducto">
+            <form action="" method="post" name="form_add_product" id="form_add_product" 
+            onsubmit="event.preventDefault(); sendDataProduct();">
+                <h1> Actualizar producto</h1> <br>
+                <p class="nameProduct">  </p>
+                <div class="inputs">
+                    <label for=""> Cantidad</label>
+                    <input type="number" class="form-control" id="txt-cantidad" name="cantidad" min=1 required>
+                    <label class="label-precio" for=""> Precio</label>
+                    <input type="number" class="form-control" id="txt-precio" name="precio" min=1 required>
+                    <input type="hidden" class="form-control" id="id_producto" name="id_producto" required>
+                    <input type="hidden" class="form-control" id="action" name="action" value="addProduct" required>
+                    <div class="button" id="buttons">
+                        <a id="button-cerrar" class="btn btn-danger" onclick="closeModal();">Cerrar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </a>
+                        <a">
+                            <button type="submit" id="button-guardar" class="btn btn-success"> Guardar
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </button>
+                            </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- alert -->
+        <!-- <div id="alert-modal" class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg><b> Error! Página no disponible para este usuario. </b>
+        </div> -->
+    </div>
+
+
+
     <section>
         <div>
             <h2 class="tittle-list">Lista de productos</h2> <br>
         </div>
         <!-- busqueda -->
-        <div class="buscador">
+        <div class="buscador" id="buscador">
             <form id="busqueda-users" class="input-group rounded" action="buscadorclientes.php" method="get">
                 <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" />
                 <button class="input-group-text border-0" id="search-addon">
@@ -113,11 +155,10 @@ include "../../php/conexion.php";
                                 if ($tipo_rol == 'Administrador') {
                                 ?>
                                     <td class="actions">
-                                        <a href="agregarexistencias.php?id=<?php echo $data["id_producto"] ?>">
+                                        <a class="agg_exist" product="<?php echo $data["id_producto"] ?>" href="#">
                                             <button type="button" id="button-agregar" class="btn btn-success">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                                                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-                                                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                                                 </svg>
                                             </button>
                                         </a>
@@ -148,7 +189,6 @@ include "../../php/conexion.php";
                         ?>
                         </tbody>
             </table>
-
         </div>
         <div class="paginador">
             <ul>
@@ -180,7 +220,119 @@ include "../../php/conexion.php";
                 <?php } ?>
             </ul>
         </div>
+
     </section>
+
 </body>
 
+
 </html>
+<script>
+    // ready
+    $(document).ready(function() {
+
+        //--------------------- SELECCIONAR FOTO PRODUCTO ---------------------
+        $("#foto").on("change", function() {
+            var uploadFoto = document.getElementById("foto").value;
+            var foto = document.getElementById("foto").files;
+            var nav = window.URL || window.webkitURL;
+            var contactAlert = document.getElementById('form_alert');
+
+            if (uploadFoto != '') {
+                var type = foto[0].type;
+                var name = foto[0].name;
+                if (type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png') {
+                    contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';
+                    $("#img").remove();
+                    $(".delPhoto").addClass('notBlock');
+                    $('#foto').val('');
+                    return false;
+                } else {
+                    contactAlert.innerHTML = '';
+                    $("#img").remove();
+                    $(".delPhoto").removeClass('notBlock');
+                    var objeto_url = nav.createObjectURL(this.files[0]);
+                    $(".prevPhoto").append("<img id='img' src=" + objeto_url + ">");
+                    $(".upimg label").remove();
+
+                }
+            } else {
+                alert("No selecciono foto");
+                $("#img").remove();
+            }
+        });
+
+        $('.delPhoto').click(function() {
+            $('#foto').val('');
+            $(".delPhoto").addClass('notBlock');
+            $("#img").remove();
+
+        });
+
+        // modal agregar existencias (agg_exist)
+        $('.agg_exist').click(function(e) {
+            // act on the event
+            e.preventDefault();
+            var producto = $(this).attr('product');
+            var action = 'infoProducto';
+
+            $.ajax({
+                url: '../generales/ajax.php',
+                type: 'POST',
+                async: true,
+                data: {
+                    action: action,
+                    producto: producto
+                },
+
+                success: function(response) {
+
+                    if (response != "error") {
+
+                        var info = JSON.parse(response);
+
+                        $('#id_producto').val (info.id_producto);
+                        $('.nameProduct').html (info.nombre_producto);
+                    }
+                },
+                error: function(error) {
+                    consol.log(error)
+                }
+
+            });
+
+            $('.modal-product').fadeIn();
+            $('.buscador').fadeOut();
+
+        });
+    });
+
+    function sendDataProduct () {
+        $('#alert-modal').html('');
+
+        $.ajax({
+                url: '../generales/ajax.php',
+                type: 'POST',
+                async: true,
+                data: $('#form_add_product').serialize(),
+
+                success: function(response) {
+                    console.log (response);
+                },
+                error: function(error) {
+                    consol.log(error);
+                }
+
+            });
+        
+
+    }
+
+    function closeModal() {
+        $('#alert-modal').html('');
+        $('#txt-cantidad').val('');
+        $('#txt-precio').val('');
+        $('.modal-product').fadeOut();
+        $('#buscador').fadeIn();
+    }
+</script>
