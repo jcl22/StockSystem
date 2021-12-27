@@ -31,13 +31,12 @@ include "../../php/conexion.php";
     <!-- modal -->
     <div class="modal-product" id="modal">
         <div id="modalProducto">
-            <form action="" method="post" name="form_add_product" id="form_add_product" 
-            onsubmit="event.preventDefault(); sendDataProduct();">
+            <form action="" method="post" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sendDataProduct();">
                 <h1> Actualizar producto</h1> <br>
-                <p class="nameProduct">  </p>
+                <p class="nameProduct"> </p>
                 <div class="inputs">
                     <label for=""> Cantidad</label>
-                    <input type="number" class="form-control" id="txt-cantidad" name="cantidad" min=1 required>
+                    <input type="number" class="form-control" id="txt-cantidad" name="cantidad"required>
                     <label class="label-precio" for=""> Precio</label>
                     <input type="number" class="form-control" id="txt-precio" name="precio" min=1 required>
                     <input type="hidden" class="form-control" id="id_producto" name="id_producto" required>
@@ -58,13 +57,13 @@ include "../../php/conexion.php";
                     </div>
                 </div>
             </form>
+            <!-- alert -->
+            <div id="alert-modal">
+
+            </div>
         </div>
-        <!-- alert -->
-        <!-- <div id="alert-modal" class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </svg><b> Error! Página no disponible para este usuario. </b>
-        </div> -->
+
+
     </div>
 
 
@@ -142,14 +141,14 @@ include "../../php/conexion.php";
 
 
                 ?>
-                        <tbody>
+                        <tbody class="row<?php echo $data["id_producto"] ?>">
                             <tr>
                                 <th scope="row"><?php echo $data["id_producto"] ?> </th>
                                 <td> <?php echo $data["nombre_producto"] ?> </td>
                                 <td> <?php echo $data["nombre_proveedor"] ?> </td>
-                                <td><?php echo $data["precio"] ?> </td>
-                                <td> <?php echo $data["existencia"] ?> </td>
-                                <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="80px" height="80px"> </td>
+                                <td class="celPrecio"><?php echo $data["precio"] ?> </td>
+                                <td class="celExistencia"> <?php echo $data["existencia"] ?> </td>
+                                <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="60px" height="60px"> </td>
 
                                 <?php
                                 if ($tipo_rol == 'Administrador') {
@@ -291,8 +290,8 @@ include "../../php/conexion.php";
 
                         var info = JSON.parse(response);
 
-                        $('#id_producto').val (info.id_producto);
-                        $('.nameProduct').html (info.nombre_producto);
+                        $('#id_producto').val(info.id_producto);
+                        $('.nameProduct').html(info.nombre_producto);
                     }
                 },
                 error: function(error) {
@@ -307,24 +306,33 @@ include "../../php/conexion.php";
         });
     });
 
-    function sendDataProduct () {
+    function sendDataProduct() {
         $('#alert-modal').html('');
 
         $.ajax({
-                url: '../generales/ajax.php',
-                type: 'POST',
-                async: true,
-                data: $('#form_add_product').serialize(),
+            url: '../generales/ajax.php',
+            type: 'POST',
+            async: true,
+            data: $('#form_add_product').serialize(),
 
-                success: function(response) {
-                    console.log (response);
-                },
-                error: function(error) {
-                    consol.log(error);
+            success: function(response) {
+                if (response == "error") {
+                    $('#alert-modal').html('<div id="alert-modal-error"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /></svg><b> Error al actualizar existencias. </b></div>')
+                } else {
+                    var info = JSON.parse(response);
+                    $('.row' + info.id_producto + ' .celPrecio').html(info.nuevo_precio);
+                    $('.row' + info.id_producto + ' .celExistencia').html(info.nueva_existencia);
+                    $('#txt-cantidad').val('');
+                    $('#txt-precio').val('');
+                    $('#alert-modal').html('<div id="alert-modal-confirm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /></svg><b> Existencias actualizado correctamente. </b></div>');
                 }
+            },
+            error: function(error) {
+                consol.log(error);
+            }
 
-            });
-        
+        });
+
 
     }
 
