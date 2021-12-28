@@ -110,7 +110,7 @@ include "../../php/conexion.php";
                 $result_register = mysqli_fetch_array($sql_registe);
                 $total_registro = $result_register['total_registros'];
 
-                $por_pagina = 3;
+                $por_pagina = 4;
 
                 if (empty($_GET['pagina'])) {
                     $pagina = 1;
@@ -148,7 +148,7 @@ include "../../php/conexion.php";
                                 <td> <?php echo $data["nombre_proveedor"] ?> </td>
                                 <td class="celPrecio"><?php echo $data["precio"] ?> </td>
                                 <td class="celExistencia"> <?php echo $data["existencia"] ?> </td>
-                                <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="60px" height="60px"> </td>
+                                <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="50px" height="50px"> </td>
 
                                 <?php
                                 if ($tipo_rol == 'Administrador') {
