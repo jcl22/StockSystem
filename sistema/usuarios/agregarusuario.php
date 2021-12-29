@@ -3,8 +3,7 @@ include "../../php/conexion.php";
 
 if (!empty($_POST)) {
     $alert = '';
-    if (
-        empty($_POST['id_usuario']) || empty($_POST['usuario']) || empty($_POST['nombre_usuario'])
+    if (empty($_POST['id_usuario']) || empty($_POST['usuario']) || empty($_POST['nombre_usuario'])
         || empty($_POST['correo']) || empty($_POST['contrasena']) || empty($_POST['id_rol'])
     ) {
         $alert = '<div id="alert" class="alert alert-warning d-flex align-items-center" role="alert">

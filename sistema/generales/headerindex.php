@@ -113,13 +113,10 @@ if ($_SESSION['id_rol'] == 1) {
                     </li>
                 <?php } ?>
                 <li class="list__inside">
-                    <a href="productos/listaproductos.php" class="nav__link nav__link--inside">Lista productos</a>
+                    <a href="productos/listaproductos.php" class="nav__link nav__link--inside">Inventario</a>
                 </li>
                 <li class="list__inside">
                     <a href="productos/categoriaproductos.php" class="nav__link nav__link--inside">Categorías</a>
-                </li>
-                <li class="list__inside">
-                    <a href="inventarios/3inventarios.php" class="nav__link nav__link--inside">Inventario</a>
                 </li>
             </ul>
 

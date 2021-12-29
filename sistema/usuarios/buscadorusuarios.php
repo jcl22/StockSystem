@@ -68,9 +68,12 @@ include "../../php/conexion.php";
             //paginador
 
             $rol = '';
-            if ($busqueda == 'administrador') {
+            if ($busqueda == 'administrador' || $busqueda == 'a'|| $busqueda == 'ad' || $busqueda == 'adm' || $busqueda == 'admi'
+            || $busqueda == 'admin' || $busqueda == 'admini' || $busqueda == 'adminis' || $busqueda == 'administ'
+            || $busqueda == 'administra' || $busqueda == 'administrad' || $busqueda == 'administrado') {
                 $rol = "OR id_rol LIKE '%1%'";
-            } else if ($busqueda == 'empleado') {
+            } else if ($busqueda == 'empleado' || $busqueda == 'e' || $busqueda == 'em' || $busqueda == 'emp' || $busqueda == 'empl'
+            || $busqueda == 'emple' || $busqueda == 'emplea' || $busqueda == 'emplead') {
                 $rol = "OR id_rol LIKE '%2%'";
             }
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros FROM usuarios 

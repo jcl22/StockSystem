@@ -45,7 +45,8 @@ include "../../php/conexion.php";
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Proveedor</label>
                             <?php
-                            $query_proveedor = mysqli_query($conn, "SELECT * FROM proveedor WHERE estado=1");
+                            $query_proveedor = mysqli_query($conn, "SELECT * FROM proveedor WHERE estado=1
+                            ORDER BY nombre_proveedor ASC");
                             $result_proveedor = mysqli_num_rows($query_proveedor);
                             ?>
                             <select class="form-control" aria-label="Default select example" name="id_proveedor">
@@ -233,5 +234,5 @@ include "../../php/conexion.php";
         
     });
 
-</script>
+
 </script>

@@ -219,7 +219,7 @@ if (empty($_REQUEST['id'])) {
                 <div class="photo">
                     <label for="foto">Foto</label>
                     <div class="prevPhoto">
-                        <span class="delPhoto <?php echo $classRemove; ?>">X</span>
+                        <span class="delPhoto" <?php echo $classRemove; ?>>X</span>
                         <label for="foto"></label>
                         <?php echo $foto; ?>
                     </div>

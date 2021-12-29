@@ -127,6 +127,11 @@ input:focus {
 
 .a-buscador {
     text-decoration: none;
+    color: #721c24;
+}
+
+.a-buscador:hover {
+    color: #DA635D;
 }
 
 table {
@@ -716,4 +721,15 @@ table {
 }
 
 
-/* modal eliminar producto */
+/* buscar proveedor en lista productos */
+
+#buscar_idproveedor {
+    padding-bottom: 0px;
+}
+
+.table-productos .Prueba {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

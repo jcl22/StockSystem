@@ -64,7 +64,7 @@ if (!empty($_SESSION['active'])) {
     <script src="https://kit.fontawesome.com/7f19db1c03.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS File -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="style_login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap" rel="stylesheet">
@@ -114,6 +114,11 @@ if (!empty($_SESSION['active'])) {
         <?php echo isset($alert) ? $alert : ''; ?>
     </div>
 
+    <div class="div-pagweb">
+        <a href="index.html">
+            <button tarjet="_blank"id="pagweb" type="button" class="btn btn-primary">Ir a la página web</button>
+        </a>
+    </div>
 
 </body>
 

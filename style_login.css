@@ -3,7 +3,7 @@
     .Stocksystemloguin {
         overflow-y: hidden;
         font-family: 'Titillium Web', sans-serif;
-        background: url('../img/FONDO.png')center center fixed;
+        background: url('img/FONDO.png')center center fixed;
     }
     
     .container {
@@ -93,4 +93,20 @@
     
     #alert svg {
         margin-right: 8px;
+    }
+    
+    .div-pagweb {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    
+    #pagweb {
+        color: #fff;
+        background-color: rgba(78, 78, 86, 0.7)!important;
+        border: 1px solid rgba(78, 78, 86, 0.7)!important;
+    }
+    
+    #pagweb:hover {
+        color: #000;
     }

@@ -72,10 +72,16 @@ include "../../php/conexion.php";
         <div>
             <h2 class="tittle-list">Lista de productos</h2> <br>
         </div>
+        <?php
+        $busqueda = strtolower($_REQUEST['busqueda']);
+        if (empty($busqueda)) {
+            header('location:listaproductos.php');
+        }
+        ?>
         <!-- busqueda -->
         <div class="buscador" id="buscador">
             <form id="busqueda-users" class="input-group rounded" action="buscadorproductos.php" method="get">
-                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" />
+                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>" />
                 <button class="input-group-text border-0" id="search-addon">
                     <i type="submit" class="fas fa-search"></i>
                 </button>
@@ -105,7 +111,14 @@ include "../../php/conexion.php";
                 // paginador
 
                 $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
-                FROM producto WHERE estado = 1");
+                FROM producto WHERE 
+                (id_producto LIKE '%$busqueda%' OR
+                id_proveedor LIKE '%$busqueda%' OR
+                precio LIKE '%$busqueda%' OR
+                existencia LIKE '%$busqueda%' OR
+                nombre_producto LIKE '%$busqueda%')
+                AND
+                estado = 1");
 
                 $result_register = mysqli_fetch_array($sql_registe);
                 $total_registro = $result_register['total_registros'];
@@ -122,11 +135,18 @@ include "../../php/conexion.php";
                 $total_paginas = ceil($total_registro / $por_pagina);
 
 
-                $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.precio, p.existencia, 
-            pr.nombre_proveedor, p.foto
-            FROM producto p INNER JOIN proveedor pr ON p.id_proveedor = pr.id_proveedor 
-            WHERE p.estado = 1 ORDER BY 
-            p.id_producto DESC LIMIT $desde, $por_pagina");
+                $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, pr.nombre_proveedor,
+                p.precio, p.existencia, p.foto 
+                FROM producto p INNER JOIN proveedor pr 
+                ON p.id_proveedor = pr.id_proveedor
+                WHERE 
+                (p.id_producto LIKE '%$busqueda%' OR
+                p.nombre_producto LIKE '%$busqueda%'OR 
+                p.precio LIKE '%$busqueda%'OR 
+                p.existencia LIKE '%$busqueda%'OR 
+                p.foto LIKE '%$busqueda%') 
+                AND p.estado=1 ORDER BY 
+                p.id_producto DESC LIMIT $desde, $por_pagina");
 
                 $result = mysqli_num_rows($query);
 
@@ -146,7 +166,7 @@ include "../../php/conexion.php";
                                 <th scope="row"><?php echo $data["id_producto"] ?> </th>
                                 <td> <?php echo $data["nombre_producto"] ?> </td>
                                 <td> <?php echo $data["nombre_proveedor"] ?> </td>
-                                <td class="celPrecio"><?php echo $data["precio"] ?> </td>
+                                <td class="celPrecio"> <?php echo $data["precio"] ?> </td>
                                 <td class="celExistencia"> <?php echo $data["existencia"] ?> </td>
                                 <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="50px" height="50px"> </td>
 
@@ -189,41 +209,53 @@ include "../../php/conexion.php";
                         </tbody>
             </table>
         </div>
-        <div class="paginador">
-            <ul>
-                <?php
-                if ($pagina != 1) {
-                ?>
-                    <li><a href="?pagina= <?php echo 1; ?> "> |<< </a>
-                    </li>
-                    <li><a href="?pagina= <?php echo $pagina - 1; ?>">
-                            << </a>
-                    </li>
-                <?php
-                }
-                for ($i = 1; $i <= $total_paginas; $i++) {
-
-
-                    if ($i == $pagina) {
-                        echo '<li class="pageSelected">' . $i . '</li>';
-                    } else {
-                        echo '<li><a href="?pagina=' . $i . '">' . $i . '</a></li>';
+        <?php
+        if ($total_registro != 0 ) {
+        ?>
+            <div class="paginador">
+                <ul>
+                    <?php
+                    if ($pagina != 1) {
+                    ?>
+                        <li><a href="?pagina= <?php echo 1; ?>&busqueda=<?php echo $busqueda; ?>"> |<< </a>
+                        </li>
+                        <li><a href="?pagina= <?php echo $pagina - 1; ?>&busqueda=<?php echo $busqueda; ?>">
+                                << </a>
+                        </li>
+                    <?php
                     }
-                }
-                if ($pagina != $total_paginas) {
-                ?>
+                    for ($i = 1; $i <= $total_paginas; $i++) {
 
 
-                    <li><a href="?pagina= <?php echo $pagina + 1; ?>"> >> </a></li>
-                    <li><a href="?pagina= <?php echo $total_paginas; ?> "> >>| </a></li>
-                <?php } ?>
-            </ul>
-        </div>
+                        if ($i == $pagina) {
+                            echo '<li class="pageSelected">' . $i . '</li>';
+                        } else {
+                            echo '<li><a href="?pagina=' . $i . '&busqueda=' . $busqueda . '">' . $i . '</a></li>';
+                        }
+                    }
+                    if ($pagina != $total_paginas) {
+                    ?>
 
+
+                        <li><a href="?pagina= <?php echo $pagina + 1; ?>&busqueda=<?php echo $busqueda; ?>"> >> </a></li>
+                        <li><a href="?pagina= <?php echo $total_paginas; ?>&busqueda=<?php echo $busqueda; ?>"> >>| </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php } else if ($total_registro == 0) { ?>
+            </div>
+            <div id="alert-buscador" class="alert alert-danger d-block align-items-center" role="alert">
+                <div class="div-alertbusc">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </svg><b> No se encontraron registros para esta búsqueda </b> <br>
+                </div>
+                <a class="a-buscador" href="./listaproductos.php">Volver</a>
+            </div>
+        <?php } ?>
     </section>
 
 </body>
-
 
 </html>
 <script>
@@ -304,7 +336,7 @@ include "../../php/conexion.php";
             $('.buscador').fadeOut();
         });
 
-        
+
     });
 
 
