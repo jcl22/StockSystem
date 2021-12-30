@@ -102,10 +102,12 @@ include "../../php/conexion.php";
 
                 </tr>
                     </tbody>
-
-
-
         </table>
+        <!-- <div class="div-categoria">
+            <a onclick="categoriaProductos();">
+                <button tarjet="_blank" id="button-categoria" type="button" class="btn btn-primary">Ir a productos por categoría</button>
+            </a>
+        </div> -->
     </section>
 </body>
 

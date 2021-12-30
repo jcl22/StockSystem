@@ -14,6 +14,6 @@
 <!-- javascript -->
 <script src="generales/header.js"></script>
 
-<?php include '../php/function.php' ?>
+
 <?php include '../php/conexion.php' ?>
 
