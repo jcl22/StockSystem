@@ -46,8 +46,7 @@ setlocale(LC_MONETARY, 'es_CO');
             </div>
             <!-- usuario -->
             <div class="form-group" id="div-usuario">
-                <input class="form-control" aria-label="Default select example" id="usuario" 
-                name="id_usuario" value="<?php echo $_SESSION['nombre_usuario']; ?>" disabled>
+                <input class="form-control" aria-label="Default select example" id="usuario" name="id_usuario" value="<?php echo $_SESSION['nombre_usuario']; ?>" disabled>
             </div>
 
         </div>
@@ -55,7 +54,7 @@ setlocale(LC_MONETARY, 'es_CO');
         <!-- form cliente -->
         <form name="add_cliente" id="add_cliente" action="" class="content-form2">
             <input type="hidden" name="action" value="Cliente">
-            <input type="hidden" name="id" id="id" value="" required> 
+            <input type="hidden" name="id" id="id" value="" required>
 
             <div class="search_clientes">
                 <!-- cliente -->
@@ -76,18 +75,15 @@ setlocale(LC_MONETARY, 'es_CO');
             <div class="info_clientes">
                 <!-- fecha -->
                 <div class="form-group">
-                    <input class="form-control" value="" id="nombre_cliente" name="nombre_cliente" 
-                    placeholder="Nombre" disabled>
+                    <input class="form-control" value="" id="nombre_cliente" name="nombre_cliente" placeholder="Nombre" disabled>
                 </div>
                 <!-- usuario -->
                 <div class="form-group">
-                    <input class="form-control" aria-label="Default select example" value="" 
-                    placeholder="Teléfono" id="telefono_cliente" name="telefono_cliente" disabled>
+                    <input class="form-control" aria-label="Default select example" value="" placeholder="Teléfono" id="telefono_cliente" name="telefono_cliente" disabled>
                 </div>
                 <!-- usuario -->
                 <div class="form-group">
-                    <input class="form-control" aria-label="Default select example" id="direccion_cliente" 
-                    placeholder="Direccción" name="direccion_cliente" disabled>
+                    <input class="form-control" aria-label="Default select example" id="direccion_cliente" placeholder="Direccción" name="direccion_cliente" disabled>
                 </div>
                 <!-- botón para guardar cliente -->
                 <div class="guardar-cliente">
@@ -103,19 +99,28 @@ setlocale(LC_MONETARY, 'es_CO');
             <table class="table" id="table">
                 <thead>
                     <tr style="background-color:#F4F4F4">
+                        <th width="80px">ID</th>
                         <th width="200px">Producto</th>
+                        <th width="10px">Existencia</th>
                         <th width="10px">Cantidad</th>
                         <th width="150px">Precio unitario </th>
-                        <th width="150px">Precio total </th>
+                        <th width="200px">Precio total </th>
                         <th width="100px">Acciones </th>
                     </tr>
                     <tr>
                         <td><input class="form-control" aria-label="Default select example" name="id_producto" id="id_producto"></td>
-                        <td><input class="form-control" aria-label="Default select example" name="cantidad_producto"></td>
-                        <td><input class="form-control" aria-label="Default select example" name="precio" disabled></td>
-                        <td><input class="form-control" aria-label="Default select example" name="precio_total" disabled></td>
-                        <td>
-                            <a class="form-control" aria-label="Default select example" name="" id="add"> <i class="fas fa-plus"></i> Agregar </a>
+                        <td><input class="form-control " aria-label="Default select example" name="nameProduct" id="txt_nameProduct" disabled></td>
+                        <td><input class="form-control" aria-label="Default select example" name="existencia" id="txt_existenciaProducto" disabled></td>
+                        <td><input min="1" class="form-control" aria-label="Default select example" name="cantidad" id="txt_cantidad" disabled></td>
+                        <td><input class="form-control" aria-label="Default select example" name="precio" id="txt_precio" disabled></td>
+                        <td><input class="form-control" aria-label="Default select example" name="precio_total" id="txt_precioTotal" disabled></td>
+                        <td class="input-add">
+                            <a class="form-control" aria-label="Default select example" name="" id="add">
+                                <svg id="agregar-producto" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                                Agregar </a>
                         </td>
                     </tr>
                     <tr>
@@ -124,10 +129,14 @@ setlocale(LC_MONETARY, 'es_CO');
                         <td> </td>
                         <td> </td>
                         <td> </td>
+                        <td> </td>
+                        <td> </td>
 
                     </tr>
                     <tr style="background-color:#F4F4F4">
+                        <th width="80px">ID</th>
                         <th width="200px">Producto</th>
+                        <th width="10px">Existencia</th>
                         <th width="10px">Cantidad</th>
                         <th width="150px">Precio unitario </th>
                         <th width="150px">Precio total </th>
@@ -136,8 +145,9 @@ setlocale(LC_MONETARY, 'es_CO');
                 </thead>
                 <tbody id="detalle_venta">
                     <tr>
+                        <td>2</td>
                         <td>Pintura</td>
-
+                        <td>10</td>
                         <td>2</td>
                         <td>100</td>
                         <td>200</td>
@@ -145,8 +155,9 @@ setlocale(LC_MONETARY, 'es_CO');
                             example" name="" onclick="event.preventDefault();del_product_detalle(1);" id="quit""><i class=" far fa-trash-alt"></i></a> </td>
                     </tr>
                     <tr>
+                        <td>5</td>
                         <td>Casco</td>
-
+                        <td>8</td>
                         <td>4</td>
                         <td>400</td>
                         <td>1200</td>
@@ -156,7 +167,7 @@ setlocale(LC_MONETARY, 'es_CO');
                 </tbody>
                 <tfoot>
                     <tr class="totales">
-                        <th row="span" colspan="2" class="textright"> <b>TOTALES</b> </th>
+                        <th row="span" colspan="3" class="textright"> <b>TOTALES</b> </th>
                         <td class="textright">6</td>
                         <td class="textright">500</td>
                         <td class="textright">1400</td>

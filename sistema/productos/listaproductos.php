@@ -33,7 +33,7 @@ include "../../php/conexion.php";
         <div id="modalProducto">
             <form action="" method="post" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sendDataProduct();">
                 <h1> Actualizar producto</h1> <br>
-                <p class="nameProduct"> </p>
+                <p id="nameProduct"> </p>
                 <div class="inputs">
                     <label for=""> Cantidad</label>
                     <input type="number" class="form-control" id="txt-cantidad" name="cantidad" required>

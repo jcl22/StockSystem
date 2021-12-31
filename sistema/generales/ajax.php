@@ -11,7 +11,7 @@ if (!empty($_POST)) {
 
         $id_producto = $_POST['producto'];
 
-        $query = mysqli_query($conn, "SELECT id_producto, nombre_producto FROM producto
+        $query = mysqli_query($conn, "SELECT id_producto, nombre_producto, precio, existencia FROM producto
             WHERE id_producto = $id_producto AND estado=1 ");
 
         $result = mysqli_num_rows($query);
