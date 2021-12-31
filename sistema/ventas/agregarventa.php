@@ -96,7 +96,7 @@ setlocale(LC_MONETARY, 'es_CO');
 
         <!-- detalle venta -->
         <div class="content-formdet">
-            <table class="table" id="table">
+            <table class="table" id="table-venta">
                 <thead>
                     <tr style="background-color:#F4F4F4">
                         <th width="80px">ID</th>
@@ -135,8 +135,7 @@ setlocale(LC_MONETARY, 'es_CO');
                     </tr>
                     <tr style="background-color:#F4F4F4">
                         <th width="80px">ID</th>
-                        <th width="200px">Producto</th>
-                        <th width="10px">Existencia</th>
+                        <th colspan="2" width="200px">Producto</th>
                         <th width="10px">Cantidad</th>
                         <th width="150px">Precio unitario </th>
                         <th width="150px">Precio total </th>
@@ -144,45 +143,35 @@ setlocale(LC_MONETARY, 'es_CO');
                     </tr>
                 </thead>
                 <tbody id="detalle_venta">
-                    <tr>
-                        <td>2</td>
-                        <td>Pintura</td>
-                        <td>10</td>
-                        <td>2</td>
-                        <td>100</td>
-                        <td>200</td>
-                        <td><a class="form-control" aria-label="Default select 
-                            example" name="" onclick="event.preventDefault();del_product_detalle(1);" id="quit""><i class=" far fa-trash-alt"></i></a> </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Casco</td>
-                        <td>8</td>
-                        <td>4</td>
-                        <td>400</td>
-                        <td>1200</td>
-                        <td><a class="form-control" aria-label="Default select example" name="" onclick="event.preventDefault();del_product_detalle(1);" id="quit""><i class=" far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
+                    <!-- contenido se obtiene de ajax -->
                 </tbody>
-                <tfoot>
-                    <tr class="totales">
-                        <th row="span" colspan="3" class="textright"> <b>TOTALES</b> </th>
-                        <td class="textright">6</td>
-                        <td class="textright">500</td>
-                        <td class="textright">1400</td>
-                    </tr>
+                <tfoot id="detalle_totales">
+                    <!-- contenido se obtiene de ajax -->
                 </tfoot>
             </table>
-            <!-- <a class="button-venta">
-                <input id="login" type="button" value="Procesar" class="btn float-right login_btn">
-            </a> -->
+            <div class="botones-venta">
+                <a class="button-procesar" id="button-procesar">
+                    <input id="procesar" type="button" value="Procesar" class="btn float-right login_btn">
+                </a>
+                <a class="button-anular" id="button-anular">
+                    <input id="anular" type="button" value="Limpiar" class="btn float-right login_btn">
+                </a>
+            </div>
         </div>
-        <?php echo isset($alert) ? $alert : ''; ?>
+
     </section>
+
+
 
 </body>
 
 </html>
 
 <script src="../generales/funciones.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var usuario_id = <?php echo $_SESSION['id_usuario'] ?>;
+        searchForDetalle(usuario_id);
+    });
+</script>
