@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-12-2021 a las 08:40:15
+-- Tiempo de generación: 01-01-2022 a las 01:16:34
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -48,54 +48,85 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_precio_producto` (`n_exi
         
     END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_detalletemp` (`codigo` INT, `cantidad` INT, `token_user` VARCHAR(50))  BEGIN
+     DECLARE precio_actual decimal(10,2); 
+  		SELECT precio INTO precio_actual FROM producto WHERE id_producto = codigo;
+        
+        INSERT INTO detalle_temp(token_usuario,id_producto,cantidad,precio_venta) 
+        VALUES(token_user, codigo, cantidad, precio_actual);
+        
+        SELECT tmp.id_detemp, tmp.id_producto,p.nombre_producto, tmp.cantidad, tmp.precio_venta 
+        FROM detalle_temp tmp 
+        INNER JOIN producto p
+        ON tmp.id_producto = p.id_producto
+        WHERE tmp.token_usuario = token_user;
+    END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_detalletemp` (IN `id_detalle` INT, IN `token` VARCHAR(50))  BEGIN
+        
+        	DELETE FROM detalle_temp WHERE id_detemp = id_detalle;
+            
+            SELECT tmp.id_detemp, tmp.id_producto, p.nombre_producto, tmp.cantidad, tmp.precio_venta 
+            FROM detalle_temp tmp 
+            INNER JOIN producto p
+            ON tmp.id_producto = p.id_producto
+            WHERE tmp.token_usuario = token
+            ORDER BY tmp.id_detemp ASC;
+        END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procesar_venta` (`cod_usuario` INT, `cod_cliente` INT, `token` VARCHAR(50))  BEGIN
+    	DECLARE venta INT;
+        DECLARE registros INT;
+        
+        DECLARE total DECIMAL(10,2);
+            
+        DECLARE nueva_existencia int;
+        DECLARE existencia_actual int;
+            
+        DECLARE tmp_cod_producto int;
+        DECLARE tmp_cant_producto int;
+        DECLARE a INT;
+        SET a = 1;
+        
+        CREATE TEMPORARY TABLE tbl_tmp_tokenusuario (
+            id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            cod_prod BIGINT, 
+            cant_prod INT);
+            
+            SET registros = (SELECT COUNT(*) FROM detalle_temp WHERE token_usuario = token);
+            
+            IF registros > 0  THEN
+            	INSERT INTO tbl_tmp_tokenusuario(cod_prod, cant_prod) SELECT id_producto, cantidad FROM detalle_temp
+            			WHERE token_usuario = token;
+            	INSERT INTO venta (id_usuario, id_cliente) VALUES (cod_usuario,cod_cliente);
+            	SET venta = LAST_INSERT_ID();
+            
+            	INSERT INTO detalle_venta (id_venta, id_producto, cantidad, precio_venta) SELECT (venta) AS id_venta, id_producto, 
+            	cantidad, precio_venta FROM detalle_temp WHERE token_usuario = token;
+            
+            	WHILE a <= registros DO
+            		SELECT cod_prod, cant_prod INTO tmp_cod_producto, tmp_cant_producto FROM tbl_tmp_tokenusuario WHERE id=a;
+            		SELECT existencia into existencia_actual FROM producto WHERE id_producto = tmp_cod_producto;         
+            		SET nueva_existencia = existencia_actual - tmp_cant_producto;
+            		UPDATE producto SET existencia = nueva_existencia WHERE id_producto = tmp_cod_producto;
+            
+            		SET a=a+1;
+            
+            	END WHILE;
+            
+            	SET total = (SELECT SUM(cantidad*precio_venta) FROM detalle_temp WHERE token_usuario = token);
+            	UPDATE venta SET total_venta = total WHERE id_venta = venta;            
+            	DELETE FROM detalle_temp WHERE token_usuario = token;
+           		TRUNCATE TABLE tbl_tmp_tokenusuario;
+            	SELECT * FROM venta WHERE id_venta = venta;
+            
+            ELSE
+            	SELECT 0;
+            END IF;
+            
+    END$$
+
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `bodega`
---
-
-CREATE TABLE `bodega` (
-  `id_bodega` int(15) NOT NULL,
-  `nombre_bodega` varchar(20) NOT NULL,
-  `descripcion_bod` varchar(155) NOT NULL,
-  `lugar` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `bodega`
---
-
-INSERT INTO `bodega` (`id_bodega`, `nombre_bodega`, `descripcion_bod`, `lugar`) VALUES
-(1, 'Bodega principal', 'Bodega de productos con la mayor rotación', 'Medellín'),
-(2, 'Bodega espera', 'Bodega de productos con alta rotación', 'Medellín'),
-(3, 'Bodega transitoria', 'Bodega de productos con rotación equilibrada', 'Medellín'),
-(4, 'Bodega baja rotacion', 'Bodega de productos con baja rotación', 'Medellín'),
-(5, 'Bodega rotación nula', 'Bodega de productos sin rotación ', 'Medellín');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `bodega_destino`
---
-
-CREATE TABLE `bodega_destino` (
-  `id_bodegadestino` int(15) NOT NULL,
-  `id_bodega` int(15) NOT NULL,
-  `id_detorigen` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `bodega_origen`
---
-
-CREATE TABLE `bodega_origen` (
-  `id_bodegaorigen` int(15) NOT NULL,
-  `id_bodega` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -139,7 +170,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `telefono`, `direccion`, `estado`) VALUES
-(3829382, 'Jonatan', 5754854, 'cra 40 # 10-114', 1),
+(3829382, 'Andrés ', 5754854, 'cra 40 # 10-114', 1),
 (19238349, 'Jonatan', 3712838, 'calle 10 #98-91', 1),
 (72638484, 'Camila Londoño Arenas', 60145647, 'Cra 30A #20sur-10', 1),
 (101292039, 'Esteban Cano', 604516272, 'cra 45A #40-30', 1),
@@ -150,50 +181,39 @@ INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `telefono`, `direccion`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `compra`
+-- Estructura de tabla para la tabla `config_empresa`
 --
 
-CREATE TABLE `compra` (
-  `id_compra` int(20) NOT NULL,
-  `id_proveedor` int(15) NOT NULL,
-  `id_usuario` int(15) NOT NULL,
-  `fecha_compra` date NOT NULL
+CREATE TABLE `config_empresa` (
+  `id` bigint(20) NOT NULL,
+  `nit` varchar(20) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `razon_social` varchar(100) NOT NULL,
+  `telefono` bigint(20) NOT NULL,
+  `correo` varchar(150) NOT NULL,
+  `direccion` text NOT NULL,
+  `iva` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `compra`
+-- Volcado de datos para la tabla `config_empresa`
 --
 
-INSERT INTO `compra` (`id_compra`, `id_proveedor`, `id_usuario`, `fecha_compra`) VALUES
-(1, 103465748, 1036678760, '2021-11-01'),
-(2, 7384920, 1017200416, '2021-11-04'),
-(3, 1012637495, 70129170, '2021-11-09');
+INSERT INTO `config_empresa` (`id`, `nit`, `nombre`, `razon_social`, `telefono`, `correo`, `direccion`, `iva`) VALUES
+(1, '102938474-5', 'StockSystem - Sistema de inventarios y ventas', 'Stocksystem', 6044637283, 'stocksystemcompany@gmail.com', 'Cra 56b # 34c - 16', '19.00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle_compra`
+-- Estructura de tabla para la tabla `detalle_temp`
 --
 
-CREATE TABLE `detalle_compra` (
-  `id_detcompra` int(15) NOT NULL,
+CREATE TABLE `detalle_temp` (
+  `id_detemp` int(15) NOT NULL,
   `id_producto` int(15) NOT NULL,
-  `id_compra` int(15) NOT NULL,
-  `cantidad_compra` int(10) NOT NULL,
-  `costo_total` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_trasladoorigen`
---
-
-CREATE TABLE `detalle_trasladoorigen` (
-  `id_detorigen` int(15) NOT NULL,
-  `id_producto` int(15) NOT NULL,
-  `cantidad_traslado` int(10) NOT NULL,
-  `id_bodegaorigen` int(15) NOT NULL
+  `token_usuario` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `cantidad` int(10) NOT NULL,
+  `precio_venta` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -206,8 +226,24 @@ CREATE TABLE `detalle_venta` (
   `id_detventa` int(15) NOT NULL,
   `id_producto` int(15) NOT NULL,
   `id_venta` int(15) NOT NULL,
-  `cantidad_venta` int(10) NOT NULL
+  `fecha_venta` datetime NOT NULL DEFAULT current_timestamp(),
+  `cantidad` int(10) NOT NULL,
+  `precio_venta` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`id_detventa`, `id_producto`, `id_venta`, `fecha_venta`, `cantidad`, `precio_venta`) VALUES
+(6, 1, 5, '2021-12-31 19:08:59', 2, '1720000.00'),
+(7, 3, 5, '2021-12-31 19:08:59', 1, '5555555.56'),
+(9, 3, 6, '2021-12-31 19:10:51', 2, '5555555.56'),
+(10, 2, 6, '2021-12-31 19:10:51', 1, '2625000.00'),
+(11, 4, 6, '2021-12-31 19:10:51', 1, '3550000.00'),
+(12, 3, 7, '2021-12-31 19:13:08', 2, '5555555.56'),
+(13, 6, 7, '2021-12-31 19:13:08', 1, '7570000.00'),
+(14, 1, 7, '2021-12-31 19:13:08', 1, '1720000.00');
 
 -- --------------------------------------------------------
 
@@ -220,7 +256,7 @@ CREATE TABLE `inventario` (
   `id_producto` int(15) NOT NULL,
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
   `existencia` int(20) NOT NULL,
-  `precio` int(15) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
   `id_usuario` int(15) NOT NULL,
   `id_proveedor` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -230,11 +266,30 @@ CREATE TABLE `inventario` (
 --
 
 INSERT INTO `inventario` (`id_inventario`, `id_producto`, `fecha`, `existencia`, `precio`, `id_usuario`, `id_proveedor`) VALUES
-(1, 1, '2021-12-24 02:06:37', 30, 17000000, 1036678760, 37443943),
-(2, 2, '2021-12-24 02:08:11', 5, 2800000, 1036678760, 1012637495),
-(3, 3, '2021-12-24 02:09:55', 12, 6100000, 1036678760, 37443943),
-(4, 4, '2021-12-24 02:11:13', 5, 3500000, 1036678760, 32732743),
-(5, 5, '2021-12-24 02:29:27', 5, 2400000, 1036678760, 327283292);
+(1, 1, '2021-12-24 02:06:37', 30, '17000000.00', 1036678760, 37443943),
+(2, 2, '2021-12-24 02:08:11', 5, '2800000.00', 1036678760, 1012637495),
+(3, 3, '2021-12-24 02:09:55', 12, '6100000.00', 1036678760, 37443943),
+(4, 4, '2021-12-24 02:11:13', 5, '3500000.00', 1036678760, 32732743),
+(5, 5, '2021-12-24 02:29:27', 5, '2400000.00', 1036678760, 327283292),
+(6, 5, '2021-12-26 18:33:02', 1, '2100000.00', 1036678760, 0),
+(7, 3, '2021-12-26 18:36:14', 3, '6000000.00', 1036678760, 0),
+(8, 2, '2021-12-26 21:39:27', 3, '2500000.00', 1036678760, 0),
+(9, 1, '2021-12-26 21:41:30', 10, '1800000.00', 1036678760, 0),
+(10, 4, '2021-12-26 22:21:46', 2, '3700000.00', 1036678760, 0),
+(11, 4, '2021-12-26 22:25:32', 1, '3400000.00', 1036678760, 0),
+(12, 2, '2021-12-26 22:59:31', 2, '2500000.00', 1036678760, 0),
+(13, 4, '2021-12-26 23:08:17', 1, '3800000.00', 1036678760, 0),
+(14, 4, '2021-12-28 12:59:18', 1, '3400000.00', 1036678760, 0),
+(15, 3, '2021-12-29 14:11:48', 3, '6000000.00', 1036678760, 0),
+(16, 5, '2021-12-29 14:13:48', 2, '2300000.00', 1036678760, 0),
+(17, 2, '2021-12-29 15:07:15', 2, '2500000.00', 1036678760, 0),
+(18, 2, '2021-12-29 15:36:45', -1, '2625000.00', 1036678760, 0),
+(19, 6, '2021-12-29 21:20:45', 7, '7500000.00', 1036678760, 37443943),
+(20, 6, '2021-12-29 21:21:56', -2, '7500000.00', 1036678760, 0),
+(21, 6, '2021-12-30 03:33:15', 2, '7500000.00', 1036678760, 0),
+(22, 6, '2021-12-30 20:25:46', 2, '7700000.00', 1036678760, 0),
+(23, 6, '2021-12-30 21:53:09', 1, '7800000.00', 1036678760, 0),
+(24, 1, '2021-12-31 17:59:52', 10, '1700000.00', 1036678760, 0);
 
 -- --------------------------------------------------------
 
@@ -260,11 +315,12 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre_producto`, `id_categoria`, `precio`, `existencia`, `date_add`, `id_usuario`, `id_proveedor`, `foto`, `estado`) VALUES
-(1, 'Aple Watch Serie 7 ', 2, '1700000.00', 30, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_cf74bec4426b0e6e513a53bff2e84b66jpg', 1),
-(2, 'HP Pavillon x360', 3, '2800000.00', 5, '2021-12-24 02:08:11', 1036678760, 1012637495, 'img_c40eab6e6805b4cb48e38b6e5b41a345jpg', 1),
-(3, 'Iphone 13 Pro 256 gb', 1, '6100000.00', 12, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_399dadc76d596ad4eee020bfc677e23ajpg', 1),
-(4, 'Samsung Galaxy Z Flip3', 2, '3500000.00', 5, '2021-12-24 02:11:13', 1036678760, 32732743, 'img_4827af1963ee950d7dcb114262991f0fjpg', 1),
-(5, 'SONY Xperia 10 III', 3, '2400000.00', 5, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1);
+(1, 'Aple Watch Serie 7 ', 2, '1720000.00', 47, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_producto.png', 1),
+(2, 'HP Pavillon x360', 3, '2625000.00', 10, '2021-12-24 02:08:11', 1036678760, 1012637495, 'img_producto.png', 1),
+(3, 'Iphone 13 Pro 256 gb', 3, '5555555.56', 13, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_producto.png', 1),
+(4, 'Samsung Galaxy Z Flip3', 2, '3550000.00', 9, '2021-12-24 02:11:13', 1036678760, 32732743, 'img_producto.png', 1),
+(5, 'SONY Xperia 10 III', 3, '2341666.00', 12, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1),
+(6, 'Mackbook Air Pro 2021', 1, '7570000.00', 9, '2021-12-29 21:20:45', 1036678760, 37443943, 'img_producto.png', 1);
 
 --
 -- Disparadores `producto`
@@ -327,19 +383,6 @@ INSERT INTO `rol` (`id_rol`, `nombre_rol`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `traslado_bodegas`
---
-
-CREATE TABLE `traslado_bodegas` (
-  `id_traslado` int(15) NOT NULL,
-  `id_bodegadestino` int(15) NOT NULL,
-  `fecha_traslado` date NOT NULL,
-  `observaciones` varchar(155) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -378,42 +421,23 @@ CREATE TABLE `venta` (
   `id_venta` int(15) NOT NULL,
   `id_cliente` int(15) NOT NULL,
   `id_usuario` int(15) NOT NULL,
-  `fecha_venta` date NOT NULL
+  `fecha_venta` datetime NOT NULL DEFAULT current_timestamp(),
+  `total_venta` int(30) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`id_venta`, `id_cliente`, `id_usuario`, `fecha_venta`) VALUES
-(1, 72638484, 1001506208, '2021-11-11'),
-(2, 72638484, 1036678760, '2021-11-11'),
-(3, 101292039, 1017200416, '2021-11-11');
+INSERT INTO `venta` (`id_venta`, `id_cliente`, `id_usuario`, `fecha_venta`, `total_venta`, `estado`) VALUES
+(5, 3829382, 1036678760, '0000-00-00 00:00:00', 8995556, 1),
+(6, 3829382, 1036678760, '2021-12-31 19:10:51', 17286111, 1),
+(7, 3829382, 1036678760, '2021-12-31 19:13:07', 20401111, 1);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `bodega`
---
-ALTER TABLE `bodega`
-  ADD PRIMARY KEY (`id_bodega`);
-
---
--- Indices de la tabla `bodega_destino`
---
-ALTER TABLE `bodega_destino`
-  ADD PRIMARY KEY (`id_bodegadestino`),
-  ADD KEY `id_det_destino` (`id_detorigen`),
-  ADD KEY `id_bodega` (`id_bodega`);
-
---
--- Indices de la tabla `bodega_origen`
---
-ALTER TABLE `bodega_origen`
-  ADD PRIMARY KEY (`id_bodegaorigen`),
-  ADD KEY `id_bodega` (`id_bodega`);
 
 --
 -- Indices de la tabla `categoria_productos`
@@ -428,28 +452,18 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indices de la tabla `compra`
+-- Indices de la tabla `config_empresa`
 --
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`id_compra`),
-  ADD KEY `id_proveedor` (`id_proveedor`),
-  ADD KEY `id_usuario` (`id_usuario`);
+ALTER TABLE `config_empresa`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `detalle_compra`
+-- Indices de la tabla `detalle_temp`
 --
-ALTER TABLE `detalle_compra`
-  ADD PRIMARY KEY (`id_detcompra`),
-  ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_compra` (`id_compra`);
-
---
--- Indices de la tabla `detalle_trasladoorigen`
---
-ALTER TABLE `detalle_trasladoorigen`
-  ADD PRIMARY KEY (`id_detorigen`),
-  ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_bodegaorigen` (`id_bodegaorigen`);
+ALTER TABLE `detalle_temp`
+  ADD PRIMARY KEY (`id_detemp`),
+  ADD KEY `id_producto_2` (`id_producto`),
+  ADD KEY `token_usuario` (`token_usuario`);
 
 --
 -- Indices de la tabla `detalle_venta`
@@ -490,14 +504,6 @@ ALTER TABLE `rol`
   ADD PRIMARY KEY (`id_rol`);
 
 --
--- Indices de la tabla `traslado_bodegas`
---
-ALTER TABLE `traslado_bodegas`
-  ADD PRIMARY KEY (`id_traslado`),
-  ADD KEY `id_bodorigen` (`id_bodegadestino`),
-  ADD KEY `id_boddestino` (`id_bodegadestino`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -517,46 +523,34 @@ ALTER TABLE `venta`
 --
 
 --
--- AUTO_INCREMENT de la tabla `compra`
+-- AUTO_INCREMENT de la tabla `config_empresa`
 --
-ALTER TABLE `compra`
-  MODIFY `id_compra` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `config_empresa`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `detalle_compra`
+-- AUTO_INCREMENT de la tabla `detalle_temp`
 --
-ALTER TABLE `detalle_compra`
-  MODIFY `id_detcompra` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `detalle_trasladoorigen`
---
-ALTER TABLE `detalle_trasladoorigen`
-  MODIFY `id_detorigen` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `detalle_temp`
+  MODIFY `id_detemp` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `traslado_bodegas`
---
-ALTER TABLE `traslado_bodegas`
-  MODIFY `id_traslado` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_producto` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -568,11 +562,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detalle_temp`
+--
+ALTER TABLE `detalle_temp`
+  ADD CONSTRAINT `detalle_temp_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
 
 --
 -- Filtros para la tabla `detalle_venta`
