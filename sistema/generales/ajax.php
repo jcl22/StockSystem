@@ -381,7 +381,7 @@ if (!empty($_POST)) {
             exit;
          }
 
-         //anular venta
+         //limpiar campos de venta
          if($_POST['action'] == 'anularVenta') {
 
             $token = md5($_SESSION['id_usuario']);
@@ -395,6 +395,36 @@ if (!empty($_POST)) {
             exit;
 
          }
+         //crear venta
+         if($_POST['action'] == 'crearVenta') {
+             
+            if (empty($_POST['cod_cliente'])) {
+                $cod_cliente =1;
+            } else{
+                $cod_cliente = $_POST['cod_cliente'];
+            }
+
+            $token = md5($_SESSION['id_usuario']);
+            $usuario = $_SESSION['id_usuario'];
+
+            $query= mysqli_query($conn, "SELECT * FROM detalle_temp WHERE token_usuario = '$token' ");
+            $result = mysqli_num_rows($query);
+
+            if ($result>0) {
+                $query_ejecutar = mysqli_query($conn, "CALL procesar_venta($usuario, $cod_cliente, '$token')");
+                $result_ejecutar = mysqli_num_rows($query_ejecutar);
+
+                if($result_ejecutar >0) {
+                    $data = mysqli_fetch_assoc($query_ejecutar);
+                    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+                } else {
+                    echo "error";
+                }
+            } else {
+                echo "error";
+            }
+            exit;
+        }
 
 }
 exit;

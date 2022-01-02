@@ -121,7 +121,7 @@
                         $('.button-cliente').slideDown('');
                     } else {
                         var data = $.parseJSON(response);
-                        $('#id_cliente').val(data.id_cliente)
+                        $('#id').val(data.id_cliente)
                         $('#nombre_cliente').val(data.nombre_cliente)
                         $('#telefono_cliente').val(data.telefono)
                         $('#direccion_cliente').val(data.direccion)
@@ -300,6 +300,7 @@
                 }); //end ajax
             }
         });
+
         //anular venta
         $('.button-anular').click(function(e) {
             e.preventDefault();
@@ -327,7 +328,46 @@
             }
         })
 
+        //crear venta
+        $('#button-procesar').click(function(e) {
+            e.preventDefault();
+
+            var rows = $('#detalle_venta tr').length;
+            if (rows > 0) {
+                var action = 'crearVenta';
+                var cod_cliente = $('#id').val();
+
+                $.ajax({
+                    url: '../generales/ajax.php',
+                    type: 'POST',
+                    async: true,
+                    data: { action: action, cod_cliente: cod_cliente },
+
+                    success: function(response) {
+
+                        if (response != 'error') {
+
+                            var info = JSON.parse(response);
+                            console.log(response);
+                            // alert("La venta se ha registrado con éxito");
+                            // location.reload();
+
+                        } else {
+                            console.log('no data');
+                        }
+                    },
+                    error: function(error) {}
+
+                }); //end ajax
+
+
+            }
+        })
+
     }); //END READY
+
+
+
 
     //eliminar detalle temp
     function del_product_detalle(id_detemp) {
