@@ -12,9 +12,10 @@ $total 		= 0;
 
 <head>
 	<meta charset="UTF-8">
-	<title>Stocksystem | Factura</title>
+	<title>Stocksystem | Factura No. <?php echo $factura['id_venta']; ?></title>
 	<!-- Favicons -->
-	<link rel="icon" href="../../../img/StockS.ico">
+    <link rel="icon" href="./StockS.ico">
+
 	<style>
 		@import url('fonts/BrixSansRegular.css');
 		@import url('fonts/BrixSansBlack.css');
@@ -191,7 +192,6 @@ $total 		= 0;
 					?>
 						<div>
 							<span class="h2"><?php echo $configuracion['nombre']; ?></span>
-
 							<p><?php echo $configuracion['direccion']; ?></p>
 							<p>NIT: <?php echo $configuracion['nit']; ?></p>
 							<p>Teléfono: <?php echo $configuracion['telefono']; ?></p>
@@ -251,6 +251,12 @@ $total 		= 0;
 				</tr>
 			</thead>
 			<tbody id="detalle_productos">
+				<tr>
+					<td class="textcenter"></td>
+					<td class="textcenter" style="color: #fff;">----------</td>
+					<td class="textcenter"></td>
+					<td class="textcenter"></td>
+				</tr>
 
 				<?php
 
@@ -276,7 +282,11 @@ $total 		= 0;
 				?>
 			</tbody>
 			<tfoot id="detalle_totales">
-				
+				<tr>
+					<td colspan="3" class="textright"><span></span></td>
+					<td class="textright" style="color:#fff;">---------</td>
+				</tr>
+
 				<tr>
 					<td colspan="3" class="textright"><span>SUBTOTAL </span></td>
 					<td class="textright"><span><?php echo $tl_sniva; ?></span></td>

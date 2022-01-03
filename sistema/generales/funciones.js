@@ -367,10 +367,12 @@
         })
 
         //ver PDF de venta
-        $('#verPDF').click(function(e) {
+        $('').click(function(e) {
             e.preventDefault();
-            var cliente = $(this).attr('cl');
-            var factura = $(this).attr('f');
+            var Codcliente = $(this).attr('cl');
+            var Codfactura = $(this).attr('f');
+
+            generarPDF(Codcliente, Codfactura);
         })
 
     }); //END READY

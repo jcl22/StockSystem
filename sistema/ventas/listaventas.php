@@ -35,24 +35,23 @@ include "../../php/conexion.php";
         <div class="buscador" id="buscar-venta">
             <!-- busqueda por No. de venta-->
             <form id="busqueda-venta" class="input-group rounded" action="buscadorventas.php" method="get">
-                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="busqueda" id="busqueda" placeholder="No. Venta" />
+                <input type="text" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" 
+                name="busqueda" id="busqueda" placeholder="No. Venta" />
                 <button class="input-group-text border-0" id="search-addon">
                     <i type="submit" class="fas fa-search"></i>
                 </button>
             </form>
             <!-- busqueda por fecha -->
             <form id="busqueda-venta" class="input-group rounded" action="buscadorventas.php" method="get">
-                <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="fecha_de" id="fecha_de" />
-                <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" name="fecha_a" id="fecha_a" />
+                <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" 
+                name="fecha_de" id="fecha_de" required/>
+                <input type="date" class="form-control rounded" aria-label="Search" aria-describedby="search-addon" 
+                name="fecha_a" id="fecha_a" required/>
                 <button class="input-group-text border-0" id="search-addon">
                     <i type="submit" class="fas fa-search"></i>
                 </button>
             </form>
         </div>
-
-
-
-
 
         <!-- tabla -->
         <table class="table">
@@ -87,7 +86,7 @@ include "../../php/conexion.php";
             $total_paginas = ceil($total_registro / $por_pagina);
 
             $query = mysqli_query($conn, "SELECT v.id_venta, v.fecha_venta, v.total_venta, 
-                                                v.estado, 
+                                                v.estado, v.id_cliente,
                                                 u.nombre_usuario as vendedor, 
                                                 cl.nombre_cliente as cliente 
                                                 FROM venta v
@@ -113,19 +112,20 @@ include "../../php/conexion.php";
                                         </p>  </b>
                                     </div> ';
                     }
-            ?>   
+            ?>
                     <tbody>
-                        <tr id="row_<?php echo $data["id_venta"] ?>">                        
+                        <tr id="row_<?php echo $data["id_venta"] ?>">
                             <th scope="row"><?php echo $data["id_venta"] ?> </th>
                             <td><?php echo $data["fecha_venta"] ?> </td>
                             <td> <?php echo $data["cliente"] ?> </td>
                             <td> <?php echo $data["vendedor"] ?> </td>
                             <td><?php echo $estado; ?> </td>
                             <td class="text-right"> <span>$</span><?php echo $data["total_venta"] ?> </td>
-                            
+
 
                             <td class="text-center">
-                                <a  id="verPDF" type="button" cl="<?php echo $data["cliente"]; ?>" f="<?php echo $data["id_venta"] ?>">
+                                <a href="http://localhost/stocksystem/sistema/ventas/factura/generaFactura.php?cl=<?php echo $data["id_cliente"]; ?>&f=<?php echo $data["id_venta"]; ?>"
+                                target="_blank">
                                     <button type="button" id="button-ver" class="btn btn-sucess">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
                                             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
@@ -133,6 +133,7 @@ include "../../php/conexion.php";
                                         </svg>
                                     </button>
                                 </a>
+
                                 <?php
                                 if ($tipo_rol == 'Administrador') {
                                     if ($data['estado'] == 1) {
@@ -140,7 +141,7 @@ include "../../php/conexion.php";
 
                                         <a href="anularventa.php?id=<?php echo $data["id_venta"] ?>">
                                             <button type="button" id="anular_venta" class="btn btn-danger">
-                                                <i class="fas fa-ban" ></i>
+                                                <i class="fas fa-ban"></i>
                                             </button>
                                         </a>
 
@@ -192,7 +193,9 @@ include "../../php/conexion.php";
                 <?php } ?>
             </ul>
         </div>
+
     </section>
+    <script src="../generales/funciones.js"></script>
 </body>
 
 </html>
