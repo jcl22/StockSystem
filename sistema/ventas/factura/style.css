@@ -19,12 +19,15 @@ table {
     font-size: 16pt;
 }
 
+.description {
+    margin-top: 10px;
+}
+
 .h3 {
     font-family: 'BrixSansBlack';
     font-size: 12pt;
     display: block;
     background: #B19389;
-    border: 1px solid #B19389;
     color: #000;
     text-align: center;
     padding: 3px;
@@ -34,6 +37,7 @@ table {
 #page_pdf {
     width: 95%;
     margin: 15px auto 10px auto;
+    height: auto;
 }
 
 #factura_head,
@@ -120,10 +124,19 @@ table {
 
 #detalle_totales span {
     font-family: 'BrixSansBlack';
+    color: #B19389;
 }
+
+
+/* #detalle_totales::before {
+    content: '';
+    display: block;
+    height: 15px;
+} */
 
 .nota {
     font-size: 8pt;
+    text-align: center;
 }
 
 .label_gracias {

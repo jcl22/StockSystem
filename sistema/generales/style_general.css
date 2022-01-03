@@ -896,3 +896,69 @@
         background-color: #f4f4f4;
         color: #B19389;
     }
+    /* lista ventas */
+    
+    #buscar-venta {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    #busqueda-venta input {
+        max-width: 175px;
+        margin-right: 5px;
+    }
+    
+    #busqueda-venta button {
+        height: 38px;
+    }
+    
+    #button-ver {
+        background-color: #F4F4F4;
+        border: 1px solid #000;
+        color: #000;
+        margin-right: 5px;
+    }
+    
+    #button-ver:hover {
+        background-color: #7BFF8E;
+        border: 1px solid #7BFF8E;
+    }
+    
+    #anular_venta {
+        background-color: #F4F4F4;
+        border: 1px solid #000;
+        color: #000;
+    }
+    
+    #anular_venta:hover {
+        background-color: #F56451;
+        border: 1px solid #F56451;
+        color: #fff;
+    }
+    
+    #inactive_venta {
+        background-color: #A4A4A4;
+        border: 1px solid #A4A4A4;
+        cursor: default;
+    }
+    
+    .pagada {
+        text-align: center;
+        color: #61cf72;
+    }
+    
+    .anulada {
+        text-align: center;
+        color: #DA635D;
+    }
+    
+    .pagada p,
+    .anulada p {
+        margin: 0px;
+    }
+    
+    .description-anular p {
+        text-align: center;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }

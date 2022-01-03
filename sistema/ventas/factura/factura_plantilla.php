@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Stocksystem | Plantilla Factura</title>
-    <link rel="stylesheet" href="style.css">
+	<!-- Favicons -->
+	<link rel="icon" href="../../../img/StockS.ico">
+
+	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<img class="anulada" src="img/anulado.png" alt="Anulada">
-<div id="page_pdf">
-	<table id="factura_head">
-		<tr>
-			<td class="logo_factura">
-				<div>
-					<img src="img/logo.png" width="200px">
-				</div>
-			</td>
-			<td class="info_empresa">
-				<div>
-					<span class="h2">STOCKSYSTEM - Inventarios y facturación</span> 
-					<p>Medellín - Antioquia, Colombia</p>
-					<p>Teléfono: +(604) 516-22-19</p>
-					<p>Email: stocksystem@gmail.com</p>
-				</div>
-			</td>
-			<td class="info_factura">
-				<div class="round">
-					<span class="h3">Factura</span>
-					<p>No. Factura: <strong>000001</strong></p>
-					<p>Fecha: 01/01/2022</p>
-					<p>Hora: 10:30am</p>
-					<p>Vendedor: Luisa Lopez</p>
-				</div>
-			</td>
-		</tr>
-	</table>
-	<table id="factura_cliente">
-		<tr>
-			<td class="info_cliente">
-				<div class="round">
-					<span class="h3">Cliente</span>
-					<table class="datos_cliente">
-						<tr>
-							<td><label>Nit:</label><p>54895468</p></td>
-							<td><label>Teléfono:</label> <p>7854526</p></td>
-						</tr>
-						<tr>
-							<td><label>Nombre:</label> <p>Angel Arana Cabrera</p></td>
-							<td><label>Dirección:</label> <p>Calzada Buena Vista</p></td>
-						</tr>
-					</table>
-				</div>
-			</td>
+	<img class="anulada" src="img/anulado.png" alt="Anulada">
+	<div id="page_pdf">
+		<table id="factura_head">
+			<tr>
+				<td class="logo_factura">
+					<div>
+						<img src="../factura//img//logo.png" width="200px">
+					</div>
+				</td>
+				<td class="info_empresa">
+					<div>
+						<span class="h2">STOCKSYSTEM - Inventarios y facturación</span>
+						<p class="description">Medellín - Antioquia, Colombia</p>
+						<p>Teléfono: +(604) 516-22-19</p>
+						<p>Email: stocksystem@gmail.com</p>
+					</div>
+				</td>
+				<td class="info_factura">
+					<div class="round">
+						<span class="h3">Factura</span>
+						<p>No. Factura: <strong>000001</strong></p>
+						<p>Fecha: 01/01/2022</p>
+						<p>Hora: 10:30am</p>
+						<p>Vendedor: Luisa Lopez</p>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table id="factura_cliente">
+			<tr>
+				<td class="info_cliente">
+					<div class="round">
+						<span class="h3">Cliente</span>
+						<table class="datos_cliente">
+							<tr>
+								<td><label>Nit:</label>
+									<p>54895468</p>
+								</td>
+								<td><label>Teléfono:</label>
+									<p>7854526</p>
+								</td>
+							</tr>
+							<tr>
+								<td><label>Nombre:</label>
+									<p>Angel Arana Cabrera</p>
+								</td>
+								<td><label>Dirección:</label>
+									<p>Calzada Buena Vista</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
 
-		</tr>
-	</table>
+			</tr>
+		</table>
 
-	<table id="factura_detalle">
+		<table id="factura_detalle">
 			<thead>
 				<tr>
 					<th width="50px">Cant.</th>
@@ -101,10 +114,15 @@
 					<td class="textright">516.67</td>
 					<td class="textright">516.67</td>
 				</tr>
+
 			</tbody>
 			<tfoot id="detalle_totales">
 				<tr>
-					<td colspan="3" class="textright"><span>SUBTOTAL Q.</span></td>
+					<td colspan="3" class="textright"></td>
+					<td class="textright" style="color:#fff;">----------------</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="textright"><span>SUBTOTAL </span></td>
 					<td class="textright"><span>516.67</span></td>
 				</tr>
 				<tr>
@@ -112,17 +130,18 @@
 					<td class="textright"><span>516.67</span></td>
 				</tr>
 				<tr>
-					<td colspan="3" class="textright"><span>TOTAL Q.</span></td>
+					<td colspan="3" class="textright"><span>TOTAL </span></td>
 					<td class="textright"><span>516.67</span></td>
 				</tr>
-		</tfoot>
-	</table>
-	<div>
-		<p class="nota">Si usted tiene dudas sobre esta factura, <br> 
-		comuníquese al número o correo expuestos al inicio de esta factura.</p>
-		<h4 class="label_gracias">Gracias por su compra, ¡Vuelva pronto!</h4>
+			</tfoot>
+		</table>
+		<div>
+			<p class="nota">Si usted tiene dudas sobre esta factura, <br>
+				comuníquese al número o correo expuestos al inicio de esta factura.</p>
+			<h4 class="label_gracias">Gracias por su compra, ¡Vuelva pronto!</h4>
+		</div>
 	</div>
-</div>
 
 </body>
+
 </html>

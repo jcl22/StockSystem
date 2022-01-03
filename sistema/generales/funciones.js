@@ -348,9 +348,11 @@
                         if (response != 'error') {
 
                             var info = JSON.parse(response);
-                            console.log(response);
+                            //console.log(response);
+
+                            generarPDF(info.id_cliente, info.id_venta);
                             // alert("La venta se ha registrado con éxito");
-                            // location.reload();
+                            location.reload();
 
                         } else {
                             console.log('no data');
@@ -364,8 +366,27 @@
             }
         })
 
+        //ver PDF de venta
+        $('#verPDF').click(function(e) {
+            e.preventDefault();
+            var cliente = $(this).attr('cl');
+            var factura = $(this).attr('f');
+        })
+
     }); //END READY
 
+    //generar PDF
+    function generarPDF(cliente, factura) {
+        var ancho = 1000;
+        var alto = 800;
+        // Calcular posición x, y para centrar documento
+        var x = parseInt((window.screen.width / 2) - (ancho / 2));
+        var y = parseInt((window.screen.height / 2) - (alto / 2));
+
+        $url = 'factura/generaFactura.php?cl=' + cliente + '&f=' + factura;
+        window.open($url, "Factura", "left=" + x + ",top=" + y + ",heigth=" + alto +
+            ",width=" + ancho + ",scrollbar=si,location=no,resizable=si,menubar=no");
+    }
 
 
 
