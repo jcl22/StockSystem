@@ -83,7 +83,7 @@ setlocale(LC_MONETARY, 'es_CO');
                 </div>
                 <!-- usuario -->
                 <div class="form-group">
-                    <input class="form-control" aria-label="Default select example" id="direccion_cliente" placeholder="Direccción" name="direccion_cliente" disabled>
+                    <input class="form-control" aria-label="Default select example" id="direccion_cliente" placeholder="Dirección" name="direccion_cliente" disabled>
                 </div>
                 <!-- botón para guardar cliente -->
                 <div class="guardar-cliente">
