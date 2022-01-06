@@ -426,5 +426,48 @@ if (!empty($_POST)) {
             exit;
         }
 
+        //cambiar contraseña
+        if($_POST['action'] == 'changePass') { 
+            
+            if(!empty($_POST['passActual']) && !empty($_POST['passNueva']) ) {
+
+                $password = md5($_POST['passActual']);
+                $newpassword = md5($_POST['passNueva']);
+                $id_usuario = $_SESSION['id_usuario'];
+
+                $code='';
+                $msg='';
+                $arrData=array();
+
+                $query_usuario = mysqli_query($conn, "SELECT * FROM usuarios WHERE contrasena = '$password'
+                AND id_usuario = $id_usuario");
+
+                $result_usuario = mysqli_num_rows($query_usuario);
+
+                if($result_usuario >0) {
+                    $quey_update = mysqli_query($conn, "UPDATE usuarios SET contrasena = '$newpassword'
+                    WHERE id_usuario = $id_usuario");
+
+                    if($quey_update) {
+                        $code='00';
+                        $msg='Contraseña cambiada correctamente';
+                    } else {
+                        $code='2';
+                        $msg='Error al cambiar contraseña';
+                    }
+
+                } else {
+                    $code='1';
+                        $msg='La contraseña actual es incorrecta';
+                }
+                $arrData = array('cod'=> $code, 'msg'=> $msg);
+                echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+
+
+            } else {
+                echo "Error";
+            }
+            exit;
+        }
 }
 exit;

@@ -33,7 +33,7 @@ include "../../php/conexion.php";
         <div id="modalProducto">
             <form action="" method="post" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sendDataProduct();">
                 <h1> Actualizar producto</h1> <br>
-                <p class="nameProduct"> </p>
+                <p id="nameProduct"> </p>
                 <div class="inputs">
                     <label for=""> Cantidad</label>
                     <input type="number" class="form-control" id="txt-cantidad" name="cantidad" required>
@@ -111,11 +111,8 @@ include "../../php/conexion.php";
                 // paginador
 
                 $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
-                FROM producto WHERE 
+                FROM producto WHERE
                 (id_producto LIKE '%$busqueda%' OR
-                id_proveedor LIKE '%$busqueda%' OR
-                precio LIKE '%$busqueda%' OR
-                existencia LIKE '%$busqueda%' OR
                 nombre_producto LIKE '%$busqueda%')
                 AND
                 estado = 1");
@@ -135,17 +132,14 @@ include "../../php/conexion.php";
                 $total_paginas = ceil($total_registro / $por_pagina);
 
 
-                $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, pr.nombre_proveedor,
-                p.precio, p.existencia, p.foto 
-                FROM producto p INNER JOIN proveedor pr 
-                ON p.id_proveedor = pr.id_proveedor
+                $query = mysqli_query($conn, "SELECT p.id_producto, p.nombre_producto, p.precio, p.existencia, 
+                pr.nombre_proveedor, p.foto
+                FROM producto p INNER JOIN proveedor pr ON p.id_proveedor = pr.id_proveedor 
                 WHERE 
                 (p.id_producto LIKE '%$busqueda%' OR
-                p.nombre_producto LIKE '%$busqueda%'OR 
-                p.precio LIKE '%$busqueda%'OR 
-                p.existencia LIKE '%$busqueda%'OR 
-                p.foto LIKE '%$busqueda%') 
-                AND p.estado=1 ORDER BY 
+                p.nombre_producto LIKE '%$busqueda%')
+                AND
+                p.estado = 1 ORDER BY 
                 p.id_producto DESC LIMIT $desde, $por_pagina");
 
                 $result = mysqli_num_rows($query);
@@ -166,7 +160,7 @@ include "../../php/conexion.php";
                                 <th scope="row"><?php echo $data["id_producto"] ?> </th>
                                 <td> <?php echo $data["nombre_producto"] ?> </td>
                                 <td> <?php echo $data["nombre_proveedor"] ?> </td>
-                                <td class="celPrecio"> <?php echo $data["precio"] ?> </td>
+                                <td class="celPrecio"><?php echo $data["precio"] ?> </td>
                                 <td class="celExistencia"> <?php echo $data["existencia"] ?> </td>
                                 <td> <img src=" <?php echo $foto; ?> " alt=" <?php echo $data["nombre_producto"] ?> " width="50px" height="50px"> </td>
 
@@ -210,7 +204,7 @@ include "../../php/conexion.php";
             </table>
         </div>
         <?php
-        if ($total_registro != 0 ) {
+        if ($total_registro != 0) {
         ?>
             <div class="paginador">
                 <ul>
@@ -253,10 +247,11 @@ include "../../php/conexion.php";
                 <a class="a-buscador" href="./listaproductos.php">Volver</a>
             </div>
         <?php } ?>
+
     </section>
 
 </body>
 
-</html>
 
+</html>
 <script src="../generales/funciones.js"></script>

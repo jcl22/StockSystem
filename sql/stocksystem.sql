@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-01-2022 a las 01:16:34
+-- Tiempo de generación: 04-01-2022 a las 20:15:35
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -61,6 +61,55 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_detalletemp` (`codigo` INT, `ca
         ON tmp.id_producto = p.id_producto
         WHERE tmp.token_usuario = token_user;
     END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `anular_venta` (`no_factura` INT)  BEGIN
+        	DECLARE existe_factura int;
+            DECLARE registros int;
+            DECLARE a int;
+            
+            DECLARE codigo_producto INT;
+            DECLARE cantidad_producto INT;
+            DECLARE existencia_actual INT;
+            DECLARE nueva_existencia INT;
+            
+            
+            SET existe_factura = (SELECT COUNT(*) FROM venta WHERE id_venta = no_factura AND estado=1);
+            
+            IF existe_factura > 0 THEN
+            	CREATE TEMPORARY TABLE tbl_temp (
+                    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    cod_prod BIGINT,
+                    cant_prod INT);
+                    
+                    SET a=1;
+                    
+                    SET registros = (SELECT COUNT(*) FROM detalle_venta WHERE id_venta = no_factura);
+                    
+                    IF registros > 0 THEN
+                    	INSERT INTO tbl_temp (cod_prod, cant_prod) SELECT id_producto, cantidad FROM detalle_venta 
+                    	WHERE id_venta = no_factura;
+                    
+                    		WHILE a <= registros DO
+                    			SELECT cod_prod, cant_prod INTO codigo_producto, cantidad_producto FROM tbl_temp WHERE id=a;
+                    			SELECT existencia INTO existencia_actual FROM producto WHERE id_producto = codigo_producto;
+                    			SET nueva_existencia = existencia_actual + cantidad_producto;
+                    			UPDATE producto SET existencia = nueva_existencia WHERE id_producto = codigo_producto;
+                    
+                    			SET a=a+1;                    
+                    		END WHILE;
+                    		
+                    		UPDATE venta SET estado = 2 WHERE id_venta = no_factura;
+                    		DROP TABLE tbl_temp;
+                    		SELECT * FROM venta WHERE id_venta = no_factura;
+                    
+                    END IF;
+            
+            ELSE
+            	SELECT 0 factura;
+            END IF;
+            
+            
+        END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_detalletemp` (IN `id_detalle` INT, IN `token` VARCHAR(50))  BEGIN
         
@@ -136,7 +185,7 @@ DELIMITER ;
 
 CREATE TABLE `categoria_productos` (
   `id_categoria` int(15) NOT NULL,
-  `nombre_categoria` varchar(30) NOT NULL,
+  `nombre_categoria` varchar(20) NOT NULL,
   `descripcion_categoria` varchar(155) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -148,7 +197,7 @@ INSERT INTO `categoria_productos` (`id_categoria`, `nombre_categoria`, `descripc
 (1, 'Tipo A', 'Productos de mayor costo'),
 (2, 'Tipo B', 'Productos de alto costo'),
 (3, 'Tipo C', 'Productos de costo normal'),
-(4, 'Tipo D', 'Productos de bajo costo'),
+(4, 'Tipo D', 'Productos de costo bajo'),
 (5, 'Tipo E', 'Productos de costo $1');
 
 -- --------------------------------------------------------
@@ -170,8 +219,12 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `telefono`, `direccion`, `estado`) VALUES
+(1, 'C/F', 0, '0', 1),
 (3829382, 'Andrés ', 5754854, 'cra 40 # 10-114', 1),
+(16273842, 'Steven Carmona', 2147483647, 'Cra 44 # 79-70', 1),
 (19238349, 'Jonatan', 3712838, 'calle 10 #98-91', 1),
+(48348302, 'Cristina ', 2147483647, 'Cra 49 # 45-21', 1),
+(71283392, 'Juan Perez', 2147483647, 'Cra 55 # 10-22', 1),
 (72638484, 'Camila Londoño Arenas', 60145647, 'Cra 30A #20sur-10', 1),
 (101292039, 'Esteban Cano', 604516272, 'cra 45A #40-30', 1),
 (182393743, 'Claudia', 2147483647, 'cra 50 # 13-10', 1),
@@ -200,7 +253,7 @@ CREATE TABLE `config_empresa` (
 --
 
 INSERT INTO `config_empresa` (`id`, `nit`, `nombre`, `razon_social`, `telefono`, `correo`, `direccion`, `iva`) VALUES
-(1, '102938474-5', 'StockSystem - Sistema de inventarios y ventas', 'Stocksystem', 6044637283, 'stocksystemcompany@gmail.com', 'Cra 56b # 34c - 16', '19.00');
+(1, '102938474-5', 'StockSystem - Inventarios y facturación ', 'Stocksystem', 6044637283, 'stocksystemcompany@gmail.com', 'Cra 56b # 34c - 16', '19.00');
 
 -- --------------------------------------------------------
 
@@ -243,7 +296,47 @@ INSERT INTO `detalle_venta` (`id_detventa`, `id_producto`, `id_venta`, `fecha_ve
 (11, 4, 6, '2021-12-31 19:10:51', 1, '3550000.00'),
 (12, 3, 7, '2021-12-31 19:13:08', 2, '5555555.56'),
 (13, 6, 7, '2021-12-31 19:13:08', 1, '7570000.00'),
-(14, 1, 7, '2021-12-31 19:13:08', 1, '1720000.00');
+(14, 1, 7, '2021-12-31 19:13:08', 1, '1720000.00'),
+(15, 2, 8, '2022-01-01 23:47:49', 2, '2625000.00'),
+(16, 4, 8, '2022-01-01 23:47:49', 1, '3550000.00'),
+(18, 6, 9, '2022-01-01 23:52:19', 1, '7570000.00'),
+(19, 3, 10, '2022-01-02 01:25:10', 1, '5555555.56'),
+(20, 1, 11, '2022-01-02 02:16:17', 5, '1720000.00'),
+(21, 5, 11, '2022-01-02 02:16:17', 2, '2341666.00'),
+(22, 5, 12, '2022-01-02 02:27:55', 2, '2341666.00'),
+(23, 1, 13, '2022-01-02 02:35:33', 2, '1720000.00'),
+(24, 6, 14, '2022-01-02 02:42:19', 1, '7570000.00'),
+(25, 3, 15, '2022-01-02 02:52:55', 1, '5555555.56'),
+(26, 5, 16, '2022-01-02 03:01:20', 1, '2341666.00'),
+(27, 1, 17, '2022-01-02 03:45:16', 2, '1720000.00'),
+(28, 1, 18, '2022-01-02 03:52:45', 1, '1720000.00'),
+(29, 2, 19, '2022-01-02 04:26:12', 1, '2625000.00'),
+(30, 3, 20, '2022-01-02 04:27:14', 1, '5555555.56'),
+(31, 6, 21, '2022-01-02 04:33:18', 1, '7570000.00'),
+(32, 4, 22, '2022-01-02 04:34:13', 2, '3550000.00'),
+(33, 6, 23, '2022-01-02 12:42:37', 1, '7462000.00'),
+(34, 4, 24, '2022-01-02 12:44:03', 1, '3550000.00'),
+(35, 1, 25, '2022-01-02 12:55:09', 1, '1720000.00'),
+(36, 1, 26, '2022-01-02 12:55:57', 1, '1720000.00'),
+(37, 4, 27, '2022-01-02 13:04:59', 1, '3550000.00'),
+(38, 6, 28, '2022-01-02 13:07:29', 1, '7462000.00'),
+(39, 2, 29, '2022-01-02 13:39:29', 1, '2625000.00'),
+(40, 2, 30, '2022-01-02 13:40:36', 1, '2625000.00'),
+(41, 1, 31, '2022-01-02 13:42:28', 2, '1720000.00'),
+(42, 5, 32, '2022-01-02 13:59:35', 1, '2341666.00'),
+(43, 3, 33, '2022-01-02 14:15:30', 1, '5555555.56'),
+(44, 6, 34, '2022-01-02 14:19:29', 1, '7462000.00'),
+(45, 1, 35, '2022-01-02 20:15:08', 1, '1720000.00'),
+(46, 6, 36, '2022-01-02 23:52:03', 1, '7462000.00'),
+(47, 1, 37, '2022-01-03 00:36:30', 2, '1720000.00'),
+(48, 1, 38, '2022-01-03 03:09:08', 2, '1720000.00'),
+(49, 2, 39, '2022-01-03 03:10:04', 4, '2625000.00'),
+(50, 4, 40, '2022-01-03 03:12:44', 1, '3550000.00'),
+(51, 6, 41, '2022-01-03 03:15:31', 1, '7462000.00'),
+(52, 5, 42, '2022-01-03 03:25:14', 1, '2341666.00'),
+(53, 1, 43, '2022-01-03 03:26:51', 2, '1720000.00'),
+(54, 6, 44, '2022-01-03 03:43:30', 1, '7462000.00'),
+(55, 1, 45, '2022-01-04 14:06:50', 2, '1720000.00');
 
 -- --------------------------------------------------------
 
@@ -289,7 +382,8 @@ INSERT INTO `inventario` (`id_inventario`, `id_producto`, `fecha`, `existencia`,
 (21, 6, '2021-12-30 03:33:15', 2, '7500000.00', 1036678760, 0),
 (22, 6, '2021-12-30 20:25:46', 2, '7700000.00', 1036678760, 0),
 (23, 6, '2021-12-30 21:53:09', 1, '7800000.00', 1036678760, 0),
-(24, 1, '2021-12-31 17:59:52', 10, '1700000.00', 1036678760, 0);
+(24, 1, '2021-12-31 17:59:52', 10, '1700000.00', 1036678760, 0),
+(25, 6, '2022-01-02 12:41:48', 4, '7300000.00', 1036678760, 0);
 
 -- --------------------------------------------------------
 
@@ -315,12 +409,12 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre_producto`, `id_categoria`, `precio`, `existencia`, `date_add`, `id_usuario`, `id_proveedor`, `foto`, `estado`) VALUES
-(1, 'Aple Watch Serie 7 ', 2, '1720000.00', 47, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_producto.png', 1),
-(2, 'HP Pavillon x360', 3, '2625000.00', 10, '2021-12-24 02:08:11', 1036678760, 1012637495, 'img_producto.png', 1),
-(3, 'Iphone 13 Pro 256 gb', 3, '5555555.56', 13, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_producto.png', 1),
-(4, 'Samsung Galaxy Z Flip3', 2, '3550000.00', 9, '2021-12-24 02:11:13', 1036678760, 32732743, 'img_producto.png', 1),
-(5, 'SONY Xperia 10 III', 3, '2341666.00', 12, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1),
-(6, 'Mackbook Air Pro 2021', 1, '7570000.00', 9, '2021-12-29 21:20:45', 1036678760, 37443943, 'img_producto.png', 1);
+(1, 'Aple Watch Serie 7 ', 2, '1720000.00', 30, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_producto.png', 1),
+(2, 'HP Pavillon x360', 3, '2625000.00', 1, '2021-12-24 02:08:11', 1036678760, 1012637495, 'img_producto.png', 1),
+(3, 'Iphone 13 Pro 256 gb', 3, '5555555.56', 9, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_producto.png', 1),
+(4, 'Samsung Galaxy Z Flip3', 2, '3550000.00', 3, '2021-12-24 02:11:13', 1036678760, 32732743, 'img_producto.png', 1),
+(5, 'SONY Xperia 10 III', 3, '2341666.00', 5, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1),
+(6, 'Mackbook Air Pro 2021', 1, '7462000.00', 6, '2021-12-29 21:20:45', 1036678760, 37443943, 'img_producto.png', 1);
 
 --
 -- Disparadores `producto`
@@ -401,7 +495,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `usuario`, `nombre_usuario`, `id_rol`, `correo`, `contrasena`, `estado`) VALUES
-(12, 'John3410', 'John Edison', 1, 'johnedison34@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
+(28381929, 'John3410', 'John Edison', 1, 'johnedison34@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
 (43573613, 'Elizabeth48', 'Elizabeth Echavarría', 2, 'elizabeth48@gmail.com', '12345', '1'),
 (70129170, 'Victor154', 'Victor Hugo Cano', 1, 'victor154@gmail.com', '12345', '1'),
 (1001506208, 'Luisa14', 'Luisa Lopez', 2, 'luisal@gmail.com', '12345', '1'),
@@ -431,9 +525,47 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`id_venta`, `id_cliente`, `id_usuario`, `fecha_venta`, `total_venta`, `estado`) VALUES
-(5, 3829382, 1036678760, '0000-00-00 00:00:00', 8995556, 1),
+(5, 3829382, 1036678760, '2021-12-31 19:00:51', 8995556, 1),
 (6, 3829382, 1036678760, '2021-12-31 19:10:51', 17286111, 1),
-(7, 3829382, 1036678760, '2021-12-31 19:13:07', 20401111, 1);
+(7, 3829382, 1036678760, '2021-12-31 19:13:07', 20401111, 1),
+(8, 71283392, 1036678760, '2022-01-01 23:47:49', 8800000, 1),
+(9, 48348302, 1036678760, '2022-01-01 23:52:19', 7570000, 1),
+(10, 1, 1036678760, '2022-01-02 01:25:10', 5555556, 1),
+(11, 1384493023, 1036678760, '2022-01-02 02:16:17', 13283332, 1),
+(12, 1, 1036678760, '2022-01-02 02:27:55', 4683332, 1),
+(13, 71283392, 1036678760, '2022-01-02 02:35:33', 3440000, 1),
+(14, 72638484, 1011292386, '2022-01-02 02:42:19', 7570000, 1),
+(15, 1028829364, 1036678760, '2022-01-02 02:52:55', 5555556, 1),
+(16, 1384493023, 1036678760, '2022-01-02 03:01:19', 2341666, 1),
+(17, 48348302, 1036678760, '2022-01-02 03:45:16', 3440000, 1),
+(18, 48348302, 1036678760, '2022-01-02 03:52:45', 1720000, 1),
+(19, 48348302, 1036678760, '2022-01-02 04:26:11', 2625000, 1),
+(20, 1, 1036678760, '2022-01-02 04:27:14', 5555556, 1),
+(21, 182393743, 1036678760, '2022-01-02 04:33:18', 7570000, 1),
+(22, 1, 1036678760, '2022-01-02 04:34:13', 7100000, 1),
+(23, 71283392, 1036678760, '2022-01-02 12:42:37', 7462000, 2),
+(24, 19238349, 1036678760, '2022-01-02 12:44:03', 3550000, 1),
+(25, 3829382, 1036678760, '2022-01-02 12:55:09', 1720000, 1),
+(26, 1, 1036678760, '2022-01-02 12:55:57', 1720000, 1),
+(27, 19238349, 1036678760, '2022-01-02 13:04:59', 3550000, 1),
+(28, 48348302, 1036678760, '2022-01-02 13:07:29', 7462000, 1),
+(29, 1, 1036678760, '2022-01-02 13:39:29', 2625000, 2),
+(30, 48348302, 1036678760, '2022-01-02 13:40:36', 2625000, 1),
+(31, 72638484, 1036678760, '2022-01-02 13:42:28', 3440000, 1),
+(32, 71283392, 1036678760, '2022-01-02 13:59:34', 2341666, 1),
+(33, 101292039, 1036678760, '2022-01-02 14:15:29', 5555556, 1),
+(34, 48348302, 1036678760, '2022-01-02 14:19:29', 7462000, 1),
+(35, 16273842, 1036678760, '2022-01-02 20:15:08', 1720000, 1),
+(36, 3829382, 1036678760, '2022-01-02 23:52:02', 7462000, 2),
+(37, 1384493023, 1036678760, '2022-01-03 00:36:30', 3440000, 2),
+(38, 48348302, 1036678760, '2022-01-03 03:09:08', 3440000, 1),
+(39, 1, 1036678760, '2022-01-03 03:10:04', 10500000, 1),
+(40, 71283392, 1036678760, '2022-01-03 03:12:44', 3550000, 1),
+(41, 1, 1036678760, '2022-01-03 03:15:31', 7462000, 1),
+(42, 1, 1036678760, '2022-01-03 03:25:14', 2341666, 1),
+(43, 1, 1036678760, '2022-01-03 03:26:51', 3440000, 2),
+(44, 71283392, 1036678760, '2022-01-03 03:43:30', 7462000, 1),
+(45, 16273842, 1036678760, '2022-01-04 14:06:49', 3440000, 2);
 
 --
 -- Índices para tablas volcadas
@@ -532,19 +664,19 @@ ALTER TABLE `config_empresa`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id_detemp` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_detemp` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -562,7 +694,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Restricciones para tablas volcadas
@@ -591,7 +723,6 @@ ALTER TABLE `inventario`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_productos` (`id_categoria`),
   ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`);
 

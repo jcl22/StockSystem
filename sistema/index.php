@@ -24,10 +24,11 @@
       <h1 class="bienvenida"> <b> ¡Bienvenido a StockSystem! </b></h1>
     </div>
 
+
+
     <!-- reloj dgital -->
-    
-    
-  
+
+
   </section>
 
 </body>

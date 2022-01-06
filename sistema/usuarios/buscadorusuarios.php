@@ -76,6 +76,7 @@ include "../../php/conexion.php";
             || $busqueda == 'emple' || $busqueda == 'emplea' || $busqueda == 'emplead') {
                 $rol = "OR id_rol LIKE '%2%'";
             }
+            
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros FROM usuarios 
             WHERE 
             (id_usuario LIKE '%$busqueda%' OR
@@ -88,7 +89,7 @@ include "../../php/conexion.php";
             $result_register = mysqli_fetch_array($sql_registe);
             $total_registro = $result_register['total_registros'];
 
-            $por_pagina = 4;
+            $por_pagina = 5;
 
             if (empty($_GET['pagina'])) {
                 $pagina = 1;
@@ -100,7 +101,9 @@ include "../../php/conexion.php";
             $total_paginas = ceil($total_registro / $por_pagina);
 
 
-            $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol FROM usuarios u INNER JOIN rol r ON u.id_rol = r.id_rol 
+            $query = mysqli_query($conn, "SELECT u.id_usuario, u.nombre_usuario, u.usuario, u.correo, u.estado, r. nombre_rol 
+            FROM usuarios u 
+            INNER JOIN rol r ON u.id_rol = r.id_rol 
             WHERE 
             (u.id_usuario LIKE '%$busqueda%' OR
             u.nombre_usuario LIKE '%$busqueda%' OR

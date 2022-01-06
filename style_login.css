@@ -110,3 +110,11 @@
     #pagweb:hover {
         color: #000;
     }
+    
+    #olvido {
+        text-align: center;
+    }
+    
+    #olvido a:hover {
+        text-decoration: none;
+    }

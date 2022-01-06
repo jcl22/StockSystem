@@ -25,24 +25,25 @@ if (!empty($_REQUEST['busqueda'])) {
     $buscar = "busqueda = $busqueda";
 }
 
-    if (!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])) {
-        $fecha_de = $_REQUEST['fecha_de'];
-        $fecha_a = $_REQUEST['fecha_a'];
+if (!empty($_REQUEST['fecha_de']) && !empty($_REQUEST['fecha_a'])) {
 
-        $buscar = '';
+    $fecha_de = $_REQUEST['fecha_de'];
+    $fecha_a = $_REQUEST['fecha_a'];
 
-        if ($fecha_de > $fecha_a) {
+    $buscar = '';
+
+    if ($fecha_de > $fecha_a) {
             header('location:listaventas.php');
-        } else if ($fecha_de == $fecha_a) {
-            $where = "fecha_venta LIKE '$fecha_de%'";
-            $buscar = 'fecha_de=$fecha_de&fecha_a=$fecha_a';
-        } else {
-            $f_de = $fecha_de.'00:00:00';
-            $f_a = $fecha_de.'23:59:59';
-            $where = "fecha BETWEEN '$f_de' AND '$f_a'";
-            $buscar = 'fecha_de=$fecha_de&fecha_a=$fecha_a';
-        }
+    } else if ($fecha_de == $fecha_a) {
+        $where = "fecha_venta LIKE '$fecha_de%'";
+        $buscar = 'fecha_de='.$fecha_de.'&fecha_a='.$fecha_a;
+    } else {
+        $f_de = $fecha_de.' 00:00:00';
+        $f_a = $fecha_a. ' 23:59:59';
+        $where = "fecha_venta BETWEEN '$f_de' AND '$f_a'";
+        $buscar = 'fecha_de='.$fecha_de.'&fecha_a='.$fecha_a;
     }
+}
 
 ?>
 
@@ -113,12 +114,12 @@ if (!empty($_REQUEST['busqueda'])) {
             // paginador
             
             $sql_registe = mysqli_query($conn, "SELECT COUNT(*) as total_registros 
-                FROM venta WHERE $where");
+                FROM venta WHERE $where ");
 
             $result_register = mysqli_fetch_array($sql_registe);
             $total_registro = $result_register['total_registros'];
 
-            $por_pagina = 15;
+            $por_pagina = 10;
 
             if (empty($_GET['pagina'])) {
                 $pagina = 1;
@@ -207,6 +208,9 @@ if (!empty($_REQUEST['busqueda'])) {
                     ?>
                     </tbody>
         </table>
+        <?php
+        if ($total_registro != 0) {
+        ?>
         <div class="paginador">
             <ul>
                 <?php
@@ -232,12 +236,22 @@ if (!empty($_REQUEST['busqueda'])) {
                 ?>
 
 
-                    <li><a href="?pagina= <?php echo $pagina + 1; ?>&<?php echo $buscar;?>"> >> </a></li>
-                    <li><a href="?pagina= <?php echo $total_paginas; ?>&<?php echo $buscar;?> "> >>| </a></li>
+                    <li><a href="?pagina= <?php echo $pagina + 1;?>&<?php echo $buscar;?>"> >> </a></li>
+                    <li><a href="?pagina= <?php echo $total_paginas;?>&<?php echo $buscar;?> "> >>| </a></li>
                 <?php } ?>
             </ul>
         </div>
-
+        <?php } else if ($total_registro == 0) { ?>
+            </div>
+            <div id="alert-buscador" class="alert alert-danger d-block align-items-center" role="alert">
+                <div class="div-alertbusc">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </svg><b> No se encontraron registros para esta búsqueda </b> <br>
+                </div>
+                <a class="a-buscador" href="./listaventas.php">Volver</a>
+            </div>
+        <?php } ?>
     </section>
     <script src="../generales/funciones.js"></script>
 </body>

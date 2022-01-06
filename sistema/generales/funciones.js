@@ -31,6 +31,7 @@
             } else {
                 alert("No selecciono foto");
                 $("#img").remove();
+
             }
         });
 
@@ -375,8 +376,84 @@
             generarPDF(Codcliente, Codfactura);
         })
 
+        //cambiar contraseña
+        $('.nueva_contrasena').keyup(function() {
+            validPass();
+        })
+
+        //Form para cambio de contraseña
+        $('#formCambio').submit(function(e) {
+            e.preventDefault();
+
+            var passActual = $('#txt_Actual').val();
+            var passNueva = $('#txt_newPass').val();
+            var passConfirm = $('#txt_confirmPass').val();
+            var action = 'changePass';
+
+            if (passNueva != passConfirm) {
+                $('#alert-contra').html('<p class="coincidencia">Las contraseñas no coinciden </p > ');
+
+                $('#alert-contra').slideDown();
+                return false;
+            }
+            if (passNueva.length < 6) {
+                $('#alert-contra').html('<p class="mayor">La contraseña debe ser mayor a 6 caracteres</p>');
+                $('#alert-contra').slideDown();
+                return false;
+            }
+
+            $.ajax({
+                url: '../generales/ajax.php',
+                type: 'POST',
+                async: true,
+                data: {
+                    action: action,
+                    passActual: passActual,
+                    passNueva: passNueva,
+                },
+
+                success: function(response) {
+                    if (response != 'error') {
+                        var info = JSON.parse(response);
+                        if (info.cod == '00') {
+                            $('#alert-contra').html('<p class="cambiada">' + info.msg + '</p>');
+                            $('#formCambio')[0].reset();
+                        } else {
+                            $('#alert-contra').html('<p class="noPosible">' + info.msg + '</p>');
+                        }
+                        $('#alert-contra').slideDown();
+                    }
+                },
+                error: function(error) {}
+
+            }); //end ajax
+
+        });
+
     }); //END READY
 
+
+    //validar contraseña 
+    function validPass() {
+        var passNueva = $('#txt_newPass').val();
+        var passConfirm = $('#txt_confirmPass').val();
+
+        if (passNueva != passConfirm) {
+            $('#alert-contra').html('<p class="coincidencia">Las contraseñas no coinciden </p > ');
+
+            $('#alert-contra').slideDown();
+            return false;
+        }
+        if (passNueva.length < 6) {
+            $('#alert-contra').html('<p class="mayor">La contraseña debe ser mayor a 6 caracteres</p>');
+            $('#alert-contra').slideDown();
+            return false;
+        }
+
+        $('#alert-contra').html('');
+        $('#alert-contra').slideUp();
+
+    }
     //generar PDF
     function generarPDF(cliente, factura) {
         var ancho = 1000;
@@ -468,8 +545,6 @@
             error: function(error) {}
 
         }); //end ajax
-
-
     }
 
 
@@ -510,4 +585,39 @@
         $('#txt-precio').val('');
         $('.modal-product').fadeOut();
         $('#buscador').fadeIn();
+    }
+
+
+    // función para ajustes
+
+    function mostrar(ajustes) {
+        var perfil = document.getElementById('perfil');
+        var estadistica = document.getElementById('estadistica');
+        var cambiacontra = document.getElementById('cambiacontra');
+
+
+
+        switch (ajustes) {
+            case 1:
+                perfil.style.display = 'block';
+                estadistica.style.display = 'none';
+                cambiacontra.style.display = 'none';
+                break;
+
+            case 2:
+                perfil.style.display = 'none';
+                estadistica.style.display = 'block';
+                cambiacontra.style.display = 'none';
+                break;
+
+            case 3:
+                perfil.style.display = 'none';
+                estadistica.style.display = 'none';
+                cambiacontra.style.display = 'block';
+                break;
+
+            default:
+                alert("hay un problema: No existe el producto.")
+        }
+
     }

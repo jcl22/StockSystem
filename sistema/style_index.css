@@ -1,286 +1,3 @@
-/* Generales body {
-    background: #fff;
-    background-size: cover;
-    color: #000;
-    font-family: 'Titillium Web', sans-serif;
-    z-index: -0;
-    overflow-y: hidden;
-}
-
-a:hover,
-a:active,
-a:focus {
-    color: #000;
-    outline: none;
-    text-decoration: none;
-}
-
-p {
-    margin: 5px;
-    text-align: center;
-}
-
-h1,
-h2 {
-    text-align: center;
-    font-family: 'titulos';
-    text-transform: uppercase;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Fjalla One', sans-serif;
-    text-align: center;
-    color: #333;
-    font-weight: bold;
-}
-
-#content-section .tittle-section {
-    max-width: 400px;
-    display: block;
-    margin: auto;
-}
-
-
-/* --------------------------------------------MENU-PRINCIPAL--------------------------------------------------- */
-
-
-/* header generales*/
-
-
-/* #header {
-    padding: 0px;
-    position: relative;
-    margin-top: -30px;
-    margin-bottom: 40px;
-}
-
-#header .logo-empresa img {
-    border-radius: 50%;
-    border: 0px #000 solid;
-    max-width: 250px;
-    width: 100%;
-}
-
-.user-name {
-    color: #AAAAAA;
-    font-size: 25px;
-    text-transform: none;
-}
-
-#header .display {
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-}
-
-#header .display .saludo {
-    position: absolute;
-    left: calc(50% - 100px);
-    margin-bottom: 5px;
-}
-
-#header .date-user {
-    background: #fff;
-    padding: 10px 20px;
-    position: absolute;
-    right: 0;
-    z-index: 2;
-    width: auto;
-    border: 2px solid #333;
-    border-radius: 10px;
-}
-
-#header .date-user .content-user {
-    align-items: center;
-    font-weight: bold;
-}
-
-#header .date-user .name span {
-    font-size: 12px;
-    color: #333;
-}
-
-#dropbtn {
-    cursor: pointer;
-    padding: 0px;
-}
-
-.user-photo {
-    width: 25px;
-    height: 25px;
-    margin-left: 10px;
-}
-
-.img-user {
-    width: inherit;
-    height: inherit;
-}
-
-.img-user svg {
-    margin: 0px;
-    color: #333;
-}
-
-#dropdown-content {
-    position: absolute;
-}
-
-#header .date-user .user-option {
-    padding: 5px;
-    position: absolute;
-    border-radius: 0px 0px 10px 10px;
-    margin-top: -5px;
-    z-index: -1;
-    transition: all 0.4s;
-    cursor: pointer;
-    width: 90%;
-}
-
-#header .date-user .user-option ul {
-    list-style: none;
-    text-align: right;
-    padding-left: 0px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-#header .date-user .user-option ul li {
-    padding: 5px 0 5px 0;
-    transition: all 0.4s;
-    font-size: 15px;
-    margin-bottom: 0px;
-}
-
-#header .date-user .user-option ul a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-#header .date-user .user-option ul a:hover {
-    color: #333;
-}
-
-.dropdown-content {
-    transition: all 0.4s;
-    display: none;
-}
-
-.dropbtn:hover .dropdown-content {
-    display: inline;
-    transition: all 0.4s;
-    cursor: pointer;
-}
-
-
-/* footer */
-
-
-/* #footer .container .content {
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-    text-align: center;
-}
-
-#footer .container .content p .fecha {
-    position: fixed;
-}
-
-
-/* inicio-módulos */
-
-
-/* .inicio-secciones {
-    margin: 0px;
-    margin-top: -70px;
-    padding: 0px;
-}
-
-.iconos-inicio {
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.icono-solo {
-    padding-bottom: 40px;
-}
-
-.icono-usuario {
-    width: 150px;
-    display: block;
-    margin: auto;
-}
-
-.icono h4 {
-    padding: 10px 0 0 0;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 19px;
-    color: #333;
-    font-family: sans-serif;
-}
-
-.icono a {
-    font-style: none;
-    color: #333;
-    width: 150px;
-    height: 160px;
-    transition: all 0.4s;
-}
-
-.icono a:hover {
-    color: #fff;
-    transition: all 0.4s;
-}
-
-.icono-solo .bg-icono {
-    margin-bottom: 20px;
-    display: block;
-    margin: auto;
-    background: #000;
-    width: 150px;
-    height: 160px;
-    border-radius: 5px;
-
-transition: all 0.4s;
-
-}
-.icono .bg-icono:hover {
-    background: transparent;
-    color: #333;
-    box-shadow: 0 0 0 0 #0000;
-    border: 2px #333 solid;
-    transition: all 0.5s;
-}
-.iconos-inicio .icono {
-    display: flex;
-    justify-content: center;
-}
-.iconos-inicio .bg-icono {
-    background: #4592AF;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40px;
-
-transition: all 0.4s;
-
-}
-.bg-icono i {
-    font-size: 80px;
-}
-
-/* layout  */
-
 body {
     overflow-y: hidden;
     font-family: 'Titillium Web', sans-serif;
@@ -306,4 +23,60 @@ body {
 
 .saludo .bienvenida {
     margin-top: 0px;
+}
+
+.estadisticas {
+    margin: 0px auto;
+    margin-bottom: 30px;
+    width: 700px;
+    height: 400px;
+    background-color: rgba(78, 78, 86, 0.7)!important;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.people {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-around;
+}
+
+.date {
+    width: 150px;
+    padding: 5px;
+    border: none;
+    align-items: center;
+}
+
+.date:hover {
+    background-color: rgba(78, 78, 86, 0.6)!important;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+}
+
+.date-svg {
+    text-align: center;
+    color: #fff;
+}
+
+.date h3 {
+    font-size: 20px;
+    text-align: center;
+    text-transform: none;
+    color: #fff;
+}
+
+.date p {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
 }
