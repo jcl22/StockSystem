@@ -48,6 +48,7 @@ include "../../php/conexion.php";
         <?php include '../generales/headerapp.php' ?>
     </header>
     <?php
+    
     $query_cantidades = mysqli_query($conn, "CALL datesInfo()");
     $result_cantidades = mysqli_num_rows($query_cantidades);
 

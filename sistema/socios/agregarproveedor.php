@@ -83,7 +83,7 @@ if (!empty($_POST)) {
     </header>
     <section>
         <div class="tittle">
-            <h2>Crear usuario</h2> <br>
+            <h2>Crear proveedor</h2> <br>
         </div>
         <form action="" method="post">
             <div class="formulario">

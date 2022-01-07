@@ -182,7 +182,7 @@ if (empty($_REQUEST['id'])) {
                     <div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Precio</label>
-                            <input type="number" class="form-control" id="" name="precio" min=1 value="<?php echo $data_producto['precio']; ?>" disabled>
+                            <input type="number" class="form-control" id="" name="precio" min=1 value="<?php echo $data_producto['precio']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Categoría</label>

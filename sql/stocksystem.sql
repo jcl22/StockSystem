@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2022 a las 20:15:35
+-- Tiempo de generación: 07-01-2022 a las 19:11:40
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -110,6 +110,56 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `anular_venta` (`no_factura` INT)  B
             
             
         END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `datesInfo` ()  BEGIN
+        	DECLARE cant_usuarios INT;
+            DECLARE cant_usuariosin INT;
+            DECLARE cant_u INT;
+            
+            DECLARE cant_proveedores INT;
+            DECLARE cant_proveedoresin INT;
+            DECLARE cant_p INT;
+            
+            DECLARE cant_clientes INT;
+            DECLARE cant_clientesin INT;
+            DECLARE cant_c INT;
+            
+            DECLARE cant_productos INT;
+            DECLARE cant_productosin INT;
+            DECLARE cant_pr INT;
+            
+            DECLARE cant_ventas INT;
+            DECLARE cant_ventasan INT;
+            DECLARE cant_v INT;
+            
+            SELECT COUNT(*) INTO cant_u FROM usuarios; 
+            SELECT COUNT(*) INTO cant_usuarios FROM usuarios WHERE estado = 1; 
+            SELECT COUNT(*) INTO cant_usuariosin FROM usuarios WHERE estado != 1;
+            
+            SELECT COUNT(*) INTO cant_p FROM proveedor;             
+            SELECT COUNT(*) INTO cant_proveedores FROM proveedor WHERE estado = 1;
+            SELECT COUNT(*) INTO cant_proveedoresin FROM proveedor WHERE estado != 1;            
+            
+            SELECT COUNT(*) INTO cant_c FROM cliente; 
+            SELECT COUNT(*) INTO cant_clientes FROM cliente WHERE estado = 1;
+            SELECT COUNT(*) INTO cant_clientesin FROM cliente WHERE estado != 1;            
+            
+            SELECT COUNT(*) INTO cant_pr FROM producto; 
+            SELECT COUNT(*) INTO cant_productos FROM producto WHERE estado = 1;
+            SELECT COUNT(*) INTO cant_productosin FROM producto WHERE estado != 1;
+            
+            SELECT COUNT(*) INTO cant_v FROM venta;                       
+            SELECT COUNT(*) INTO cant_ventas FROM venta WHERE estado = 1; 
+            SELECT COUNT(*) INTO cant_ventasan FROM venta WHERE estado != 1;
+            
+            
+SELECT cant_usuarios, cant_usuariosin, cant_u, 
+cant_proveedores, cant_proveedoresin, cant_p,
+cant_clientes, cant_clientesin, cant_c,
+cant_productos, cant_productosin, cant_pr, 
+cant_ventas, cant_ventasan, cant_v;
+            
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_detalletemp` (IN `id_detalle` INT, IN `token` VARCHAR(50))  BEGIN
         
@@ -221,6 +271,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `nombre_cliente`, `telefono`, `direccion`, `estado`) VALUES
 (1, 'C/F', 0, '0', 1),
 (3829382, 'Andrés ', 5754854, 'cra 40 # 10-114', 1),
+(7878984, 'Luisa', 759754943, 'Cra 56 #49-10', 1),
+(10298342, 'Ángela Moncada', 2147483647, 'Calle 40 # 29-10', 1),
 (16273842, 'Steven Carmona', 2147483647, 'Cra 44 # 79-70', 1),
 (19238349, 'Jonatan', 3712838, 'calle 10 #98-91', 1),
 (48348302, 'Cristina ', 2147483647, 'Cra 49 # 45-21', 1),
@@ -253,7 +305,7 @@ CREATE TABLE `config_empresa` (
 --
 
 INSERT INTO `config_empresa` (`id`, `nit`, `nombre`, `razon_social`, `telefono`, `correo`, `direccion`, `iva`) VALUES
-(1, '102938474-5', 'StockSystem - Inventarios y facturación ', 'Stocksystem', 6044637283, 'stocksystemcompany@gmail.com', 'Cra 56b # 34c - 16', '19.00');
+(1, '102938474-5', 'StockSystem - Inventarios y facturación ', 'Stocksystem', 6044637283, 'stocksystemi&f@gmail.com ', 'Cra 56b # 34c - 16', '19.00');
 
 -- --------------------------------------------------------
 
@@ -336,7 +388,10 @@ INSERT INTO `detalle_venta` (`id_detventa`, `id_producto`, `id_venta`, `fecha_ve
 (52, 5, 42, '2022-01-03 03:25:14', 1, '2341666.00'),
 (53, 1, 43, '2022-01-03 03:26:51', 2, '1720000.00'),
 (54, 6, 44, '2022-01-03 03:43:30', 1, '7462000.00'),
-(55, 1, 45, '2022-01-04 14:06:50', 2, '1720000.00');
+(55, 1, 45, '2022-01-04 14:06:50', 2, '1720000.00'),
+(56, 7, 46, '2022-01-05 21:26:07', 2, '550000.00'),
+(57, 1, 46, '2022-01-05 21:26:07', 1, '1720000.00'),
+(58, 1, 47, '2022-01-06 12:19:17', 2, '1720000.00');
 
 -- --------------------------------------------------------
 
@@ -383,7 +438,11 @@ INSERT INTO `inventario` (`id_inventario`, `id_producto`, `fecha`, `existencia`,
 (22, 6, '2021-12-30 20:25:46', 2, '7700000.00', 1036678760, 0),
 (23, 6, '2021-12-30 21:53:09', 1, '7800000.00', 1036678760, 0),
 (24, 1, '2021-12-31 17:59:52', 10, '1700000.00', 1036678760, 0),
-(25, 6, '2022-01-02 12:41:48', 4, '7300000.00', 1036678760, 0);
+(25, 6, '2022-01-02 12:41:48', 4, '7300000.00', 1036678760, 0),
+(26, 7, '2022-01-05 21:23:19', 13, '550000.00', 1036678760, 472381202),
+(27, 7, '2022-01-05 21:23:44', 2, '550000.00', 1036678760, 0),
+(28, 7, '2022-01-06 12:15:14', 3, '520000.00', 1036678760, 0),
+(29, 7, '2022-01-06 12:15:57', -3, '520000.00', 1036678760, 0);
 
 -- --------------------------------------------------------
 
@@ -409,12 +468,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre_producto`, `id_categoria`, `precio`, `existencia`, `date_add`, `id_usuario`, `id_proveedor`, `foto`, `estado`) VALUES
-(1, 'Aple Watch Serie 7 ', 2, '1720000.00', 30, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_producto.png', 1),
+(1, 'Aple Watch Serie 7 ', 2, '1720000.00', 29, '2021-12-24 02:06:37', 1036678760, 37443943, 'img_producto.png', 1),
 (2, 'HP Pavillon x360', 3, '2625000.00', 1, '2021-12-24 02:08:11', 1036678760, 1012637495, 'img_producto.png', 1),
-(3, 'Iphone 13 Pro 256 gb', 3, '5555555.56', 9, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_producto.png', 1),
+(3, 'Iphone 13 Pro 256 gb', 3, '7800000.00', 9, '2021-12-24 02:09:55', 1036678760, 37443943, 'img_producto.png', 1),
 (4, 'Samsung Galaxy Z Flip3', 2, '3550000.00', 3, '2021-12-24 02:11:13', 1036678760, 32732743, 'img_producto.png', 1),
-(5, 'SONY Xperia 10 III', 3, '2341666.00', 5, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1),
-(6, 'Mackbook Air Pro 2021', 1, '7462000.00', 6, '2021-12-29 21:20:45', 1036678760, 37443943, 'img_producto.png', 1);
+(5, 'SONY Xperia 10 III', 3, '2341666.00', 6, '2021-12-24 02:29:27', 1036678760, 327283292, 'img_producto.png', 1),
+(6, 'Mackbook Air Pro 2021', 1, '7462000.00', 6, '2021-12-29 21:20:45', 1036678760, 37443943, 'img_producto.png', 1),
+(7, 'Moto g e6s', 1, '550000.00', 13, '2022-01-05 21:23:19', 1036678760, 472381202, 'img_producto.png', 1);
 
 --
 -- Disparadores `producto`
@@ -450,8 +510,10 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `direccion`, `telef
 (32732743, 'Samsung', 'cra 45 # 34-94', '6044623782', 1),
 (37443943, 'Apple', 'cra 45 b #19sur - 23', '6043623738', 1),
 (103465748, 'Lenovo', 'cra 45A #40-30', '6014356352', 1),
+(172839404, 'Nokia', 'Cra 42 # 50-50', '283944902', 1),
 (312842934, 'Toshiba', 'cra 40 # 30-20', '6042374829', 1),
 (327283292, 'Sony', 'cra 33 #90-110', '605548201', 1),
+(472381202, 'Motorola', 'Calle 30 # 25-11', '642381293', 1),
 (738349230, 'Dell', 'Cra 50 # 12-111', '6052623784', 1),
 (1012637495, 'HP', 'Cra43 #70-10', '6042533627', 1);
 
@@ -499,9 +561,10 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `nombre_usuario`, `id_rol`, `co
 (43573613, 'Elizabeth48', 'Elizabeth Echavarría', 2, 'elizabeth48@gmail.com', '12345', '1'),
 (70129170, 'Victor154', 'Victor Hugo Cano', 1, 'victor154@gmail.com', '12345', '1'),
 (1001506208, 'Luisa14', 'Luisa Lopez', 2, 'luisal@gmail.com', '12345', '1'),
-(1011292386, 'valeria22', 'Valeria', 2, 'valeria22@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
+(1011292386, 'valeria22', 'Valeria', 2, 'valeria22@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '0'),
 (1017200416, 'Bryan30', 'Bryan Acevedo', 2, 'bryan60@gmai..com', '12345', '1'),
-(1036678760, 'Jhordanv10', 'Jhordan Villamil', 1, 'jhordanv@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
+(1029374783, 'davidbustos32', 'David Bustos', 2, 'davidbustos32@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
+(1036678760, 'Jhordanv10', 'Jhordan Villamil', 1, 'jhordanv@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1'),
 (1928349302, 'Catalina12', 'Catalina', 2, 'catalina12@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1'),
 (2147483647, 'manuela1', 'Manuela', 2, 'manuela1@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '1');
 
@@ -552,7 +615,7 @@ INSERT INTO `venta` (`id_venta`, `id_cliente`, `id_usuario`, `fecha_venta`, `tot
 (29, 1, 1036678760, '2022-01-02 13:39:29', 2625000, 2),
 (30, 48348302, 1036678760, '2022-01-02 13:40:36', 2625000, 1),
 (31, 72638484, 1036678760, '2022-01-02 13:42:28', 3440000, 1),
-(32, 71283392, 1036678760, '2022-01-02 13:59:34', 2341666, 1),
+(32, 71283392, 1036678760, '2022-01-02 13:59:34', 2341666, 2),
 (33, 101292039, 1036678760, '2022-01-02 14:15:29', 5555556, 1),
 (34, 48348302, 1036678760, '2022-01-02 14:19:29', 7462000, 1),
 (35, 16273842, 1036678760, '2022-01-02 20:15:08', 1720000, 1),
@@ -565,7 +628,9 @@ INSERT INTO `venta` (`id_venta`, `id_cliente`, `id_usuario`, `fecha_venta`, `tot
 (42, 1, 1036678760, '2022-01-03 03:25:14', 2341666, 1),
 (43, 1, 1036678760, '2022-01-03 03:26:51', 3440000, 2),
 (44, 71283392, 1036678760, '2022-01-03 03:43:30', 7462000, 1),
-(45, 16273842, 1036678760, '2022-01-04 14:06:49', 3440000, 2);
+(45, 16273842, 1036678760, '2022-01-04 14:06:49', 3440000, 2),
+(46, 10298342, 1036678760, '2022-01-05 21:26:07', 2820000, 1),
+(47, 7878984, 1036678760, '2022-01-06 12:19:17', 3440000, 2);
 
 --
 -- Índices para tablas volcadas
@@ -664,25 +729,25 @@ ALTER TABLE `config_empresa`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id_detemp` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_detemp` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_detventa` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_inventario` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_producto` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -694,7 +759,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_venta` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Restricciones para tablas volcadas
